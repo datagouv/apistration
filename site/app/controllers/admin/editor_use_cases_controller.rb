@@ -11,17 +11,17 @@ class Admin::EditorUseCasesController < AdminController
 
   def create
     result = Admin::EditorUseCases::Create.call(editor: @editor, record_params: use_case_params, admin: true_user, namespace:)
-    render_result(result, 'new', "Cas d'usage ajouté")
+    render_result(result, 'new', 'Démarche ajoutée')
   end
 
   def update
     result = Admin::EditorUseCases::Update.call(editor: @editor, record_id: params.expect(:id), record_params: use_case_params, admin: true_user, namespace:)
-    render_result(result, 'edit', "Cas d'usage mis à jour")
+    render_result(result, 'edit', 'Démarche mise à jour')
   end
 
   def destroy
     result = Admin::EditorUseCases::Destroy.call(editor: @editor, record_id: params.expect(:id), admin: true_user, namespace:)
-    result.success? ? success_message(title: "Cas d'usage retiré") : error_message(title: result.message)
+    result.success? ? success_message(title: 'Démarche retirée') : error_message(title: result.message)
 
     redirect_to admin_editor_path(@editor, onglet: 'use_cases')
   end

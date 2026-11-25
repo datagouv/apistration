@@ -36,11 +36,11 @@ class EditorProfileGaps
 
   def use_case_gaps
     use_cases = editor.use_cases.to_a
-    return [Gap.new(section_key: 'use_cases', label: "au moins un cas d'usage")] if use_cases.empty?
+    return [Gap.new(section_key: 'use_cases', label: 'au moins une démarche')] if use_cases.empty?
 
     incomplete = use_cases.count { |use_case| use_case.use_case.nil? || use_case.scopes.empty? || use_case.security_accreditation.nil? }
     return [] if incomplete.zero?
 
-    [Gap.new(section_key: 'use_cases', label: "#{incomplete} cas d'usage à compléter")]
+    [Gap.new(section_key: 'use_cases', label: "#{incomplete} #{incomplete > 1 ? 'démarches' : 'démarche'} à compléter")]
   end
 end

@@ -141,7 +141,7 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
 
       expect(page).to have_text('Votre fiche est à compléter : 4 informations manquantes')
       expect(page).to have_link('Un contact Sécurité (RSSI)', href: editor_settings_path(onglet: 'contacts'))
-      expect(page).to have_link("Au moins un cas d'usage", href: editor_settings_path(onglet: 'use_cases'))
+      expect(page).to have_link('Au moins une démarche', href: editor_settings_path(onglet: 'use_cases'))
 
       create(:editor_contact, editor:, role: 'technical')
       create(:editor_contact, editor:, role: 'security')
@@ -158,7 +158,7 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
       create(:editor_use_case, editor:, form_uid: 'api-entreprise-unknown').update_columns(use_case: nil, scopes: [])
       visit editor_settings_path
 
-      expect(page).to have_link("1 cas d'usage à compléter")
+      expect(page).to have_link('1 démarche à compléter')
     end
   end
 

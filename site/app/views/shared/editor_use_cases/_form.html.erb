@@ -1,15 +1,15 @@
 <% scope_groups = use_case.scope_groups %>
 <%= form_with(model: use_case, url: use_case.persisted? ? editor_profile_use_case_path(editor, use_case, admin:) : editor_profile_use_cases_path(editor, admin:), method: use_case.persisted? ? :patch : :post) do |f| %>
   <%= f.hidden_field :use_case %>
-  <%= editor_profile_readonly("Cas d'usage DataPass", use_case.label) %>
+  <%= editor_profile_readonly('Démarche DataPass', use_case.label) %>
   <% unless use_case.persisted? %>
-    <p class="fr-text--sm"><%= link_to "Choisir un autre cas d'usage", editor_profile_new_use_case_path(editor, admin:), class: 'fr-link' %></p>
+    <p class="fr-text--sm"><%= link_to 'Choisir une autre démarche', editor_profile_new_use_case_path(editor, admin:), class: 'fr-link' %></p>
   <% end %>
 
   <h2 class="fr-h5 fr-mt-4w">Logiciel</h2>
   <div class="fr-grid-row fr-grid-row--gutters">
     <div class="fr-col-12 fr-col-md-6">
-      <%= editor_profile_field(f, :text_field, :software, 'Nom du logiciel', hint: 'Le logiciel qui implémente ce cas d’usage') %>
+      <%= editor_profile_field(f, :text_field, :software, 'Nom du logiciel', hint: 'Le logiciel qui implémente cette démarche') %>
     </div>
     <div class="fr-col-12 fr-col-md-6">
       <%= editor_profile_select(f, :integration_status, "Statut d'intégration", EditorUseCase.integration_status_options) %>
@@ -23,7 +23,7 @@
   <% end %>
 
   <h2 class="fr-h5 fr-mt-4w">Données déjà exploitées par le logiciel</h2>
-  <p class="fr-text--sm">Cochez les données que votre logiciel exploite déjà, c’est-à-dire celles des API auxquelles il est déjà raccordé. Les données du formulaire DataPass de ce cas d'usage sont pré-cochées : décochez celles que votre logiciel n'exploite pas.</p>
+  <p class="fr-text--sm">Cochez les données que votre logiciel exploite déjà, c’est-à-dire celles des API auxquelles il est déjà raccordé. Les données du formulaire DataPass de cette démarche sont pré-cochées : décochez celles que votre logiciel n'exploite pas.</p>
   <% if scope_groups.any? || use_case.other_scope_groups.any? %>
     <%= hidden_field_tag 'editor_use_case[scopes][]', '', id: nil %>
     <% scope_groups.each do |group, options| %>
@@ -34,7 +34,7 @@
       <section class="fr-accordion fr-mb-3w">
         <h3 class="fr-accordion__title">
           <button type="button" class="fr-accordion__btn" aria-expanded="false" aria-controls="editor-use-case-other-scopes">
-            Autres données de l'API, hors de ce cas d'usage (<%= pluralize(other_groups.size, 'groupe', plural: 'groupes') %>)
+            Autres données de l'API, hors de cette démarche (<%= pluralize(other_groups.size, 'groupe', plural: 'groupes') %>)
           </button>
         </h3>
         <div class="fr-collapse" id="editor-use-case-other-scopes">

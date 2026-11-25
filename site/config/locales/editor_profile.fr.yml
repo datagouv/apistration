@@ -4,9 +4,9 @@ fr:
       general: Infos générales
       contacts: Contacts
       security: Sécurité & hébergement
-      use_cases: Cas d'usage
+      use_cases: Démarches
   editor_use_cases:
-    unknown_use_case: Cas d'usage à préciser
+    unknown_use_case: Démarche à préciser
     integration_statuses:
       production: En production
       recette: En recette

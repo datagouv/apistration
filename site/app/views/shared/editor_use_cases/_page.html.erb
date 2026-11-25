@@ -1,7 +1,7 @@
 <% back_path = admin ? admin_editor_path(editor, onglet: 'use_cases') : editor_settings_path(onglet: 'use_cases') %>
-<%= link_to 'Retour aux cas d’usage', back_path, class: 'fr-link fr-icon-arrow-left-line fr-link--icon-left' %>
+<%= link_to 'Retour aux démarches', back_path, class: 'fr-link fr-icon-arrow-left-line fr-link--icon-left' %>
 
-<h1 class="fr-mt-2w"><%= use_case.persisted? ? "Modifier un cas d'usage" : "Ajouter un cas d'usage" %></h1>
+<h1 class="fr-mt-2w"><%= use_case.persisted? ? 'Modifier une démarche' : 'Ajouter une démarche' %></h1>
 
 <% if use_case.use_case.blank? %>
   <%= render 'shared/editor_use_cases/picker', editor:, use_case:, admin: %>

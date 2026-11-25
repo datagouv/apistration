@@ -10,7 +10,7 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
 
   def add_use_case(label, software:)
     visit new_editor_use_case_path
-    select label, from: "Cas d'usage DataPass"
+    select label, from: 'Démarche DataPass'
     click_on 'Continuer'
     fill_in 'Nom du logiciel', with: software
     yield if block_given?
@@ -231,7 +231,7 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
     it 'counts a use case without an accreditation answer among the ones to complete' do
       visit editor_settings_path
 
-      expect(page).to have_link("1 cas d'usage à compléter")
+      expect(page).to have_link('1 démarche à compléter')
     end
   end
 end

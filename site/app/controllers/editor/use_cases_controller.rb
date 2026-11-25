@@ -13,7 +13,7 @@ class Editor::UseCasesController < EditorController
     @use_case = current_editor.use_cases.build(use_case_params)
 
     if @use_case.save
-      success_message(title: "Cas d'usage ajouté")
+      success_message(title: 'Démarche ajoutée')
       redirect_to editor_settings_path(onglet: 'use_cases')
     else
       render 'new', status: :unprocessable_content
@@ -22,7 +22,7 @@ class Editor::UseCasesController < EditorController
 
   def update
     if @use_case.update(use_case_params)
-      success_message(title: "Cas d'usage mis à jour")
+      success_message(title: 'Démarche mise à jour')
       redirect_to editor_settings_path(onglet: 'use_cases')
     else
       render 'edit', status: :unprocessable_content
@@ -31,10 +31,10 @@ class Editor::UseCasesController < EditorController
 
   def destroy
     if @use_case.form_uid
-      error_message(title: "Ce cas d'usage est rattaché à un formulaire DataPass : écrivez au support pour le retirer")
+      error_message(title: 'Cette démarche est rattachée à un formulaire DataPass : écrivez au support pour la retirer')
     else
       @use_case.destroy!
-      success_message(title: "Cas d'usage retiré")
+      success_message(title: 'Démarche retirée')
     end
 
     redirect_to editor_settings_path(onglet: 'use_cases')
