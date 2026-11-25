@@ -208,6 +208,26 @@ RSpec.describe INSEE::Etablissement::BuildResource, type: :build_resource do
       end
     end
 
+    context 'when Insee sends a code missing from both NAF referentials under a nomenclature we do not know' do
+      before do
+        payload['etablissement'].delete('activitePrincipaleNAF25Etablissement')
+        current_periode['activitePrincipaleEtablissement'] = '99.99X'
+        current_periode['nomenclatureActivitePrincipaleEtablissement'] = 'NAF2027'
+        allow(MonitoringService.instance).to receive(:track_with_added_context)
+      end
+
+      it 'warns us, so a change of the Insee format does not go unnoticed' do
+        resource
+
+        expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+          'warning',
+          a_string_including('outside the known nomenclatures'),
+          { code: '99.99X', nomenclature: 'NAF2027' },
+          fingerprint: ['insee_unexpected_activite_principale']
+        ).at_least(:once)
+      end
+    end
+
     context 'when Insee flags as NAF25 a code missing from our NAF 2025 referential' do
       before do
         payload['etablissement'].delete('activitePrincipaleNAF25Etablissement')
