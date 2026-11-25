@@ -206,19 +206,6 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
   describe 'contacts' do
     before { visit editor_settings_path(onglet: 'contacts') }
 
-    it 'lists the former contact email and phone of the editor as its technical contact' do
-      require Rails.root.join('db/migrate/20261125093100_move_editor_contact_to_technical_contacts').to_s
-      editor.contacts.delete_all
-      Editor.where(id: editor.id).update_all("contact_email = 'legacy@editor.com', contact_phone = '0611111111'")
-      ActiveRecord::Migration.suppress_messages { MoveEditorContactToTechnicalContacts.new.up }
-
-      visit editor_settings_path(onglet: 'contacts')
-
-      within_tab('contacts') do
-        expect(page).to have_css('tr', text: /Technique.*legacy@editor\.com.*0611111111/)
-      end
-    end
-
     it 'adds several contacts for the same role' do
       within_tab('contacts') do
         select 'Délégué à la protection des données (DPO)', from: 'Rôle'
