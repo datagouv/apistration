@@ -99,6 +99,17 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
       expect(page).to have_field('editor_siret', with: '12345678901234')
     end
 
+    it 'fetches the INSEE data of the SIRET of a new editor' do
+      visit new_admin_editor_path
+
+      fill_in 'editor_name', with: 'New Editor'
+      fill_in 'editor_siret', with: '12345678901234'
+      check 'editor_apis_entreprise'
+
+      expect { click_on "Créer l'éditeur" }.to have_enqueued_job(UpdateOrganizationINSEEPayloadJob)
+      expect(Organization.find_by(siret: '12345678901234')).to be_present
+    end
+
     it 'records the creation activity with the created editor' do
       visit new_admin_editor_path
 
@@ -158,6 +169,15 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
 
       expect(page).to have_css('.fr-alert.fr-alert--success')
       expect(editor.reload).to have_attributes(name: 'Renamed editor', siret: '98765432109876', role: 'manages_token')
+    end
+
+    it 'fetches the INSEE data of a new SIRET, and only of a new one' do
+      expect { within_tab('general') { click_on 'Enregistrer' } }.not_to have_enqueued_job(UpdateOrganizationINSEEPayloadJob)
+
+      within_tab('general') { fill_in 'editor_siret', with: '98765432109876' }
+
+      expect { within_tab('general') { click_on 'Enregistrer' } }.to have_enqueued_job(UpdateOrganizationINSEEPayloadJob)
+      expect(Organization.find_by(siret: '98765432109876')).to be_present
     end
 
     it 'records the update activity' do
