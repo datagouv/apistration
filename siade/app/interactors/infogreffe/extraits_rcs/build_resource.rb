@@ -82,9 +82,13 @@ class Infogreffe::ExtraitsRCS::BuildResource < BuildResource
   def capital
     {
       montant: cast_montant_as_float(infos.css('capital montant').text),
-      devise: infos.css('capital montant devise').to_s,
-      code_devise: infos.css('capital montant codeDevise').to_s
+      devise: capital_montant&.attr('devise'),
+      code_devise: capital_montant&.attr('codeDevise')
     }
+  end
+
+  def capital_montant
+    infos.at_css('capital montant')
   end
 
   def cast_montant_as_float(montant)

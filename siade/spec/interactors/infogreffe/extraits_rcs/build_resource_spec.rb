@@ -74,8 +74,8 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
         subject(:capital) { instance.bundled_data.data.capital }
 
         it { expect(capital[:montant]).to eq(234_567.8) }
-        it { expect(capital[:devise]).to eq('') }
-        it { expect(capital[:code_devise]).to eq('') }
+        it { expect(capital[:devise]).to eq('EUROS') }
+        it { expect(capital[:code_devise]).to eq('EUR') }
       end
 
       its(:observations) { is_expected.to be_an_instance_of(Array) }
