@@ -57,7 +57,7 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
 
     it 'persists general information changes' do
       within_tab('general') do
-        fill_in 'Nom', with: 'Nouveau nom éditeur'
+        fill_in 'Nom public de l’entreprise', with: 'Nouveau nom éditeur'
         click_button 'Enregistrer'
       end
 
@@ -68,7 +68,7 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
 
     it 'shows the error on the tab of the invalid form' do
       within_tab('general') do
-        fill_in 'Nom', with: ''
+        fill_in 'Nom public de l’entreprise', with: ''
         click_button 'Enregistrer'
       end
 

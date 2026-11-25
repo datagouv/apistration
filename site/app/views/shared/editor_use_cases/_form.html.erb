@@ -22,8 +22,8 @@
     <%= editor_profile_field(f, :url_field, :software_url, 'Page de présentation du logiciel', hint: 'La page de votre site qui présente ce logiciel, par exemple https://exemple.fr/logiciel', placeholder: 'https://') %>
   <% end %>
 
-  <h2 class="fr-h5 fr-mt-4w">Données utilisées</h2>
-  <p class="fr-text--sm">Les données pré-cochées sont celles du formulaire DataPass de ce cas d'usage : décochez celles que votre logiciel n'utilise pas.</p>
+  <h2 class="fr-h5 fr-mt-4w">Données déjà exploitées par le logiciel</h2>
+  <p class="fr-text--sm">Cochez les données que votre logiciel exploite déjà, c’est-à-dire celles des API auxquelles il est déjà raccordé. Les données du formulaire DataPass de ce cas d'usage sont pré-cochées : décochez celles que votre logiciel n'exploite pas.</p>
   <% if scope_groups.any? || use_case.other_scope_groups.any? %>
     <%= hidden_field_tag 'editor_use_case[scopes][]', '', id: nil %>
     <% scope_groups.each do |group, options| %>
@@ -65,7 +65,7 @@
 
   <h2 class="fr-h5 fr-mt-4w">Configuration du jeton</h2>
   <%= editor_profile_row do %>
-    <%= editor_profile_field(f, :text_area, :setup_instructions, 'Instructions de configuration du jeton', hint: 'Comment vos clients renseignent leur jeton dans ce logiciel', rows: 5) %>
+    <%= editor_profile_field(f, :text_area, :setup_instructions, 'Instructions de configuration du jeton', hint: 'Comment vos clients renseignent leur jeton dans ce logiciel. Ce texte sera partagé avec vos clients.', rows: 5) %>
   <% end %>
 
   <% if admin %>

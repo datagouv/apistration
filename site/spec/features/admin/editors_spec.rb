@@ -161,7 +161,7 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
 
     it 'updates the general information, SIRET and role included' do
       within_tab('general') do
-        fill_in 'Nom', with: 'Renamed editor'
+        fill_in 'Nom public de l’entreprise', with: 'Renamed editor'
         fill_in 'editor_siret', with: '98765432109876'
         select 'Gère le jeton', from: 'editor_role'
         click_on 'Enregistrer'
