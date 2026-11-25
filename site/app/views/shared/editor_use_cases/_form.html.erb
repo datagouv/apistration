@@ -54,6 +54,8 @@
     <%= editor_profile_field(f, :number_field, :data_retention_months, 'Durée de conservation', hint: 'En mois, par exemple 36', min: 1) %>
   <% end %>
 
+  <%= render('shared/editor_use_cases/accreditation', f:) %>
+
   <h2 class="fr-h5 fr-mt-4w">Configuration du jeton</h2>
   <%= editor_profile_row do %>
     <%= editor_profile_field(f, :text_area, :setup_instructions, 'Instructions de configuration du jeton', hint: 'Comment vos clients renseignent leur jeton dans ce logiciel', rows: 5) %>

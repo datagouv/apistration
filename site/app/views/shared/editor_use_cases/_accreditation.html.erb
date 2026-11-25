@@ -1,0 +1,27 @@
+<h2 class="fr-h5 fr-mt-4w">Homologation de sécurité</h2>
+
+<%= editor_profile_conditional(f, :security_accreditation) do %>
+  <%= editor_profile_yes_no(f, :security_accreditation, 'Ce logiciel dispose-t-il d’une homologation de sécurité ?', input_data: { action: 'change->conditional-fields#toggle' }) %>
+
+  <%= editor_profile_shown_when('true') do %>
+    <div class="fr-grid-row fr-grid-row--gutters">
+      <div class="fr-col-12 fr-col-md-4">
+        <%= editor_profile_field(f, :date_field, :security_accreditation_begin_date, 'Date de début') %>
+      </div>
+      <div class="fr-col-12 fr-col-md-4">
+        <%= editor_profile_field(f, :date_field, :security_accreditation_end_date, 'Date de fin') %>
+      </div>
+    </div>
+    <div class="fr-grid-row fr-mt-2w fr-mb-4w">
+      <div class="fr-col-12 fr-col-md-8">
+        <div class="fr-alert fr-alert--info fr-alert--sm">
+          <p>Envoyez-nous la décision d’homologation par email à <a href="mailto:support@<%= namespace %>.api.gouv.fr?subject=Décision d’homologation de sécurité">support@<%= namespace %>.api.gouv.fr</a>.</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<%= editor_profile_row do %>
+  <%= editor_profile_field(f, :url_field, :mon_service_securise_url, 'Lien vers l’homologation MonServiceSécurisé', hint: 'Si ce logiciel est suivi sur MonServiceSécurisé, par exemple https://monservicesecurise.cyber.gouv.fr/…', placeholder: 'https://') %>
+<% end %>

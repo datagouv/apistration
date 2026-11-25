@@ -1,18 +1,28 @@
 class EditorUseCase < ApplicationRecord
   INTEGRATION_STATUSES = %w[production recette development prospection].freeze
-  EDITABLE_ATTRIBUTES = [:use_case, :software, :integration_status, :data_retention_months, :data_recipients, :setup_instructions, { scopes: [] }].freeze
+  EDITABLE_ATTRIBUTES = [
+    :use_case, :software, :integration_status, :data_retention_months, :data_recipients, :setup_instructions,
+    :security_accreditation, :security_accreditation_begin_date, :security_accreditation_end_date, :mon_service_securise_url,
+    { scopes: [] }
+  ].freeze
   ADMIN_ATTRIBUTES = [:form_uid].freeze
 
   belongs_to :editor
 
   normalizes :form_uid, with: ->(value) { value.strip.presence }
   normalizes :scopes, with: ->(scopes) { scopes.compact_blank.uniq.sort }
+  normalizes :mon_service_securise_url, with: ->(url) { url.strip.presence }
+
+  before_validation :clear_security_accreditation_dates, unless: :security_accreditation?
 
   validates :use_case, presence: true
   validates :software, presence: true
   validates :integration_status, inclusion: { in: INTEGRATION_STATUSES }
   validates :data_retention_months, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validates :form_uid, uniqueness: true, allow_nil: true
+  validates :security_accreditation_begin_date, :security_accreditation_end_date, presence: true, if: :security_accreditation?
+  validates :security_accreditation_end_date, comparison: { greater_than: :security_accreditation_begin_date }, if: -> { security_accreditation_begin_date && security_accreditation_end_date }
+  validates :mon_service_securise_url, web_address: true
   validate :use_case_in_referential, if: :use_case_changed?
 
   before_update :mark_as_edited
@@ -71,6 +81,11 @@ class EditorUseCase < ApplicationRecord
   end
 
   private
+
+  def clear_security_accreditation_dates
+    self.security_accreditation_begin_date = nil
+    self.security_accreditation_end_date = nil
+  end
 
   def mark_as_edited
     self.updated_at = Time.current

@@ -5,5 +5,6 @@ FactoryBot.define do
     software { 'Logiciel enfance' }
     scopes { %w[cnaf_quotient_familial] }
     integration_status { 'production' }
+    security_accreditation { false }
   end
 end

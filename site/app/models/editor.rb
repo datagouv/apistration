@@ -23,9 +23,6 @@ class Editor < ApplicationRecord
 
   normalizes :deployment_type, :two_factor_status, :hosting_provider, :hosting_country, with: ->(value) { value.strip.presence }
   normalizes :two_factor_methods, with: ->(methods) { methods.compact_blank.uniq }
-  normalizes :mon_service_securise_url, with: ->(url) { url.strip.presence }
-
-  before_validation :clear_security_accreditation_dates, unless: :security_accreditation?
 
   validates :name, presence: true
   validates :apis, presence: true
@@ -35,9 +32,6 @@ class Editor < ApplicationRecord
   validates :allowed_ips, allowed_ips: true, if: :allowed_ips_changed?
   validates :two_factor_status, inclusion: { in: TWO_FACTOR_STATUSES }, allow_nil: true
   validates :two_factor_deadline, presence: true, if: :two_factor_in_progress?
-  validates :security_accreditation_begin_date, :security_accreditation_end_date, presence: true, if: :security_accreditation?
-  validates :security_accreditation_end_date, comparison: { greater_than: :security_accreditation_begin_date }, if: -> { security_accreditation_begin_date && security_accreditation_end_date }
-  validate :mon_service_securise_url_is_a_web_address, if: :mon_service_securise_url
   validate :two_factor_methods_included_in_list
   validate :apis_included_in_list
 
@@ -116,18 +110,6 @@ class Editor < ApplicationRecord
   end
 
   private
-
-  def mon_service_securise_url_is_a_web_address
-    uri = URI.parse(mon_service_securise_url)
-    errors.add(:mon_service_securise_url, :invalid) unless %w[http https].include?(uri.scheme) && uri.host.present?
-  rescue URI::InvalidURIError
-    errors.add(:mon_service_securise_url, :invalid)
-  end
-
-  def clear_security_accreditation_dates
-    self.security_accreditation_begin_date = nil
-    self.security_accreditation_end_date = nil
-  end
 
   def two_factor_methods_included_in_list
     errors.add(:two_factor_methods, :inclusion) unless (two_factor_methods - TWO_FACTOR_METHODS).empty?

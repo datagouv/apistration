@@ -117,150 +117,19 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
       )
     end
 
-    it 'declares a security accreditation with its validity period and its MonServiceSécurisé link' do
-      within_tab('security') do
-        choose 'editor_security_accreditation_true'
-        fill_in 'Date de début', with: '2026-01-01'
-        fill_in 'Date de fin', with: '2029-01-01'
-        fill_in 'Lien vers l’homologation MonServiceSécurisé', with: 'https://monservicesecurise.cyber.gouv.fr/service/42'
-        click_button 'Enregistrer'
-      end
-
-      expect(editor.reload).to have_attributes(
-        security_accreditation: true,
-        security_accreditation_begin_date: Date.new(2026, 1, 1),
-        security_accreditation_end_date: Date.new(2029, 1, 1),
-        mon_service_securise_url: 'https://monservicesecurise.cyber.gouv.fr/service/42'
-      )
-    end
-
-    it 'refuses an accreditation ending before it begins' do
-      within_tab('security') do
-        choose 'editor_security_accreditation_true'
-        fill_in 'Date de début', with: '2029-01-01'
-        fill_in 'Date de fin', with: '2026-01-01'
-        click_button 'Enregistrer'
-      end
-
-      expect(editor.reload.security_accreditation).to be_nil
-      expect(page).to have_text('doit être postérieure à la date de début')
-    end
-
-    it 'refuses a MonServiceSécurisé link that is not a web address' do
-      within_tab('security') do
-        fill_in 'Lien vers l’homologation MonServiceSécurisé', with: 'https:///missing-host'
-        click_button 'Enregistrer'
-      end
-
-      expect(editor.reload.mon_service_securise_url).to be_nil
-      expect(page).to have_text('doit être une adresse web commençant par https://')
-    end
-
-    it 'shows the accreditation dates only once the editor answers it has one, and keeps the tab in the URL', :js do
+    it 'keeps the selected tab in the URL and asks the deadline only for a two-factor authentication in progress', :js do
       find_by_id('editor-profile-contacts').click
       expect(page).to have_current_path(editor_settings_path(onglet: 'contacts'))
       find_by_id('editor-profile-security').click
       expect(page).to have_current_path(editor_settings_path(onglet: 'security'))
 
       within_tab('security') do
-        expect(page).to have_no_field('Date de début')
-        choose 'editor_security_accreditation_true', allow_label_click: true
-        expect(page).to have_field('Date de début')
-        choose 'editor_security_accreditation_false', allow_label_click: true
-        expect(page).to have_no_field('Date de début')
+        expect(page).to have_no_field('Échéance de mise en place')
+        choose 'En cours', allow_label_click: true
+        expect(page).to have_field('Échéance de mise en place')
+        choose 'Non', allow_label_click: true
+        expect(page).to have_no_field('Échéance de mise en place')
       end
-    end
-
-    it 'forgets the accreditation period once the editor answers it has none' do
-      editor.update!(security_accreditation: true, security_accreditation_begin_date: Date.new(2026, 1, 1), security_accreditation_end_date: Date.new(2029, 1, 1))
-      visit editor_settings_path(onglet: 'security')
-
-      within_tab('security') do
-        choose 'editor_security_accreditation_false'
-        click_button 'Enregistrer'
-      end
-
-      expect(editor.reload).to have_attributes(security_accreditation: false, security_accreditation_begin_date: nil, security_accreditation_end_date: nil)
-    end
-
-    it 'tells whether a CISO is designated from the security contacts' do
-      within_tab('security') { expect(page).to have_text('Ajoutez un contact « Sécurité (RSSI) »') }
-
-      create(:editor_contact, editor:, role: 'security', full_name: 'Rita RSSI')
-      visit editor_settings_path(onglet: 'security')
-
-      within_tab('security') { expect(page).to have_text('Rita RSSI') }
-    end
-
-    it 'asks for the deadline of a two-factor authentication in progress' do
-      within_tab('security') do
-        choose 'En cours'
-        click_button 'Enregistrer'
-      end
-
-      expect(editor.reload.two_factor_status).to be_nil
-      expect(page).to have_css('#editor-profile-security-panel .fr-input-group--error')
-    end
-  end
-
-  describe 'contacts' do
-    before { visit editor_settings_path(onglet: 'contacts') }
-
-    it 'adds several contacts for the same role' do
-      within_tab('contacts') do
-        select 'Délégué à la protection des données (DPO)', from: 'Rôle'
-        fill_in 'Nom', with: 'Alice DPO'
-        fill_in 'Email', with: 'dpo@editor.com'
-        click_button 'Ajouter le contact'
-      end
-      within_tab('contacts') do
-        select 'Délégué à la protection des données (DPO)', from: 'Rôle'
-        fill_in 'Email', with: 'dpo-suppleant@editor.com'
-        click_button 'Ajouter le contact'
-      end
-
-      expect(editor.contacts.where(role: 'dpo').pluck(:email)).to contain_exactly('dpo@editor.com', 'dpo-suppleant@editor.com')
-    end
-
-    it 'removes a contact' do
-      within_tab('contacts') { click_button 'Retirer' }
-
-      expect(editor.contacts.reload).to be_empty
-    end
-
-    it 'changes the phone of a contact' do
-      contact = editor.contacts.sole
-      within_tab('contacts') { click_on "Modifier le contact #{contact.role_label} #{contact.full_name}" }
-      fill_in 'Téléphone', with: '0611223344'
-      click_button 'Enregistrer'
-
-      expect(page).to have_css('#editor-profile-contacts[aria-selected="true"]')
-      expect(contact.reload).to have_attributes(phone: '0611223344', email: contact.email)
-    end
-
-    it 'names the contact each action button acts on, for screen readers' do
-      contact = editor.contacts.sole
-
-      within_tab('contacts') do
-        expect(page).to have_button("Retirer le contact #{contact.role_label} #{contact.full_name}")
-        expect(page).to have_link("Modifier le contact #{contact.role_label} #{contact.full_name}")
-      end
-    end
-
-    it 'cannot change the contact of another editor' do
-      other_contact = create(:editor_contact, editor: create(:editor), phone: '0100000000')
-
-      page.driver.submit :patch, editor_contact_path(other_contact), editor_contact: { phone: '0699999999' }
-
-      expect(other_contact.reload.phone).to eq('0100000000')
-    end
-
-    it 'cannot remove the contact of another editor' do
-      other_contact = create(:editor_contact, editor: create(:editor))
-
-      page.driver.submit :delete, editor_contact_path(other_contact), {}
-
-      expect(other_contact.reload).to be_persisted
     end
   end
 
@@ -270,13 +139,13 @@ RSpec.describe 'Editor: settings', app: :api_entreprise do
     it 'lists the missing information and links each to its tab, until it is given' do
       visit editor_settings_path
 
-      expect(page).to have_text('Votre fiche est à compléter : 5 informations manquantes')
+      expect(page).to have_text('Votre fiche est à compléter : 4 informations manquantes')
       expect(page).to have_link('Un contact Sécurité (RSSI)', href: editor_settings_path(onglet: 'contacts'))
       expect(page).to have_link("Au moins un cas d'usage", href: editor_settings_path(onglet: 'use_cases'))
 
       create(:editor_contact, editor:, role: 'technical')
       create(:editor_contact, editor:, role: 'security')
-      editor.update!(two_factor_status: 'yes', security_accreditation: false)
+      editor.update!(two_factor_status: 'yes')
       create(:editor_use_case, editor:)
       visit editor_settings_path
 

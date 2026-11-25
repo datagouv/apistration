@@ -144,6 +144,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.text "setup_instructions"
     t.string "integration_status"
     t.string "form_uid"
+    t.boolean "security_accreditation"
+    t.date "security_accreditation_begin_date"
+    t.date "security_accreditation_end_date"
+    t.string "mon_service_securise_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["editor_id"], name: "index_editor_use_cases_on_editor_id"
@@ -173,10 +177,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.string "two_factor_methods", default: [], null: false, array: true
     t.string "hosting_provider"
     t.string "hosting_country"
-    t.boolean "security_accreditation"
-    t.date "security_accreditation_begin_date"
-    t.date "security_accreditation_end_date"
-    t.string "mon_service_securise_url"
   end
 
   create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

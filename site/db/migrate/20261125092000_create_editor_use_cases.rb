@@ -10,6 +10,10 @@ class CreateEditorUseCases < ActiveRecord::Migration[8.1]
       t.text :setup_instructions
       t.string :integration_status
       t.string :form_uid, index: { unique: true, where: 'form_uid IS NOT NULL' }
+      t.boolean :security_accreditation
+      t.date :security_accreditation_begin_date
+      t.date :security_accreditation_end_date
+      t.string :mon_service_securise_url
       t.timestamps
     end
   end

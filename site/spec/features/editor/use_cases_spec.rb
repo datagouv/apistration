@@ -154,4 +154,67 @@ RSpec.describe 'Editor: use cases', app: :api_particulier do
       expect(other_use_case.reload.software).to eq('Logiciel enfance')
     end
   end
+
+  describe 'the security accreditation of a use case' do
+    let(:use_case) { create(:editor_use_case, editor:, security_accreditation: nil) }
+
+    before { visit edit_editor_use_case_path(use_case) }
+
+    it 'records its validity period and its MonServiceSécurisé link' do
+      choose 'editor_use_case_security_accreditation_true'
+      fill_in 'Date de début', with: '2026-01-01'
+      fill_in 'Date de fin', with: '2029-01-01'
+      fill_in 'Lien vers l’homologation MonServiceSécurisé', with: 'https://monservicesecurise.cyber.gouv.fr/service/42'
+      click_on 'Enregistrer'
+
+      expect(use_case.reload).to have_attributes(
+        security_accreditation: true,
+        security_accreditation_begin_date: Date.new(2026, 1, 1),
+        security_accreditation_end_date: Date.new(2029, 1, 1),
+        mon_service_securise_url: 'https://monservicesecurise.cyber.gouv.fr/service/42'
+      )
+    end
+
+    it 'refuses an accreditation ending before it begins' do
+      choose 'editor_use_case_security_accreditation_true'
+      fill_in 'Date de début', with: '2029-01-01'
+      fill_in 'Date de fin', with: '2026-01-01'
+      click_on 'Enregistrer'
+
+      expect(use_case.reload.security_accreditation).to be_nil
+      expect(page).to have_text('doit être postérieure à la date de début')
+    end
+
+    it 'refuses a MonServiceSécurisé link that is not a web address' do
+      fill_in 'Lien vers l’homologation MonServiceSécurisé', with: 'https:///missing-host'
+      click_on 'Enregistrer'
+
+      expect(use_case.reload.mon_service_securise_url).to be_nil
+      expect(page).to have_text('doit être une adresse web commençant par https://')
+    end
+
+    it 'forgets the accreditation period once the editor answers it has none' do
+      use_case.update!(security_accreditation: true, security_accreditation_begin_date: Date.new(2026, 1, 1), security_accreditation_end_date: Date.new(2029, 1, 1))
+      visit edit_editor_use_case_path(use_case)
+
+      choose 'editor_use_case_security_accreditation_false'
+      click_on 'Enregistrer'
+
+      expect(use_case.reload).to have_attributes(security_accreditation: false, security_accreditation_begin_date: nil, security_accreditation_end_date: nil)
+    end
+
+    it 'asks the accreditation dates only once the editor answers it has one', :js do
+      expect(page).to have_no_field('Date de début')
+      choose 'editor_use_case_security_accreditation_true', allow_label_click: true
+      expect(page).to have_field('Date de début')
+      choose 'editor_use_case_security_accreditation_false', allow_label_click: true
+      expect(page).to have_no_field('Date de début')
+    end
+
+    it 'counts a use case without an accreditation answer among the ones to complete' do
+      visit editor_settings_path
+
+      expect(page).to have_link("1 cas d'usage à compléter")
+    end
+  end
 end

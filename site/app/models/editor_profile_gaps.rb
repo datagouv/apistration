@@ -29,17 +29,16 @@ class EditorProfileGaps
   end
 
   def security_gaps
-    [
-      ('la double authentification de vos usagers' if editor.two_factor_status.nil?),
-      ('votre homologation de sécurité' if editor.security_accreditation.nil?)
-    ].compact.map { |label| Gap.new(section_key: 'security', label:) }
+    return [] unless editor.two_factor_status.nil?
+
+    [Gap.new(section_key: 'security', label: 'la double authentification de vos usagers')]
   end
 
   def use_case_gaps
     use_cases = editor.use_cases.to_a
     return [Gap.new(section_key: 'use_cases', label: "au moins un cas d'usage")] if use_cases.empty?
 
-    incomplete = use_cases.count { |use_case| use_case.use_case.nil? || use_case.scopes.empty? }
+    incomplete = use_cases.count { |use_case| use_case.use_case.nil? || use_case.scopes.empty? || use_case.security_accreditation.nil? }
     return [] if incomplete.zero?
 
     [Gap.new(section_key: 'use_cases', label: "#{incomplete} cas d'usage à compléter")]
