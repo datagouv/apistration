@@ -8,7 +8,7 @@ _Ce projet est bilingue : les issues et pull requests peuvent être rédigées e
 
 - **Human accountability.** Do not submit raw, unreviewed AI-generated code. Every change must be read, understood, tested, and validated by a human before a PR is opened. By submitting a pull request, you certify that you fully understand the proposed code and can explain and defend it in review without relying on an AI assistant. AI tooling is allowed; AI slop is not.
 - **One feature, one PR.** Keep pull requests focused on a single concern. Split unrelated changes into separate PRs so reviews stay manageable.
-- **Signed-off commits.** All commits must carry a `Signed-off-by` trailer ([Developer Certificate of Origin](https://developercertificate.org/)). Use `git commit -s` (or configure it globally). PRs with unsigned commits will not be merged.
+- **Signed and signed-off commits.** Every commit is signed with a GPG or SSH key registered on your GitHub account, so GitHub shows it as Verified: the default branch requires signed commits, so a maintainer cannot merge a PR that holds an unsigned one without bypassing the ruleset. Every commit also carries a `Signed-off-by` trailer ([Developer Certificate of Origin](https://developercertificate.org/)). Use `git commit -S -s` (`git config --global commit.gpgsign true` signs every commit; `-s` has no config option).
 - **Tests are required.** Every feature or bug fix must ship with tests that cover the new behaviour. TDD is recommended. Tests must be meaningful, not just present.
 - **Green CI before review.** Do not request a review until the full CI pipeline is green on your PR. Reviewers' time is a shared resource — run the checks locally (tests, lint, format) before pushing.
 - **Accessibility (RGAA).** Any change to the `site/` UI must comply with the French [Référentiel Général d'Amélioration de l'Accessibilité](https://accessibilite.numerique.gouv.fr/). Verify keyboard navigation, screen reader labels, contrast, and focus states before opening a PR.
@@ -18,7 +18,7 @@ _Ce projet est bilingue : les issues et pull requests peuvent être rédigées e
 1. Open (or comment on) an issue describing the problem or feature before starting significant work.
 2. Fork the repository and create a branch from the default branch.
 3. Make your changes with tests. Keep commits atomic; commit messages should explain the _why_, not just the _what_.
-4. Sign off every commit (`git commit -s`).
+4. Sign and sign off every commit (`git commit -S -s`).
 5. Push and open a pull request. Fill the description with context, rationale, and any manual test steps.
 6. Wait for CI to be fully green, then request a review from the maintainers team, `@datagouv/tech-apistration`.
 7. Address review feedback with new commits (avoid force-push during review so reviewers can see incremental changes).
