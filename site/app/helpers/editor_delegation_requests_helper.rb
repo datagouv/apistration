@@ -4,6 +4,18 @@ module EditorDelegationRequestsHelper
     'particulier' => 'des données sur les particuliers'
   }.freeze
 
+  DELEGATION_STEPS = ['S’identifier', 'Compléter le DPD', 'Vérifier et soumettre'].freeze
+
+  def delegation_stepper(step)
+    dsfr_stepper(current_step: DELEGATION_STEPS.fetch(step), steps: DELEGATION_STEPS)
+  end
+
+  def delegation_legal_frame(batch)
+    batch.datapass_data.slice('cadre_juridique_nature', 'cadre_juridique_url').compact_blank
+  rescue DatapassAPIClient::Error, DatapassFormulaire::NotFound
+    {}
+  end
+
   def of_editor(editor)
     name = editor.name.strip
 

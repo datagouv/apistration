@@ -1,0 +1,10 @@
+<% legal_frame = delegation_legal_frame(@batch) %>
+<% if legal_frame.any? %>
+  <p>
+    <strong>Cadre juridique&nbsp;:</strong>
+    <%= legal_frame['cadre_juridique_nature'] %>
+    <% if legal_frame['cadre_juridique_url'] %>
+      <%= external_link_to legal_frame['cadre_juridique_nature'] ? 'voir le texte' : 'voir le texte de référence', legal_frame['cadre_juridique_url'] %>
+    <% end %>
+  </p>
+<% end %>

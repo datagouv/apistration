@@ -1,0 +1,29 @@
+<% count = @batch.pending_requests.size %>
+<% table = capture do %>
+  <div class="fr-table fr-mb-0">
+    <table style="display: table; width: 100%">
+      <caption class="fr-sr-only"><%= count %> établissements</caption>
+      <thead>
+        <tr>
+          <th scope="col">Établissement</th>
+          <th scope="col">SIRET</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @batch.organizations.each do |organization| %>
+          <% organization.requests.each do |request| %>
+            <tr>
+              <td><%= @batch.establishment(request.siret)&.denomination || organization.name %></td>
+              <td><%= request.siret %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+<div class="fr-accordions-group fr-mb-4w">
+  <%= render layout: 'accordion', locals: { id: 'establishments_list', title: "Vos #{count} établissements", expanded: count <= 20 } do %>
+    <%= table %>
+  <% end %>
+</div>

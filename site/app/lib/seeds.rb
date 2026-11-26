@@ -197,10 +197,8 @@ class Seeds
     use_case = create_editor_delegation_campaign('Omnikles')
 
     create_user(email: 'achats@yopmail.com', first_name: 'Camille', last_name: 'Martin')
-    %w[21340172201787 21340172200011 21310555400017 21330075900015].each do |siret|
-      find_or_create_organization(siret, denomination: 'COMMUNE DE MONTPELLIER')
-      create_editor_delegation_request(use_case, siret, 'achats@yopmail.com')
-    end
+    find_or_create_organization('21340172201787', denomination: 'COMMUNE DE MONTPELLIER')
+    create_editor_delegation_request(use_case, '21340172201787', 'achats@yopmail.com')
 
     create_user(email: 'mairie@yopmail.com', first_name: 'Claude', last_name: 'Bernard')
     find_or_create_organization('21670482500019', denomination: 'COMMUNE DE STRASBOURG')

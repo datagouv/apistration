@@ -1,41 +1,49 @@
+<% missing = @batch.organizations_without_data_protection_officer %>
 <div class="fr-grid-row">
   <div class="fr-col-12 fr-col-lg-10">
-    <%= render 'header', title: 'Les délégués à la protection des données' %>
-    <p>Un délégué par organisation (SIREN). Ceux que <%= @batch.editor.name.strip %> nous a transmis sont préremplis.</p>
+    <%= render 'journey_header', current_step: 1 %>
+
+    <%= render 'establishments_list' %>
+
+    <p>Un délégué à la protection des données (DPD) par organisation (SIREN). Ceux que <%= @batch.editor.name.strip %> nous a transmis sont préremplis.</p>
 
     <div class="fr-table">
       <table>
-        <caption><%= @batch.organizations.size %> organisations</caption>
+        <caption class="fr-sr-only">DPD de vos <%= @batch.organizations.size %> organisations</caption>
         <thead>
           <tr>
             <th scope="col">Organisation</th>
-            <th scope="col">Délégué à la protection des données</th>
+            <th scope="col">DPD</th>
             <th scope="col"><span class="fr-sr-only">Action</span></th>
           </tr>
         </thead>
         <tbody>
           <% @batch.organizations.each do |organization| %>
-            <% officer = organization.data_protection_officer %>
             <tr>
               <td>
                 <%= organization.name %><br>
-                <span class="fr-text--xs">SIREN <%= organization.siren %> · <%= pluralize(organization.requests.size, 'établissement', plural: 'établissements') %></span>
+                <span class="fr-text--xs">SIREN <%= organization.siren %></span>
               </td>
               <td>
                 <% if organization.data_protection_officer_complete? %>
-                  <%= officer.values_at('delegue_protection_donnees_given_name', 'delegue_protection_donnees_family_name').join(' ') %>
-                  · <%= officer['delegue_protection_donnees_email'] %>
+                  <%= organization.data_protection_officer['delegue_protection_donnees_email'] %>
                 <% else %>
                   <p class="fr-badge fr-badge--warning fr-badge--sm">À compléter</p>
                 <% end %>
               </td>
-              <td><%= link_to organization.data_protection_officer_complete? ? 'Modifier' : 'Renseigner', editor_delegation_request_organization_path(siren: organization.siren), class: 'fr-link', title: "Délégué de #{organization.name}" %></td>
+              <td><%= link_to organization.data_protection_officer_complete? ? 'Modifier' : 'Compléter', editor_delegation_request_organization_path(siren: organization.siren), class: 'fr-link', title: "DPD de #{organization.name}" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
 
-    <%= link_to 'Revenir aux demandes', editor_delegation_request_path, class: %w(fr-btn fr-btn--secondary) %>
+    <% if missing.any? %>
+      <p class="fr-error-text fr-mb-2w">Complétez le DPD de chaque organisation pour continuer.</p>
+    <% else %>
+      <ul class="fr-btns-group fr-btns-group--inline-md fr-btns-group--right">
+        <li><%= link_to 'Continuer', editor_delegation_request_verification_path, class: 'fr-btn' %></li>
+      </ul>
+    <% end %>
   </div>
 </div>

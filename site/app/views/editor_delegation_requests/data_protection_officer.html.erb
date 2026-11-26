@@ -1,15 +1,22 @@
+<% organizations_count = @batch.organizations.size %>
 <div class="fr-grid-row">
   <div class="fr-col-12 fr-col-md-8">
-    <%= render 'single_request_header', organization: @organization, current_step: 'Votre délégué à la protection des données' %>
+    <%= render 'journey_header', current_step: 1 %>
+
+    <%= render 'establishments_list' unless @batch.single? %>
 
     <p>
-      Il est le point de contact sur le traitement des données personnelles rendu possible par cette habilitation.
-      Il doit être informé de votre demande.
+      Le délégué à la protection des données (DPD) est le contact pour les données personnelles traitées grâce
+      à <%= @batch.single? ? 'cette habilitation' : 'ces habilitations' %>.
+      <% if organizations_count > 1 %>
+        Il vaut pour vos <%= organizations_count %> organisations&nbsp;:
+        <%= link_to 'indiquer un DPD par organisation', editor_delegation_request_organizations_path, class: 'fr-link' %>.
+      <% end %>
     </p>
 
-    <%= render 'data_protection_officer_suggestion' if @organization.data_protection_officer_suggested? %>
+    <%= render 'data_protection_officer_suggestion' if @batch.data_protection_officer_suggested? %>
 
-    <%= form_with(model: @organization.data_protection_officer_form, url: editor_delegation_request_data_protection_officer_path, method: :patch) do |f| %>
+    <%= form_with(model: @batch.data_protection_officer_form, url: editor_delegation_request_data_protection_officer_path, method: :patch) do |f| %>
       <%= render 'data_protection_officer_fields', form: f %>
 
       <ul class="fr-btns-group fr-btns-group--inline-md fr-btns-group--right">

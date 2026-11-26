@@ -12,12 +12,9 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
 
   before { stub_cnil_data_protection_officers }
 
-  def fill_in_data_protection_officer(email: 'dpo@saint-exemple.fr')
-    fill_in 'Prénom', with: 'Dominique'
-    fill_in 'Nom', with: 'Leroy'
+  def fill_in_data_protection_officer(email: 'dpo@saint-exemple.fr', phone: '01 23 45 67 89')
     fill_in 'Adresse électronique', with: email
-    fill_in 'Téléphone', with: '01 23 45 67 89'
-    fill_in 'Fonction', with: 'Délégué à la protection des données'
+    fill_in 'Téléphone', with: phone
   end
 
   def consent
@@ -55,17 +52,21 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
 
     after { OmniAuth.config.test_mode = false }
 
-    it 'presents the batch without its establishments, then brings the signatory back to it after ProConnect, whatever the SIRET chosen' do
+    it 'presents the steps and the legal frame without the establishments, then brings the signatory back to them after ProConnect, whatever the SIRET chosen' do
       visit editor_delegation_request.invitation_path
 
-      expect(page).to have_text('2 demandes d\'habilitation à soumettre')
+      expect(page).to have_text('Vos 2 habilitations DataPass')
+      expect(page).to have_css('.fr-stepper__title', text: 'S’identifier')
+      expect(page).to have_text('Complétez ou vérifiez le délégué à la protection des données')
+      expect(page).to have_text('Cadre juridique')
       expect(page).to have_text('Omnikles')
       expect(page).to have_text('a***@saint-exemple.fr')
       expect(page).to have_no_text('21340172201787')
 
       click_on 'login_pro_connect'
 
-      expect(page).to have_text('Soumettre vos 2 demandes')
+      expect(page).to have_css('.fr-stepper__title', text: 'Compléter le DPD')
+      expect(page).to have_text('Vos 2 établissements')
       expect(page).to have_text('21340172201787')
     end
 
@@ -101,14 +102,16 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
     it 'completes the data protection officer, then shows what is signed before signing' do
       visit editor_delegation_request.invitation_path
 
-      expect(page).to have_css('.fr-stepper__title', text: 'Votre délégué à la protection des données')
-      expect(page).to have_no_text('Exclure des établissements')
+      expect(page).to have_css('.fr-stepper__title', text: 'Compléter le DPD')
+      expect(page).to have_no_field('Prénom')
+      expect(page).to have_no_field('Fonction')
+      expect(page).to have_text('support@entreprise.api.gouv.fr')
 
-      fill_in 'Prénom', with: 'Dominique'
+      fill_in 'Téléphone', with: '01 23 45 67 89'
       click_on 'Continuer'
 
       expect(page).to have_css('.fr-error-text')
-      expect(page).to have_field('Prénom', with: 'Dominique')
+      expect(page).to have_field('Téléphone', with: '01 23 45 67 89')
 
       fill_in_data_protection_officer
       click_on 'Continuer'
@@ -139,10 +142,9 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
 
       visit editor_delegation_request.invitation_path
 
-      expect(page).to have_text('déclarés à la CNIL')
+      expect(page).to have_text('déclaré à la CNIL')
       expect(page).to have_field('Adresse électronique', with: 'dpo@montpellier.fr')
       expect(page).to have_field('Téléphone', with: '0467000000')
-      expect(find_field('Prénom').value).to be_blank
     end
 
     it 'leaves the data protection officer empty when the CNIL list cannot be reached' do
@@ -151,7 +153,7 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       visit editor_delegation_request.invitation_path
 
       expect(find_field('Adresse électronique').value).to be_blank
-      expect(page).to have_no_text('déclarés à la CNIL')
+      expect(page).to have_no_text('déclaré à la CNIL')
     end
 
     it 'creates the request in DataPass for the signatory in the background, then submits it with the consents given' do
@@ -166,11 +168,32 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
           form_uid: editor_delegation_campaign.datapass_form_uid,
           organization: { siret: '21340172201787' },
           applicant: hash_including(email: 'achats@saint-exemple.fr'),
-          data: hash_including('delegue_protection_donnees_email' => 'dpo@saint-exemple.fr')
+          data: hash_including('delegue_protection_donnees_email' => 'dpo@saint-exemple.fr', 'delegue_protection_donnees_phone_number' => '01 23 45 67 89'),
+          metadata: {}
         )
       )
       expect(datapass).to have_received(:submit_demande).with('1001', consentement: { terms_of_service_accepted: true, data_protection_officer_informed: true })
       expect(editor_delegation_request.authorization_request.reload.external_id).to eq('1001')
+    end
+
+    it 'fills in DataPass what the client is not asked, and flags a phone number left empty as fake' do
+      visit editor_delegation_request.invitation_path
+      fill_in_data_protection_officer(phone: '')
+      click_on 'Continuer'
+      consent
+      perform_enqueued_jobs { click_on 'Soumettre la demande' }
+
+      expect(datapass).to have_received(:create_demande).with(
+        hash_including(
+          data: hash_including(
+            'delegue_protection_donnees_given_name' => '.',
+            'delegue_protection_donnees_family_name' => '.',
+            'delegue_protection_donnees_job_title' => 'Délégué à la protection des données',
+            'delegue_protection_donnees_phone_number' => '0100000000'
+          ),
+          metadata: { fake_dpo_phone_number: true }
+        )
+      )
     end
 
     it 'puts the request back to sign, with the reason, when DataPass refuses it' do
@@ -217,11 +240,17 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
     it 'signs every request at once, with a data protection officer common to the organizations' do
       visit editor_delegation_request.invitation_path
 
-      expect(page).to have_text('Soumettre vos 3 demandes')
+      expect(page).to have_text('Vos 3 habilitations DataPass')
+      expect(page).to have_css('.fr-stepper__title', text: 'Compléter le DPD')
+      expect(page).to have_text('21030190500018')
       expect(page).to have_no_text('21030190500026')
       expect(page).to have_no_text('21030190500034')
 
       fill_in_data_protection_officer
+      click_on 'Continuer'
+
+      expect(page).to have_css('.fr-stepper__title', text: 'Vérifier et soumettre')
+
       consent
       click_on 'Soumettre les 3 demandes'
 
@@ -236,6 +265,7 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       visit editor_delegation_request.invitation_path
 
       fill_in_data_protection_officer
+      click_on 'Continuer'
       uncheck 'Soumettre pour le SIRET 21340172200011'
       consent
       click_on 'Soumettre les 3 demandes'
@@ -248,28 +278,28 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
 
       click_on 'La soumettre maintenant'
 
-      expect(page).to have_text('Soumettez la demande')
+      expect(page).to have_text('Habilitation DataPass de')
       expect(page).to have_field('Adresse électronique', with: 'dpo@saint-exemple.fr')
     end
 
     context 'when the editor provided the data protection officer of some organizations only' do
       let!(:other_organization) { create_request('21030190500018', :with_dpo) }
 
-      it 'refuses to sign until every organization has its data protection officer' do
+      it 'refuses to go further until every organization has its data protection officer' do
         visit editor_delegation_request.invitation_path
 
-        expect(page).to have_text('À renseigner avant de soumettre')
+        expect(page).to have_text('À compléter')
+        expect(page).to have_text('Complétez le DPD de chaque organisation pour continuer')
+        expect(page).to have_no_link('Continuer')
 
-        consent
-        click_on 'Soumettre les 3 demandes'
+        visit "#{editor_delegation_request.invitation_path}/verification"
 
-        expect(page).to have_text('Renseignez le délégué à la protection des données')
-        expect(editor_delegation_request.reload).not_to be_submitted
+        expect(page).to have_current_path(editor_delegation_request.invitation_path)
 
-        click_on 'SIREN 213401722'
+        click_on 'DPD de SIREN 213401722'
         fill_in_data_protection_officer(email: 'dpo@commune.fr')
         click_on 'Enregistrer'
-        click_on 'Revenir aux demandes'
+        click_on 'Continuer'
 
         consent
         click_on 'Soumettre les 3 demandes'
@@ -288,10 +318,9 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
       it 'changes it for a single organization only' do
         visit editor_delegation_request.invitation_path
 
-        expect(page).to have_text('dpo@saint-exemple.fr, pour vos 2 organisations')
+        expect(page).to have_text('dpo@saint-exemple.fr')
 
-        click_on 'Modifier pour une ou plusieurs organisations'
-        click_on 'Délégué de SIREN 210301905'
+        click_on 'DPD de SIREN 210301905'
         fill_in 'Adresse électronique', with: 'dpo@autre-commune.fr'
         click_on 'Enregistrer'
 
@@ -310,6 +339,8 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
 
       it 'asks the signatory to come back later' do
         visit editor_delegation_request.invitation_path
+        fill_in_data_protection_officer
+        click_on 'Continuer'
 
         expect(page).to have_text('momentanément indisponible')
       end

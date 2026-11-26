@@ -1,7 +1,7 @@
 <% errors = form.object.errors[attribute] %>
 <div class="fr-input-group <%= 'fr-input-group--error' if errors.any? %>">
   <%= form.label attribute, class: 'fr-label' do %>
-    <%= label %>
+    <%= label %><% if local_assigns[:required] %> <span class="fr-text-default--error">*</span><% end %>
     <% if local_assigns[:hint] %>
       <span class="fr-hint-text"><%= hint %></span>
     <% end %>

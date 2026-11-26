@@ -1,44 +1,40 @@
 <% count = @batch.pending_requests.size %>
+<% editor_name = @batch.editor.name.strip %>
 <div class="fr-grid-row">
   <div class="fr-col-12 fr-col-md-8">
-    <% if count > 1 %>
-      <%= render 'header', title: "#{count} demandes d'habilitation à soumettre" %>
-      <p>
-        Vos administrations utilisent la solution <%= @batch.editor.name.strip %>, qui interroge l'<%= delegation_api_name(@batch) %> pour
-        récupérer à leur place <%= delegation_data_subject(@batch) %>. Leur consultation suppose une habilitation&nbsp;: nous
-        avons préparé une demande pour chacun de vos <strong><%= count %> établissements</strong>. Vous pouvez toutes les
-        soumettre en une seule fois.
-      </p>
-    <% else %>
-      <%= render 'header', title: 'Une habilitation pour votre administration' %>
-      <p>
-        Votre administration utilise la solution <%= @batch.editor.name.strip %>, qui interroge l'<%= delegation_api_name(@batch) %> pour
-        récupérer à votre place <%= delegation_data_subject(@batch) %>. Leur consultation suppose une habilitation délivrée à
-        votre administration&nbsp;: nous avons préparé la demande, il vous reste à la soumettre.
-      </p>
-    <% end %>
+    <%= render 'header', title: count > 1 ? "Vos #{count} habilitations DataPass" : 'Votre habilitation DataPass' %>
 
-    <div class="fr-callout fr-mb-4w">
-      <p class="fr-callout__text">
-        Vous soumettez la demande pour le compte de votre administration, et non en votre nom propre. L'habilitation est délivrée à la
-        personne morale que vous représentez&nbsp;; vous en êtes le demandeur.
-      </p>
-    </div>
+    <%= delegation_stepper(0) %>
+
+    <p>
+      <%= editor_name %> interroge l’<%= delegation_api_name(@batch) %> pour le compte de <%= @batch.organizations.size > 1 ? 'vos organisations' : 'votre organisation' %>.
+      <% if count > 1 %>
+        Chacun de vos <strong><%= count %> établissements</strong> doit pour cela disposer d’une habilitation DataPass&nbsp;: nous les avons préparées.
+      <% else %>
+        Votre organisation doit pour cela disposer d’une habilitation DataPass&nbsp;: nous l’avons préparée.
+      <% end %>
+    </p>
+
+    <%= render 'legal_frame' %>
+
+    <h2 class="fr-h5">Comment ça se passe&nbsp;?</h2>
+    <ol>
+      <li>Identifiez-vous avec ProConnect.</li>
+      <li>Complétez ou vérifiez le délégué à la protection des données (DPD)&nbsp;: nous avons déjà le reste.</li>
+      <li>Vérifiez le résumé, puis soumettez.</li>
+    </ol>
+    <p class="fr-text--sm">Vous soumettez au nom de votre organisation, et non en votre nom propre.</p>
 
     <% if @batch.contact_email.blank? %>
       <div class="fr-alert fr-alert--warning">
         <p>
-          <%= @batch.editor.name.strip %> ne nous a pas transmis l'adresse électronique du demandeur de cette demande.
+          <%= editor_name %> ne nous a pas transmis l'adresse électronique du demandeur de cette demande.
           Demandez-lui de la compléter&nbsp;: vous recevrez alors un nouveau lien.
         </p>
       </div>
     <% else %>
-      <h2>S'identifier</h2>
       <div class="fr-alert fr-alert--info fr-alert--sm fr-mb-3w">
-        <p>
-          Identifiez-vous avec le compte ProConnect de <strong><%= @batch.masked_contact_email %></strong>, l'adresse que
-          nous a transmise <%= @batch.editor.name.strip %>.
-        </p>
+        <p>Identifiez-vous avec le compte ProConnect de <strong><%= @batch.masked_contact_email %></strong>.</p>
       </div>
 
       <div class="fr-connect-group">

@@ -58,6 +58,21 @@ class EditorDelegationBatch
     @data_protection_officer_shared_form = organizations.one? || organizations.none?(&:data_protection_officer?)
   end
 
+  def data_protection_officer_form
+    organizations.one? ? organizations.first.data_protection_officer_form : pending_requests.first
+  end
+
+  def data_protection_officer_suggested?
+    organizations.one? && organizations.first.data_protection_officer_suggested?
+  end
+
+  def update_data_protection_officer(attributes)
+    pending_requests.each { |request| request.assign_attributes(attributes) }
+    return false unless pending_requests.first.valid?(:data_protection_officer)
+
+    EditorDelegationRequest.transaction { pending_requests.each(&:save!) }
+  end
+
   def small?
     pending_requests.size <= SMALL_SIZE
   end

@@ -2,11 +2,10 @@
 <h2 class="fr-h4">Ce que vous soumettez</h2>
 <p>
   <% if requests_count > 1 %>
-    <strong><%= requests_count %> demandes d’habilitation</strong> à l’<%= delegation_api_name(@batch) %>, une par établissement,
+    <strong><%= requests_count %> demandes d’habilitation</strong> à l’<%= delegation_api_name(@batch) %>, une par établissement&nbsp;:
   <% else %>
-    <strong>Une demande d’habilitation</strong> à l’<%= delegation_api_name(@batch) %>
+    <strong>Une demande d’habilitation</strong> à l’<%= delegation_api_name(@batch) %>&nbsp;:
   <% end %>
-  au profit <%= of_editor(@batch.editor) %>, qui interrogera l’API pour le compte de
-  <%= requests_count > 1 ? 'vos organisations' : 'votre organisation' %> dans le cadre suivant&nbsp;:
+  <%= @batch.editor.name.strip %> interrogera l’API pour le compte de <%= requests_count > 1 ? 'vos organisations' : 'votre organisation' %>, dans le cadre suivant.
 </p>
 <%= render 'request_detail' %>

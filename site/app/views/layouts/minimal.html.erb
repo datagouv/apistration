@@ -3,5 +3,6 @@
 <% content_for :head do %>
   <style>.fr-header__navbar { display: none; }</style>
 <% end %>
+<% content_for :layout, render('editor_delegation_requests/support') %>
 
 <%= render template: "layouts/#{namespace}/application" %>

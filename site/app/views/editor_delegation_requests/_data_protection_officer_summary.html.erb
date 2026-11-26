@@ -1,23 +1,16 @@
 <% common = @batch.common_data_protection_officer %>
-<% missing = @batch.organizations_without_data_protection_officer %>
-<%= render layout: 'section', locals: { title: 'Délégué à la protection des données' } do %>
+<%= render layout: 'section', locals: { title: 'Délégué à la protection des données (DPD)' } do %>
   <% if common %>
     <p class="fr-mb-1v">
-      <%= common.values_at('delegue_protection_donnees_given_name', 'delegue_protection_donnees_family_name').join(' ') %>
-      · <%= common['delegue_protection_donnees_email'] %>, pour vos <%= @batch.organizations.size %> organisations
+      <%= [common['delegue_protection_donnees_email'], common['delegue_protection_donnees_phone_number']].compact_blank.join(' · ') %>
+      <% if @batch.organizations.size > 1 %>, pour vos <%= @batch.organizations.size %> organisations<% end %>
     </p>
   <% else %>
-    <p class="fr-mb-1v">
-      Renseigné pour <%= @batch.organizations.size - missing.size %> organisations sur <%= @batch.organizations.size %>.
-    </p>
-  <% end %>
-  <% if missing.any? %>
-    <p class="fr-error-text fr-mb-1v">À renseigner avant de soumettre&nbsp;:</p>
     <ul>
-      <% missing.each do |organization| %>
-        <li><%= link_to organization.name, editor_delegation_request_organization_path(siren: organization.siren) %></li>
+      <% @batch.organizations.each do |organization| %>
+        <li><%= organization.name %>&nbsp;: <%= organization.data_protection_officer['delegue_protection_donnees_email'] %></li>
       <% end %>
     </ul>
   <% end %>
-  <p class="fr-mb-0"><%= link_to 'Modifier pour une ou plusieurs organisations', editor_delegation_request_organizations_path, class: 'fr-link' %></p>
+  <p class="fr-mb-0"><%= link_to 'Modifier', editor_delegation_request_path, class: 'fr-link' %></p>
 <% end %>

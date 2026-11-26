@@ -66,17 +66,15 @@ RSpec.describe EditorDelegationRequest do
   describe 'data protection officer' do
     subject(:editor_delegation_request) { build(:editor_delegation_request, :with_dpo) }
 
-    it 'is valid with the five DataPass contact fields' do
+    it 'requires an email only, the phone being optional' do
+      editor_delegation_request.assign_attributes(delegue_protection_donnees_given_name: nil, delegue_protection_donnees_job_title: nil, delegue_protection_donnees_phone_number: ' ')
+
       expect(editor_delegation_request).to be_valid(:data_protection_officer)
-    end
 
-    it 'requires every field' do
-      EditorDelegationRequest::DATA_PROTECTION_OFFICER_ATTRIBUTES.each do |attribute|
-        editor_delegation_request.public_send(:"#{attribute}=", ' ')
+      editor_delegation_request.delegue_protection_donnees_email = ' '
 
-        expect(editor_delegation_request).not_to be_valid(:data_protection_officer)
-        expect(editor_delegation_request.errors[attribute]).to be_present
-      end
+      expect(editor_delegation_request).not_to be_valid(:data_protection_officer)
+      expect(editor_delegation_request.errors.attribute_names).to eq([:delegue_protection_donnees_email])
     end
 
     it 'requires a valid email' do

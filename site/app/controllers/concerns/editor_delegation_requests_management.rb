@@ -7,7 +7,6 @@ module EditorDelegationRequestsManagement
     before_action :load_editor_delegation_batch
     before_action :redirect_to_show, unless: -> { @batch.signatory?(current_user) }, except: :show
     before_action :redirect_to_confirmation, if: -> { @batch.pending_requests.empty? }, only: %i[update_data_protection_officer verification sign organizations edit_organization update_organization]
-    before_action :ensure_single_request!, only: %i[update_data_protection_officer verification]
     before_action :load_organization, only: %i[edit_organization update_organization]
 
     rescue_from DatapassAPIClient::Error, DatapassFormulaire::NotFound, with: :datapass_unavailable
@@ -31,9 +30,7 @@ module EditorDelegationRequestsManagement
   end
 
   def update_data_protection_officer
-    @organization = @batch.organizations.first
-
-    if @organization.update_data_protection_officer(data_protection_officer_params)
+    if @batch.update_data_protection_officer(data_protection_officer_params)
       redirect_to editor_delegation_request_verification_path
     else
       render :data_protection_officer, status: :unprocessable_content
@@ -41,7 +38,7 @@ module EditorDelegationRequestsManagement
   end
 
   def verification
-    return redirect_to_show unless @batch.organizations.first.data_protection_officer_complete?
+    return redirect_to_show if @batch.organizations_without_data_protection_officer.any?
 
     @signature = EditorDelegationBatch::Signature.new(batch: @batch, user: current_user)
   end
@@ -52,12 +49,12 @@ module EditorDelegationRequestsManagement
     if @signature.save
       redirect_to_confirmation
     else
-      render @batch.single? ? :verification : :signature, status: :unprocessable_content
+      render :verification, status: :unprocessable_content
     end
   end
 
   def confirmation
-    @submitted_requests = @batch.submitted_requests.includes(:authorization_request).to_a
+    @submitted_requests = @batch.submitted_requests.to_a
   end
 
   def organizations; end
@@ -78,12 +75,10 @@ module EditorDelegationRequestsManagement
   def render_pending_requests
     if @batch.pending_requests.empty?
       redirect_to_confirmation
-    elsif @batch.single?
-      @organization = @batch.organizations.first
+    elsif @batch.data_protection_officer_shared_form?
       render :data_protection_officer
     else
-      @signature = EditorDelegationBatch::Signature.new(batch: @batch, user: current_user)
-      render :signature
+      render :organizations
     end
   end
 
@@ -101,10 +96,6 @@ module EditorDelegationRequestsManagement
     raise ActionController::RoutingError, 'Not Found' if @organization.nil?
   end
 
-  def ensure_single_request!
-    redirect_to_show unless @batch.single?
-  end
-
   def redirect_to_show
     redirect_to editor_delegation_request_path
   end
@@ -118,11 +109,11 @@ module EditorDelegationRequestsManagement
   end
 
   def signature_params
-    params.expect(signature: [:terms_of_service_accepted, :data_protection_officer_informed, { included_ids: [], data_protection_officer: EditorDelegationRequest::DATA_PROTECTION_OFFICER_ATTRIBUTES }])
+    params.expect(signature: [:terms_of_service_accepted, :data_protection_officer_informed, { included_ids: [] }])
       .to_h.symbolize_keys
   end
 
   def data_protection_officer_params
-    params.expect(editor_delegation_request: EditorDelegationRequest::DATA_PROTECTION_OFFICER_ATTRIBUTES)
+    params.expect(editor_delegation_request: EditorDelegationRequest::DATA_PROTECTION_OFFICER_FORM_ATTRIBUTES)
   end
 end
