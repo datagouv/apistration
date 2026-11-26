@@ -18422,6 +18422,19 @@ paths:
                   summary: Entité non trouvée
                   description: Aucun élève n'a pu être trouvé avec les critères de
                     recherche fournis.
+                eleve_hors_perimetre_30405:
+                  value:
+                    errors:
+                    - code: '30405'
+                      title: Élève hors périmètre
+                      detail: Le ministère de l'Éducation nationale indique que cet
+                        élève est hors de son périmètre, par exemple un élève post-bac
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Élève hors périmètre
+                  description: Le ministère de l'Éducation nationale indique que cet
+                    élève est hors de son périmètre, par exemple un élève post-bac
               schema:
                 "$ref": "#/components/schemas/Error"
         '502':
@@ -18990,6 +19003,19 @@ paths:
                   summary: Entité non trouvée
                   description: Aucun eleve n'a pu etre trouve avec les criteres de
                     recherche fournis
+                eleve_hors_perimetre_30405:
+                  value:
+                    errors:
+                    - code: '30405'
+                      title: Élève hors périmètre
+                      detail: Le ministère de l'Éducation nationale indique que cet
+                        élève est hors de son périmètre, par exemple un élève post-bac
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Élève hors périmètre
+                  description: Le ministère de l'Éducation nationale indique que cet
+                    élève est hors de son périmètre, par exemple un élève post-bac
               schema:
                 "$ref": "#/components/schemas/Error"
         '422':
@@ -19598,6 +19624,19 @@ paths:
                   summary: Entité non trouvée
                   description: Aucun eleve n'a pu etre trouve avec les criteres de
                     recherche fournis
+                eleve_hors_perimetre_30405:
+                  value:
+                    errors:
+                    - code: '30405'
+                      title: Élève hors périmètre
+                      detail: Le ministère de l'Éducation nationale indique que cet
+                        élève est hors de son périmètre, par exemple un élève post-bac
+                      source:
+                      meta:
+                        provider: MEN
+                  summary: Élève hors périmètre
+                  description: Le ministère de l'Éducation nationale indique que cet
+                    élève est hors de son périmètre, par exemple un élève post-bac
               schema:
                 "$ref": "#/components/schemas/Error"
         '422':

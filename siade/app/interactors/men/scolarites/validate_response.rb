@@ -1,9 +1,11 @@
 class MEN::Scolarites::ValidateResponse < ValidateResponse
   raises MENError, kind: :scolarite_not_found
+  raises MENError, kind: :eleve_hors_perimetre
+
+  ELEVE_HORS_PERIMETRE_TITLE = "L'élève est hors périmètre".freeze
 
   def call
-    resource_not_found! if http_not_found?
-    scolarite_not_found! if no_scolarite?
+    validate_eleve_found!
 
     return if http_ok?
 
@@ -18,6 +20,12 @@ class MEN::Scolarites::ValidateResponse < ValidateResponse
 
   private
 
+  def validate_eleve_found!
+    resource_not_found! if http_not_found?
+    scolarite_not_found! if no_scolarite?
+    eleve_hors_perimetre! if eleve_hors_perimetre?
+  end
+
   def provider_timeout_error!
     fail_with_error!(ProviderTimeoutError.new('MEN'))
   end
@@ -28,6 +36,14 @@ class MEN::Scolarites::ValidateResponse < ValidateResponse
 
   def scolarite_not_found!
     fail_with_error!(MENError.new(:scolarite_not_found))
+  end
+
+  def eleve_hors_perimetre!
+    fail_with_error!(MENError.new(:eleve_hors_perimetre))
+  end
+
+  def eleve_hors_perimetre?
+    http_forbidden? && body.present? && valid_json? && Hash.try_convert(json_body)&.fetch('title', nil) == ELEVE_HORS_PERIMETRE_TITLE
   end
 
   def no_scolarite?

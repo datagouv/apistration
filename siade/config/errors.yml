@@ -544,6 +544,10 @@
   title: 'Scolarité non trouvée'
   detail: "Aucune scolarité n'a pu être trouvée pour cet élève"
 
+- code: '30405'
+  title: 'Élève hors périmètre'
+  detail: "Le ministère de l'Éducation nationale indique que cet élève est hors de son périmètre, par exemple un élève post-bac"
+
 ## ANTS
 
 - code: '42404'

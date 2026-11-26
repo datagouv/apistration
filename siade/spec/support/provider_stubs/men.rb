@@ -33,6 +33,13 @@ module ProviderStubs::MEN
     )
   end
 
+  def stub_men_scolarites_eleve_hors_perimetre
+    stub_request(:get, /#{Siade.credentials[:men_scolarites_url_v2]}/).to_return(
+      status: 403,
+      body: open_payload_file('men/scolarites/eleve_hors_perimetre.json')
+    )
+  end
+
   def stub_men_scolarites_perimetre_valid
     stub_request(:post, "#{Siade.credentials[:men_scolarites_url_v2]}/perimetre").to_return(
       status: 200,

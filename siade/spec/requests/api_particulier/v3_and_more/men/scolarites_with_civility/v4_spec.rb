@@ -100,6 +100,21 @@ RSpec.describe 'MEN: Scolarites with civility', api: :particulier, type: %i[requ
 
             run_test!
           end
+
+          describe 'when the student is out of scope' do
+            before do
+              stub_men_scolarites_auth
+              stub_men_scolarites_eleve_hors_perimetre
+            end
+
+            response '404', 'Non trouvee' do
+              build_rswag_example(MENError.new(:eleve_hors_perimetre))
+
+              schema '$ref' => '#/components/schemas/Error'
+
+              run_test!
+            end
+          end
         end
 
         describe 'with perimetre mode' do
