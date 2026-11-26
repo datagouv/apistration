@@ -55,5 +55,5 @@ Bien ajouter le provider dans les fichiers suivants:
 
 ## Autres tâches à effectuer plus tard
 
-- Config de ping dans `config/ping.yml`.
+- Config de ping dans `commons/pings.yml`.
 - Ajout du test case dans `config/endpoints_with_test_case.yml`.
