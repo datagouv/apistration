@@ -6,6 +6,7 @@ fiche:
     socle_de_base:
       comment: |-
         Subventions accordées à une association. Backoffice instructeur uniquement.
+    ping_url: 'https://entreprise.api.gouv.fr/ping/data_subvention/subventions'
     path: '/v3/data_subvention/associations/{siren_or_siret_or_rna}/subventions'
     controller: 'api_entreprise/v3_and_more/data_subvention/subventions'
     position: 152
