@@ -6,6 +6,16 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+<% object_storage = AdminApientreprise.credentials.fetch(:object_storage, {}) %>
+object_storage:
+  service: S3
+  endpoint: <%= object_storage[:endpoint] %>
+  region: <%= object_storage[:region] %>
+  bucket: <%= object_storage[:bucket] %>
+  access_key_id: <%= object_storage[:access_key_id] %>
+  secret_access_key: <%= object_storage[:secret_access_key] %>
+  force_path_style: true
+
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
