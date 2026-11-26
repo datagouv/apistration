@@ -32,6 +32,41 @@ RSpec.describe QUALIBATCertificationsBatimentExtractor, type: :extractor do
       end
     end
 
+    context 'when the first page has no insurance label' do
+      let(:filename) { 'without_insurance_labels' }
+      let(:empty_insurance) { { nom: nil, identifiant: nil } }
+
+      before do
+        allow(MonitoringService.instance).to receive(:track_with_added_context)
+      end
+
+      it 'returns the certifications with empty insurances' do
+        expect(extract[:entity]).to include(
+          assurance_responsabilite_travaux: empty_insurance,
+          assurance_responsabilite_civile: empty_insurance,
+          certifications: contain_exactly(
+            hash_including(code: '5111'),
+            hash_including(code: '5211')
+          )
+        )
+      end
+
+      it 'reports each missing insurance label' do
+        extract
+
+        expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+          :info,
+          '[Qualibat] Insurance label not found',
+          { insurance_label: 'Assurance Responsabilité Travaux' }
+        )
+        expect(MonitoringService.instance).to have_received(:track_with_added_context).with(
+          :info,
+          '[Qualibat] Insurance label not found',
+          { insurance_label: 'Assurance Responsabilité Civile' }
+        )
+      end
+    end
+
     context 'with invalid files' do
       %i[
         amiante

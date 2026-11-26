@@ -10,30 +10,39 @@ class QUALIBATCertificationsBatiment::InsurancesExtractor < PDFExtractor
   private
 
   def assurances
-    assurances_kinds.each_with_object({}) do |(key, text_to_match), assurances|
-      extract_assurance(key, text_to_match, assurances)
-    end
+    assurances_kinds.transform_values { |label| assurance_payload(label) }
   end
 
-  def extract_assurance(key, text_to_match, assurances)
-    assurance_index = first_page_chunks.index { |chunk| chunk.include?(text_to_match) }
+  def assurance_payload(label)
+    label_index = first_page_chunks.index { |chunk| chunk.include?(label) }
 
-    2.times do |j|
-      assurance_index += 1
+    return label_not_found(label) if label_index.nil?
 
-      assurance_value = sanitized_assurance_value(assurance_index)
+    candidate_values = first_page_chunks[label_index + 1, 2].map { |chunk| sanitized_assurance_value(chunk) }
+
+    first_named_assurance_payload(candidate_values) || name_not_found(candidate_values.last)
+  end
+
+  def first_named_assurance_payload(candidate_values)
+    candidate_values.each do |assurance_value|
       assurance_name = insurances_names.find { |insurance_name| assurance_value.include?(insurance_name) }
 
-      if assurance_name
-        assurances[key] = build_assurance_payload(assurance_name, assurance_value)
-
-        break
-      elsif j == 1
-        track_not_found(assurance_value)
-
-        assurances[key] = empty_assurance_payload
-      end
+      return build_assurance_payload(assurance_name, assurance_value) if assurance_name
     end
+
+    nil
+  end
+
+  def name_not_found(assurance_value)
+    track_not_found(assurance_value)
+
+    empty_assurance_payload
+  end
+
+  def label_not_found(label)
+    track_label_not_found(label)
+
+    empty_assurance_payload
   end
 
   def assurances_kinds
@@ -43,8 +52,8 @@ class QUALIBATCertificationsBatiment::InsurancesExtractor < PDFExtractor
     }
   end
 
-  def sanitized_assurance_value(assurance_index)
-    first_page_chunks[assurance_index].strip.split(' ' * 10)[0].strip
+  def sanitized_assurance_value(chunk)
+    chunk.strip.split(' ' * 10).first.to_s.strip
   end
 
   def build_assurance_payload(assurance_name, assurance_value)
@@ -67,6 +76,16 @@ class QUALIBATCertificationsBatiment::InsurancesExtractor < PDFExtractor
       '[Qualibat] No insurance name found',
       {
         assurance_value:
+      }
+    )
+  end
+
+  def track_label_not_found(label)
+    monitoring_service.track_with_added_context(
+      :info,
+      '[Qualibat] Insurance label not found',
+      {
+        insurance_label: label
       }
     )
   end
