@@ -179,6 +179,25 @@ shared:
           code_cog_insee_commune_naissance: '75101'
           code_cog_insee_pays_naissance: '99100'
         status_to_check: 200
+    gip_mds_service_civique:
+      kind: 'make_request'
+      cache: <%= 2.minutes %>
+      provider: 'GIP-MDS'
+      status_page:
+        name: "GIP-MDS - Service civique"
+        alerts_wait: 5
+      driver_params:
+        make_request: 'GIPMDS::ServiceCivique::MakeRequest'
+        token_interactor: 'GIPMDS::ServiceCivique::Authenticate'
+        params:
+          nom_naissance: 'PINGAPISTRATION'
+          prenoms:
+            - 'Ping'
+          annee_date_naissance: 2001
+          mois_date_naissance: 1
+          jour_date_naissance: 1
+        status_to_check: 404
+        body_to_check: 'NOT_FOUND_INDIVIDU'
     pole_emploi_status:
       kind: 'retriever'
       cache: <%= 2.minutes %>

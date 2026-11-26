@@ -16932,7 +16932,7 @@ paths:
           description: |-
             Non autorisé
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/gip_mds/service_civique#erreurs.
           content:
             application/json:
               examples:
@@ -16953,7 +16953,7 @@ paths:
           description: |-
             Accès interdit
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/gip_mds/service_civique#erreurs.
           content:
             application/json:
               examples:
@@ -16976,7 +16976,7 @@ paths:
           description: |-
             Trop de requêtes
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/gip_mds/service_civique#erreurs.
           content:
             application/json:
               examples:
@@ -17089,7 +17089,7 @@ paths:
           description: |-
             Non trouvée
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/gip_mds/service_civique#erreurs.
           content:
             application/json:
               examples:
@@ -17116,7 +17116,7 @@ paths:
           description: |-
             Entité non traitable
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/gip_mds/service_civique#erreurs.
           content:
             application/json:
               examples:
@@ -17141,7 +17141,7 @@ paths:
           description: |-
             Erreur du fournisseur
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/gip_mds/service_civique#erreurs.
           content:
             application/json:
               examples:
@@ -17166,7 +17166,7 @@ paths:
           description: |-
             Erreur d'intermédiaire
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/gip_mds/service_civique#erreurs.
           content:
             application/json:
               examples:
@@ -17189,7 +17189,7 @@ paths:
           description: |-
             Conflit
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/gip_mds/service_civique#erreurs.
           content:
             application/json:
               examples:
@@ -17213,7 +17213,7 @@ paths:
           description: |-
             Fournisseur de données en maintenance
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/gip_mds/service_civique#erreurs.
           content:
             application/json:
               examples:
@@ -17234,7 +17234,7 @@ paths:
           description: |-
             Mauvaise requête
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_gip_mds_service_civique_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/gip_mds/service_civique#erreurs.
           content:
             application/json:
               examples:

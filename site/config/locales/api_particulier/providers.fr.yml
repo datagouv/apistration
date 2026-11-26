@@ -129,3 +129,12 @@ fr:
           - ants_extrait_immatriculation_vehicule_statut_rattachement
           - ants_extrait_immatriculation_vehicule_donnees_immatriculation_vehicule
           - ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule
+
+      - uid: 'gipmds'
+        name: 'GIP-MDS'
+        routes_or_uid_to_match:
+          - 'gip_mds'
+        external_link: 'https://www.gip-mds.fr/'
+        scopes:
+          - gip_mds_service_civique_organisme_accueil
+          - gip_mds_service_civique_dates
