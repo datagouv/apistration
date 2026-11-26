@@ -14,16 +14,18 @@ RSpec.describe GIPMDS::ServiceCivique::ValidateResponse, type: :validate_respons
   context 'with multiple contracts' do
     let(:body) { read_payload_file('gip_mds/service_civique/multiple_contracts.json') }
 
-    it { is_expected.to be_a_success }
+    it { is_expected.to be_a_failure }
 
-    it 'logs a warning to monitoring service' do
-      expect(MonitoringService.instance).to receive(:track).with(
-        'warning',
-        'GIPMDS::ServiceCivique: individual has multiple service civique contracts'
-      )
+    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+  end
 
-      subject
-    end
+  context 'with a partial response (206 OK_PARTIEL)' do
+    let(:code) { '206' }
+    let(:body) { read_payload_file('gip_mds/service_civique/partial.json') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
   end
 
   context 'with NOT_FOUND_INDIVIDU response' do
@@ -39,9 +41,9 @@ RSpec.describe GIPMDS::ServiceCivique::ValidateResponse, type: :validate_respons
     let(:code) { '404' }
     let(:body) { read_payload_file('gip_mds/service_civique/not_found_contrat.json') }
 
-    it { is_expected.to be_a_success }
+    it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to be_empty }
+    its(:errors) { is_expected.to include(instance_of(NotFoundError)) }
   end
 
   context 'with TOO_MANY_INDIVIDU response' do
@@ -64,6 +66,15 @@ RSpec.describe GIPMDS::ServiceCivique::ValidateResponse, type: :validate_respons
   context 'with an unknown error' do
     let(:code) { '400' }
     let(:body) { ''.to_json }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+  end
+
+  context 'with a response without body' do
+    let(:code) { '204' }
+    let(:body) { nil }
 
     it { is_expected.to be_a_failure }
 

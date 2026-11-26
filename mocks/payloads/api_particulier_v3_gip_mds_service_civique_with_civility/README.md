@@ -1,75 +1,4 @@
 # [Identité] Statut service civique
-* [200-volontaire-actif-et-passe.yaml](200-volontaire-actif-et-passe.yaml)
-
-  Status `200`
-
-  ## VOLONTAIRE AVEC CONTRAT ACTIF ET PASSÉ
-
-Ce cas représente une personne ayant effectué un premier service civique
-par le passé et actuellement engagée dans un second service civique.
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "nomNaissance": "BERNARD",
-    "prenoms": [
-      "SOPHIE"
-    ],
-    "anneeDateNaissance": 1999,
-    "moisDateNaissance": 11,
-    "jourDateNaissance": 8
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "data": {
-      "statut_actuel": {
-        "contrat_trouve": true,
-        "organisme_accueil": {
-          "siret": "18009202500059",
-          "raison_sociale": "MINISTERE DE L EDUCATION NATIONALE"
-        },
-        "date_debut_contrat": "2024-10-01",
-        "date_fin_contrat": "2025-07-31"
-      },
-      "statut_passe": {
-        "contrat_trouve": true,
-        "organisme_accueil": {
-          "siret": "42229566900026",
-          "raison_sociale": "UNIS CITE"
-        },
-        "date_debut_contrat": "2021-03-15",
-        "date_fin_contrat": "2021-11-14"
-      }
-    },
-    "links": {},
-    "meta": {}
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=BERNARD' -d 'prenoms[]=SOPHIE' -d 'anneeDateNaissance=1999' -d 'moisDateNaissance=11' -d 'jourDateNaissance=8' \
-    --url "https://staging.particulier.api.gouv.fr/v3/gip_mds/service_civique/identite"
-  ```
-
-  </p>
-  </details>
 * [200-volontaire-actif.yaml](200-volontaire-actif.yaml)
 
   Status `200`
@@ -77,7 +6,7 @@ par le passé et actuellement engagée dans un second service civique.
   ## VOLONTAIRE EN SERVICE CIVIQUE ACTIF
 
 Ce cas représente une personne actuellement engagée dans un service civique.
-Le contrat est en cours auprès de la DINUM.
+La mission est en cours auprès de la DINUM.
 
   <details><summary>Paramètres</summary>
   <p>
@@ -104,23 +33,13 @@ Le contrat est en cours auprès de la DINUM.
   ```json
   {
     "data": {
-      "statut_actuel": {
-        "contrat_trouve": true,
-        "organisme_accueil": {
-          "siret": "13002526500013",
-          "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
-        },
-        "date_debut_contrat": "2024-09-01",
-        "date_fin_contrat": "2025-06-30"
+      "organisme_accueil": {
+        "siret": "13002526500013"
       },
-      "statut_passe": {
-        "contrat_trouve": false,
-        "organisme_accueil": {
-          "siret": null,
-          "raison_sociale": null
-        },
-        "date_debut_contrat": null,
-        "date_fin_contrat": null
+      "dates": {
+        "debut": "2025-09-01",
+        "fin": null,
+        "en_cours": true
       }
     },
     "links": {},
@@ -149,7 +68,7 @@ Le contrat est en cours auprès de la DINUM.
   ## ANCIEN VOLONTAIRE SERVICE CIVIQUE
 
 Ce cas représente une personne ayant effectué un service civique par le passé.
-Le contrat est terminé, la personne n'a pas de contrat actif.
+La mission est terminée.
 
   <details><summary>Paramètres</summary>
   <p>
@@ -176,23 +95,13 @@ Le contrat est terminé, la personne n'a pas de contrat actif.
   ```json
   {
     "data": {
-      "statut_actuel": {
-        "contrat_trouve": false,
-        "organisme_accueil": {
-          "siret": null,
-          "raison_sociale": null
-        },
-        "date_debut_contrat": null,
-        "date_fin_contrat": null
+      "organisme_accueil": {
+        "siret": "77567227221138"
       },
-      "statut_passe": {
-        "contrat_trouve": true,
-        "organisme_accueil": {
-          "siret": "77567227221138",
-          "raison_sociale": "CROIX ROUGE FRANCAISE"
-        },
-        "date_debut_contrat": "2022-01-10",
-        "date_fin_contrat": "2022-09-09"
+      "dates": {
+        "debut": "2022-01-10",
+        "fin": "2022-09-09",
+        "en_cours": false
       }
     },
     "links": {},
@@ -209,78 +118,6 @@ Le contrat est terminé, la personne n'a pas de contrat actif.
   ```bash
   curl -H "Authorization: Bearer $token" \
     -G -d 'recipient=13002526500013' -d 'nomNaissance=MARTIN' -d 'prenoms[]=JEAN' -d 'prenoms[]=PIERRE' -d 'anneeDateNaissance=1995' -d 'moisDateNaissance=7' -d 'jourDateNaissance=22' \
-    --url "https://staging.particulier.api.gouv.fr/v3/gip_mds/service_civique/identite"
-  ```
-
-  </p>
-  </details>
-* [200-volontaire-sans-contrat.yaml](200-volontaire-sans-contrat.yaml)
-
-  Status `200`
-
-  ## PERSONNE SANS CONTRAT SERVICE CIVIQUE
-
-Ce cas représente une personne connue du système mais qui n'a jamais
-effectué de service civique (ni actif, ni passé).
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "nomNaissance": "PETIT",
-    "prenoms": [
-      "LUCAS",
-      "ANTOINE"
-    ],
-    "anneeDateNaissance": 2000,
-    "moisDateNaissance": 5,
-    "jourDateNaissance": 12
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "data": {
-      "statut_actuel": {
-        "contrat_trouve": false,
-        "organisme_accueil": {
-          "siret": null,
-          "raison_sociale": null
-        },
-        "date_debut_contrat": null,
-        "date_fin_contrat": null
-      },
-      "statut_passe": {
-        "contrat_trouve": false,
-        "organisme_accueil": {
-          "siret": null,
-          "raison_sociale": null
-        },
-        "date_debut_contrat": null,
-        "date_fin_contrat": null
-      }
-    },
-    "links": {},
-    "meta": {}
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "Authorization: Bearer $token" \
-    -G -d 'recipient=13002526500013' -d 'nomNaissance=PETIT' -d 'prenoms[]=LUCAS' -d 'prenoms[]=ANTOINE' -d 'anneeDateNaissance=2000' -d 'moisDateNaissance=5' -d 'jourDateNaissance=12' \
     --url "https://staging.particulier.api.gouv.fr/v3/gip_mds/service_civique/identite"
   ```
 

@@ -3,7 +3,7 @@ description: |-
   ## ANCIEN VOLONTAIRE SERVICE CIVIQUE
 
   Ce cas représente une personne ayant effectué un service civique par le passé.
-  Le contrat est terminé, la personne n'a pas de contrat actif.
+  La mission est terminée.
 
 params:
   nomNaissance: 'MARTIN'
@@ -17,23 +17,13 @@ status: 200
 payload: |-
   {
     "data": {
-      "statut_actuel": {
-        "contrat_trouve": false,
-        "organisme_accueil": {
-          "siret": null,
-          "raison_sociale": null
-        },
-        "date_debut_contrat": null,
-        "date_fin_contrat": null
+      "organisme_accueil": {
+        "siret": "77567227221138"
       },
-      "statut_passe": {
-        "contrat_trouve": true,
-        "organisme_accueil": {
-          "siret": "77567227221138",
-          "raison_sociale": "CROIX ROUGE FRANCAISE"
-        },
-        "date_debut_contrat": "2022-01-10",
-        "date_fin_contrat": "2022-09-09"
+      "dates": {
+        "debut": "2022-01-10",
+        "fin": "2022-09-09",
+        "en_cours": false
       }
     },
     "links": {},

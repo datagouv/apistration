@@ -1,0 +1,7 @@
+{
+  "retour": {
+    "codeRetour": "OK_PARTIEL",
+    "message": "Limite atteinte. D’autres contrats sont éligibles à être consultés."
+  },
+  "individu": {}
+}

@@ -120,7 +120,7 @@ module ProviderStubs::GIPMDS
 
   def stub_gip_mds_service_civique_valid
     mock_gip_mds_authenticate
-    stub_request(:get, %r{#{Siade.credentials[:gip_mds_domain]}/contrats-generique}).and_return(
+    stub_request(:get, %r{#{Siade.credentials[:gip_mds_domain]}/api-fraude/1.0.0/api/dade/generique}).and_return(
       status: 200,
       body: read_payload_file('gip_mds/service_civique/valid.json')
     )
@@ -128,7 +128,7 @@ module ProviderStubs::GIPMDS
 
   def stub_gip_mds_service_civique_not_found
     mock_gip_mds_authenticate
-    stub_request(:get, %r{#{Siade.credentials[:gip_mds_domain]}/contrats-generique}).and_return(
+    stub_request(:get, %r{#{Siade.credentials[:gip_mds_domain]}/api-fraude/1.0.0/api/dade/generique}).and_return(
       status: 404,
       body: read_payload_file('gip_mds/service_civique/not_found.json')
     )
@@ -136,7 +136,7 @@ module ProviderStubs::GIPMDS
 
   def stub_gip_mds_service_civique_too_many_individus
     mock_gip_mds_authenticate
-    stub_request(:get, %r{#{Siade.credentials[:gip_mds_domain]}/contrats-generique}).and_return(
+    stub_request(:get, %r{#{Siade.credentials[:gip_mds_domain]}/api-fraude/1.0.0/api/dade/generique}).and_return(
       status: 413,
       body: read_payload_file('gip_mds/service_civique/too_many_individus.json')
     )
