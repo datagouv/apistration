@@ -70,6 +70,44 @@ RSpec.describe CNAV::ValidateResponse, type: :validate_response do
           expect(subject.errors.first.attestation).to eq(:no_result)
         end
       end
+
+      context 'when the gateway sends the error code as a string, with a regime header' do
+        let(:response) do
+          instance_double(Net::HTTPNotFound, code: 404, body:, header: { 'X-APISECU-FD' => '00810011' })
+        end
+
+        context 'with the SNGI code' do
+          let(:body) { { errorCode: '40409', error: "Aucune personne n'a été trouvée dans la base" }.to_json }
+
+          it 'still answers an unidentified person, not a missing CNAF file' do
+            expect(subject.errors.first.code).to eq('36560')
+          end
+        end
+
+        context 'with a RNCPS code' do
+          let(:body) { { errorCode: '40406', error: 'Le répertoire ne contient aucun rattachement pour cette personne' }.to_json }
+
+          it 'still answers an allocataire not referenced' do
+            expect(subject.errors.first.meta).to include(origin: 'RNCPS')
+          end
+        end
+
+        context 'with an error code that is not a number' do
+          let(:body) { { errorCode: true, error: 'Erreur' }.to_json }
+
+          it 'falls back to the regime not found error' do
+            expect(subject.errors.first.code).to eq('23003')
+          end
+        end
+
+        context 'with an error code that only starts with a known code' do
+          let(:body) { { errorCode: '40409x', error: 'Erreur' }.to_json }
+
+          it 'does not take it for an unidentified person' do
+            expect(subject.errors.first.code).to eq('23003')
+          end
+        end
+      end
     end
 
     context 'with regime error' do

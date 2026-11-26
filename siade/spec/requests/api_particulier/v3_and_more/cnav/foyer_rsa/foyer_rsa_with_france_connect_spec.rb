@@ -7,41 +7,48 @@ RSpec.describe 'API Particulier CNAV: Foyer RSA with FranceConnect', api: :parti
 
       common_action_attributes
 
+      cacheable_request
+
       let(:recipient) { valid_siret(:recipient) }
       let(:Authorization) { 'Bearer super_valid_token' }
 
       forbidden_france_connect_request
+      missing_france_connect_bearer_token_request
 
       let(:scopes) { %i[cnav_foyer_rsa_beneficiaires cnav_foyer_rsa_personnes_a_charge] }
 
       describe 'with a FranceConnect token' do
         before do
           mock_valid_france_connect_checktoken(scopes:)
-          # The default FranceConnect test identity carries a rolling birthdate
-          # ("current year - 20"), so it cannot be matched by a static mock payload
-          # file: force a miss so the 200 case below stays testable as pending.
-          allow(MockDataBackend).to receive(:get_response_for).and_return(nil)
+          stub_cnav_authenticate('foyer_rsa')
         end
 
-        # Left pending until this endpoint graduates out of prochainement mode
-        # (real ValidateResponse/BuildResource against a real provider call).
-        response '200', 'Foyer trouvé', pending: 'Implement endpoint' do
-          description SwaggerData.get('cnav.foyer_rsa.description')
+        context 'when found' do
+          before { stub_cnav_valid_with_franceconnect_data('foyer_rsa', siret: recipient) }
 
-          rate_limit_headers
+          response '200', 'Foyer trouvé' do
+            description SwaggerData.get('cnav.foyer_rsa.description')
 
-          schema build_rswag_response(
-            attributes: SwaggerData.get('cnav.foyer_rsa.attributes')
-          )
+            cacheable_response(extra_description: SwaggerData.get('cnav.commons.cache_duration'))
 
-          run_test!
+            schema build_rswag_response(
+              attributes: SwaggerData.get('cnav.foyer_rsa.attributes')
+            )
+
+            run_test!
+          end
         end
 
-        describe 'when identite is not found' do
-          response '404', 'Non trouvé' do
-            build_rswag_example(NotFoundError.new('CNAV'))
+        context 'when not found' do
+          before { stub_cnav_404('foyer_rsa', 'CNAF') }
 
+          response '404', 'Dossier non trouvé' do
             schema '$ref' => '#/components/schemas/Error'
+
+            build_rswag_example(
+              NotFoundError.new('CNAF', "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.", title: 'Dossier allocataire absent CNAF', with_identifiant_message: false)
+                .add_meta(origin: 'CNAF')
+            )
 
             run_test!
           end

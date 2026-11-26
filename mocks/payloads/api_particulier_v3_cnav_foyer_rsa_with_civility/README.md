@@ -142,6 +142,65 @@
 
   </p>
   </details>
+* [404-absence-de-droit.yaml](404-absence-de-droit.yaml)
+
+  Status `404`
+
+  Personne identifiée sans droit au RSA
+
+  <details><summary>Paramètres</summary>
+  <p>
+
+  ```json
+  {
+    "nomNaissance": "Bernard",
+    "prenoms": [
+      "lucie"
+    ],
+    "anneeDateNaissance": 1990,
+    "moisDateNaissance": 3,
+    "jourDateNaissance": 14,
+    "sexeEtatCivil": "F",
+    "codeCogInseePaysNaissance": "99100"
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Réponse API</summary>
+  <p>
+
+  ```json
+  {
+    "errors": [
+      {
+        "code": "37003",
+        "title": "Absence de droit au RSA",
+        "detail": "La personne a été identifiée mais aucun droit au revenu de solidarité active n'a été trouvé pour son foyer.",
+        "source": null,
+        "meta": {
+          "provider": "CNAV"
+        }
+      }
+    ]
+  }
+  ```
+
+  </p>
+  </details>
+
+  <details><summary>Commande cURL</summary>
+  <p>
+
+  ```bash
+  curl -H "Authorization: Bearer $token" \
+    -G -d 'recipient=13002526500013' -d 'nomNaissance=Bernard' -d 'prenoms[]=lucie' -d 'anneeDateNaissance=1990' -d 'moisDateNaissance=3' -d 'jourDateNaissance=14' -d 'sexeEtatCivil=F' -d 'codeCogInseePaysNaissance=99100' \
+    --url "https://staging.particulier.api.gouv.fr/v3/dss/foyer_rsa/identite"
+  ```
+
+  </p>
+  </details>
 * [404.yaml](404.yaml)
 
   Status `404`
@@ -175,12 +234,13 @@
   {
     "errors": [
       {
-        "code": "37003",
-        "title": "Dossier non trouvé",
-        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAV.",
+        "code": "23003",
+        "title": "Dossier allocataire absent CNAF",
+        "detail": "Le dossier allocataire n'a pas été trouvé auprès de la CNAF.",
         "source": null,
         "meta": {
-          "provider": "CNAV"
+          "provider": "CNAF",
+          "origin": "CNAF"
         }
       }
     ]

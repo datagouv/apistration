@@ -1,4 +1,10 @@
 - date: 2026-11-26
+  scope: api_particulier
+  title: "Nouvelle API : composition du foyer RSA (CNAV)"
+  description: |
+    Mise en service, en bêta, de la fiche [composition du foyer RSA](<%= endpoint_path(uid: 'cnav/foyer_rsa') %>), qui restitue les bénéficiaires du revenu de solidarité active (allocataire, conjoint) et les personnes à charge du foyer, sans montant ni date d'ouverture du droit. Elle s'appelle avec l'identité pivot de l'allocataire ou de son conjoint. Seuls les allocataires CAF sont couverts pour l'instant ; les allocataires MSA le seront en décembre 2026.
+
+- date: 2026-11-26
   scope: api_entreprise
   title: "Extrait RCS v4 : l'EUID de l'entreprise est disponible"
   description: |

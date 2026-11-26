@@ -5498,7 +5498,6 @@ paths:
       tags:
       - Composition Foyer RSA
       - Revenu de solidarité active
-      - Prochainement
       parameters:
       - name: recipient
         in: query
@@ -5518,6 +5517,13 @@ paths:
           UUID d’une délégation précise, réservé aux jetons éditeur. Optionnel : requis uniquement lorsque plusieurs délégations actives existent pour le même `recipient`, afin de lever l’ambiguïté (cf. erreur 00212)."
         example: 6f3c8d9a-1b2c-4d5e-8f90-abcdef012345
         required: false
+        schema:
+          type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
         schema:
           type: string
       - name: nomNaissance
@@ -5668,16 +5674,16 @@ paths:
         required: false
       security:
       - jwt_bearer_token: []
-      description: "Composition du foyer au sens de la prestation de revenu de solidarité
-        active (RSA) : bénéficiaires du foyer et personnes à charge. \n L'appel peut
-        être effectué avec l'identité de n'importe quel membre du foyer (allocataire,
-        conjoint, ouvrant droit), pas uniquement de l'allocataire."
+      description: "Composition familiale du foyer RSA d'un allocataire bénéficiaire
+        du revenu de solidarité active, telle que connue par la CAF. \n L'appel peut
+        être effectué avec l'identité de l'allocataire ou celle du conjoint référencé
+        dans le dossier."
       responses:
         '401':
           description: |-
             Non autorisé
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5698,7 +5704,7 @@ paths:
           description: |-
             Accès interdit
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5721,7 +5727,7 @@ paths:
           description: |-
             Trop de requêtes
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5740,6 +5746,22 @@ paths:
         '200':
           description: Foyer trouvé
           headers:
+            X-Response-Cached:
+              schema:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
+              schema:
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
             RateLimit-Limit:
               schema:
                 type: integer
@@ -5810,9 +5832,9 @@ paths:
                               type: string
                               description: "Qualité du bénéficiaire au sein du foyer
                                 RSA : \n - 'allocataire' : bénéficiaire principal
-                                du RSA ; - 'ouvrant_droit' : personne dont la situation
-                                ouvre droit au RSA sans en être l'allocataire ; -
-                                'conjoint' : conjoint de l'allocataire."
+                                du RSA ; - 'ouvrant_droit' : enfant ou autre personne
+                                à charge de moins de 25 ans ; - 'conjoint' : conjoint
+                                de l'allocataire."
                               example: allocataire
                               enum:
                               - allocataire
@@ -5873,36 +5895,46 @@ paths:
                 - meta
         '404':
           description: |-
-            Non trouvé
+            Absence de droit au RSA
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
-                entite_non_trouvee_37003:
+                dossier_allocataire_absent_cnaf_23003:
+                  value:
+                    errors:
+                    - code: '23003'
+                      title: Dossier allocataire absent CNAF
+                      detail: Le dossier allocataire n'a pas été trouvé auprès de
+                        la CNAF.
+                      source:
+                      meta:
+                        provider: CNAF
+                        origin: CNAF
+                  summary: Dossier allocataire absent CNAF
+                  description: Le dossier allocataire n'a pas été trouvé auprès de
+                    la CNAF.
+                absence_de_droit_au_rsa_37003:
                   value:
                     errors:
                     - code: '37003'
-                      title: Entité non trouvée
-                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
-                        pas connus, ou ne comportent aucune information pour cet appel.
-                        Veuillez vérifier que votre recherche est couverte par le
-                        périmètre de l'API.
+                      title: Absence de droit au RSA
+                      detail: La personne a été identifiée mais aucun droit au revenu
+                        de solidarité active n'a été trouvé pour son foyer.
                       source:
                       meta:
                         provider: CNAV
-                  summary: Entité non trouvée
-                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
-                    sont pas connus, ou ne comportent aucune information pour cet
-                    appel. Veuillez vérifier que votre recherche est couverte par
-                    le périmètre de l'API.
+                  summary: Absence de droit au RSA
+                  description: La personne a été identifiée mais aucun droit au revenu
+                    de solidarité active n'a été trouvé pour son foyer.
               schema:
                 "$ref": "#/components/schemas/Error"
         '422':
           description: |-
             Paramètre(s) invalide(s)
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5922,7 +5954,7 @@ paths:
           description: |-
             Erreur du fournisseur
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5947,7 +5979,7 @@ paths:
           description: |-
             Erreur d'intermédiaire
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5970,7 +6002,7 @@ paths:
           description: |-
             Conflit
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -5994,7 +6026,7 @@ paths:
           description: |-
             Fournisseur de données en maintenance
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -6015,7 +6047,7 @@ paths:
           description: |-
             Mauvaise requête
 
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility.
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_civility, et commentée dans la section « Erreurs » de https://particulier.api.gouv.fr/catalogue/cnav/foyer_rsa#erreurs.
           content:
             application/json:
               examples:
@@ -6037,7 +6069,6 @@ paths:
       tags:
       - Composition Foyer RSA
       - Revenu de solidarité active
-      - Prochainement
       parameters:
       - name: recipient
         in: query
@@ -6059,12 +6090,19 @@ paths:
         required: false
         schema:
           type: string
+      - name: Cache-Control
+        in: header
+        description: Si cette valeur est fixée à "no-cache", le système de cache est
+          alors ignoré et la donnée est directement récupérée depuis le fournisseur
+          de données.
+        schema:
+          type: string
       security:
       - jwt_bearer_token: []
-      description: "Composition du foyer au sens de la prestation de revenu de solidarité
-        active (RSA) : bénéficiaires du foyer et personnes à charge. \n L'appel peut
-        être effectué avec l'identité de n'importe quel membre du foyer (allocataire,
-        conjoint, ouvrant droit), pas uniquement de l'allocataire."
+      description: "Composition familiale du foyer RSA d'un allocataire bénéficiaire
+        du revenu de solidarité active, telle que connue par la CAF. \n L'appel peut
+        être effectué avec l'identité de l'allocataire ou celle du conjoint référencé
+        dans le dossier."
       responses:
         '403':
           description: |-
@@ -6089,26 +6127,50 @@ paths:
                     Listez vos privilèges sur /api/introspect
               schema:
                 "$ref": "#/components/schemas/Error"
+        '401':
+          description: |-
+            Non autorisé
+
+            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_france_connect.
+          content:
+            application/json:
+              examples:
+                missing_france_connect_access_token_error:
+                  value:
+                    errors:
+                    - code: '51504'
+                      title: Accès non autorisé
+                      detail: 'Le jeton d''accès FranceConnect est manquant. Cet endpoint
+                        requiert un jeton d''accès FranceConnect transmis via l''en-tête
+                        Authorization: Bearer.'
+                      source:
+                      meta:
+                        provider: FranceConnect
+                  summary: Accès non autorisé
+                  description: 'Le jeton d''accès FranceConnect est manquant. Cet
+                    endpoint requiert un jeton d''accès FranceConnect transmis via
+                    l''en-tête Authorization: Bearer.'
+              schema:
+                "$ref": "#/components/schemas/Error"
         '200':
           description: Foyer trouvé
           headers:
-            RateLimit-Limit:
+            X-Response-Cached:
               schema:
-                type: integer
-              description: La limite concernant l’endpoint appelé, soit le nombre
-                de requête/minute.
-              example: 50
-            RateLimit-Remaining:
+                type: boolean
+                example: true
+                enum:
+                - true
+                - false
+                default: false
+              description: Indique si la réponse a été caché.
+            X-Cache-Expires-in:
               schema:
-                type: integer
-              description: Le nombre d’appels restants durant la période courante
-                d’une minute.
-              example: 47
-            RateLimit-Reset:
-              schema:
-                type: integer
-              description: La fin de la période courante (en format timestamp)
-              example: 1637223155
+                type: number
+                nullable: true
+                example: 9001
+              description: Secondes avant que le cache n'expire. Si le cache est vide,
+                ce header est vide (mais présent). La durée du cache est de 1 heure.
           x-operationId: api_particulier_v3_cnav_foyer_rsa_with_france_connect
           content:
             application/json:
@@ -6162,9 +6224,9 @@ paths:
                               type: string
                               description: "Qualité du bénéficiaire au sein du foyer
                                 RSA : \n - 'allocataire' : bénéficiaire principal
-                                du RSA ; - 'ouvrant_droit' : personne dont la situation
-                                ouvre droit au RSA sans en être l'allocataire ; -
-                                'conjoint' : conjoint de l'allocataire."
+                                du RSA ; - 'ouvrant_droit' : enfant ou autre personne
+                                à charge de moins de 25 ans ; - 'conjoint' : conjoint
+                                de l'allocataire."
                               example: allocataire
                               enum:
                               - allocataire
@@ -6225,50 +6287,26 @@ paths:
                 - meta
         '404':
           description: |-
-            Non trouvé
+            Dossier non trouvé
 
             L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_france_connect.
           content:
             application/json:
               examples:
-                entite_non_trouvee_37003:
+                dossier_allocataire_absent_cnaf_23003:
                   value:
                     errors:
-                    - code: '37003'
-                      title: Entité non trouvée
-                      detail: Le ou les paramètre(s) d'entrée n'existent pas, ne sont
-                        pas connus, ou ne comportent aucune information pour cet appel.
-                        Veuillez vérifier que votre recherche est couverte par le
-                        périmètre de l'API.
+                    - code: '23003'
+                      title: Dossier allocataire absent CNAF
+                      detail: Le dossier allocataire n'a pas été trouvé auprès de
+                        la CNAF.
                       source:
                       meta:
-                        provider: CNAV
-                  summary: Entité non trouvée
-                  description: Le ou les paramètre(s) d'entrée n'existent pas, ne
-                    sont pas connus, ou ne comportent aucune information pour cet
-                    appel. Veuillez vérifier que votre recherche est couverte par
-                    le périmètre de l'API.
-              schema:
-                "$ref": "#/components/schemas/Error"
-        '401':
-          description: |-
-            Non autorisé
-
-            L'exemple ci-dessous n'en est qu'un parmi d'autres : la liste complète des codes erreurs de cet endpoint est disponible sur https://particulier.api.gouv.fr/api/errors?operation_id=api_particulier_v3_cnav_foyer_rsa_with_france_connect.
-          content:
-            application/json:
-              examples:
-                invalid_token_error:
-                  value:
-                    errors:
-                    - code: '00101'
-                      title: Interdit
-                      detail: Votre token n'est pas valide
-                      source:
-                        parameter: token
-                      meta: {}
-                  summary: Interdit
-                  description: Votre token n'est pas valide
+                        provider: CNAF
+                        origin: CNAF
+                  summary: Dossier allocataire absent CNAF
+                  description: Le dossier allocataire n'a pas été trouvé auprès de
+                    la CNAF.
               schema:
                 "$ref": "#/components/schemas/Error"
         '409':

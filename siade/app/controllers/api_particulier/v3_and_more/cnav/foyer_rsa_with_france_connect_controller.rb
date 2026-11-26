@@ -1,19 +1,13 @@
-class APIParticulier::V3AndMore::CNAV::FoyerRSAWithFranceConnectController < APIParticulier::V3AndMore::BaseController
-  include APIParticulier::RequiresFranceConnect
-
+class APIParticulier::V3AndMore::CNAV::FoyerRSAWithFranceConnectController < APIParticulier::V3AndMore::CNAV::AbstractFranceConnectController
   nomenclature organizers: { 3 => ::CNAV::FoyerRSA }
 
   private
 
-  def organizer_params
-    civility_parameters_from_france_connect.merge({ request_id: request.request_id })
+  def organizer_class
+    CNAV::FoyerRSA
   end
 
   def serializer_module
     ::APIParticulier::CNAV::FoyerRSASerializer
-  end
-
-  def organizer
-    @organizer ||= retrieve_payload_data(::CNAV::FoyerRSA)
   end
 end

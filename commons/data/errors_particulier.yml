@@ -2063,12 +2063,49 @@ endpoints:
       - code: '00428'
         title: Entité non traitable
         detail: Le code cog du département de naissance est manquant ou invalide
+      - code: '36560'
+        title: Identité non reconnue par le fournisseur de données
+        detail: Les paramètres d'identité fournis ne correspondent à aucune personne
+          connue du fournisseur de données.
+        meta:
+          provider: Sécurité sociale
+      - code: '36561'
+        title: Paramètres de civilité refusés par le fournisseur de données
+        detail: Un ou plusieurs paramètres de civilité ont été refusés par le fournisseur
+          de données.
+        meta:
+          provider: Sécurité sociale
       '404':
+      - code: '10003'
+        title: Dossier allocataire absent MSA
+        detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
+        meta:
+          provider: MSA
+          origin: MSA
+      - code: '23003'
+        title: Dossier allocataire absent CNAF
+        detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
+        meta:
+          provider: CNAF
+          origin: CNAF
+      - code: '35003'
+        title: Allocataire non référencé
+        detail: L'allocataire n'est pas référencé auprès des caisses éligibles
+        meta:
+          provider: CNAF & MSA
+          origin: RNCPS
       - code: '37003'
-        title: Dossier non trouvé
-        detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAV.
+        title: Absence de droit au RSA
+        detail: La personne a été identifiée mais aucun droit au revenu de solidarité
+          active n'a été trouvé pour son foyer.
         meta:
           provider: CNAV
+      - code: '40003'
+        title: Dossier allocataire absent RNCPS
+        detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
+        meta:
+          provider: RNCPS
+          origin: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données
@@ -2164,6 +2201,18 @@ endpoints:
       - code: '00428'
         title: Entité non traitable
         detail: Le code cog du département de naissance est manquant ou invalide
+      - code: '36560'
+        title: Identité non reconnue par le fournisseur de données
+        detail: Les paramètres d'identité fournis ne correspondent à aucune personne
+          connue du fournisseur de données.
+        meta:
+          provider: Sécurité sociale
+      - code: '36561'
+        title: Paramètres de civilité refusés par le fournisseur de données
+        detail: Un ou plusieurs paramètres de civilité ont été refusés par le fournisseur
+          de données.
+        meta:
+          provider: Sécurité sociale
       - code: '51564'
         title: Identité inexploitable renvoyée par le fournisseur de données
         detail: L'identité renvoyée par le fournisseur de données est incomplète ou
@@ -2171,11 +2220,36 @@ endpoints:
         meta:
           provider: FranceConnect
       '404':
+      - code: '10003'
+        title: Dossier allocataire absent MSA
+        detail: Le dossier allocataire n'a pas été trouvé auprès de la MSA.
+        meta:
+          provider: MSA
+          origin: MSA
+      - code: '23003'
+        title: Dossier allocataire absent CNAF
+        detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAF.
+        meta:
+          provider: CNAF
+          origin: CNAF
+      - code: '35003'
+        title: Allocataire non référencé
+        detail: L'allocataire n'est pas référencé auprès des caisses éligibles
+        meta:
+          provider: CNAF & MSA
+          origin: RNCPS
       - code: '37003'
-        title: Dossier non trouvé
-        detail: Le dossier allocataire n'a pas été trouvé auprès de la CNAV.
+        title: Absence de droit au RSA
+        detail: La personne a été identifiée mais aucun droit au revenu de solidarité
+          active n'a été trouvé pour son foyer.
         meta:
           provider: CNAV
+      - code: '40003'
+        title: Dossier allocataire absent RNCPS
+        detail: Le dossier allocataire n'a pas été trouvé auprès du RNCPS.
+        meta:
+          provider: RNCPS
+          origin: RNCPS
       '502':
       - code: '36000'
         title: Erreur interne du fournisseur de données

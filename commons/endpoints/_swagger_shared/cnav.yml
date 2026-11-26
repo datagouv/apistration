@@ -620,13 +620,12 @@ cnav:
 
   foyer_rsa:
     title: Composition du foyer RSA
-    description: "Composition du foyer au sens de la prestation de revenu de solidarité active (RSA) : bénéficiaires du foyer et personnes à charge.
+    description: "Composition familiale du foyer RSA d'un allocataire bénéficiaire du revenu de solidarité active, telle que connue par la CAF.
       \n
-      L'appel peut être effectué avec l'identité de n'importe quel membre du foyer (allocataire, conjoint, ouvrant droit), pas uniquement de l'allocataire."
+      L'appel peut être effectué avec l'identité de l'allocataire ou celle du conjoint référencé dans le dossier."
     tags:
       - Composition Foyer RSA
       - Revenu de solidarité active
-      - Prochainement
     attributes:
       beneficiaires:
         title: "Bénéficiaires du foyer"
@@ -672,7 +671,7 @@ cnav:
               description: "Qualité du bénéficiaire au sein du foyer RSA :
                 \n
                 - 'allocataire' : bénéficiaire principal du RSA ;
-                - 'ouvrant_droit' : personne dont la situation ouvre droit au RSA sans en être l'allocataire ;
+                - 'ouvrant_droit' : enfant ou autre personne à charge de moins de 25 ans ;
                 - 'conjoint' : conjoint de l'allocataire."
               example: allocataire
               enum:
