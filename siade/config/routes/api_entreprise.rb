@@ -136,6 +136,7 @@ end
 
 get 'proxy/files/:uuid', to: 'api_entreprise/proxied_files#show', constraints: APIEntrepriseDomainConstraint.new
 get 'proxy/inpi/download/:uuid', to: 'api_entreprise/inpi_proxy#show', constraints: APIEntrepriseDomainConstraint.new
+get 'proxy/siaf/fondations/download/:uuid', to: 'api_entreprise/siaf_fondations_proxy#show', constraints: APIEntrepriseDomainConstraint.new
 get 'ping/*provider_with_source', to: 'api_entreprise/ping_providers#show', as: 'api_entreprise_ping_provider', constraints: APIEntrepriseDomainConstraint.new
 get 'pings', to: 'api_entreprise/ping_providers#index', as: 'api_entreprise_ping_providers', constraints: APIEntrepriseDomainConstraint.new
 get 'v3/errors', to: 'api_entreprise/errors_nomenclature#index', as: 'api_entreprise_errors_nomenclature', constraints: APIEntrepriseDomainConstraint.new

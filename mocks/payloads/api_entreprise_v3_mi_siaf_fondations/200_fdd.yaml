@@ -60,7 +60,49 @@ payload: |-
         "annees_financements_etrangers": [
           2024
         ]
-      }
+      },
+      "documents": [
+        {
+          "id": "7e7867b6-8fe0-11f1-a424-f28dce965a40",
+          "type": "Statuts",
+          "nom_original": "Statuts fonds.pdf",
+          "type_mime": "application/pdf",
+          "taille": 120000,
+          "date_effet": "2025-06-30",
+          "date_depot": "2026-06-24",
+          "url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_mi_siaf_fondations/exemple-piece-jointe-fondation.pdf"
+        },
+        {
+          "id": "7e7867b6-8fe0-11f1-a424-f28dce965a41",
+          "type": "Rapport d'activité",
+          "nom_original": "Rapport d'activité 2025.pdf",
+          "type_mime": "application/pdf",
+          "taille": 121000,
+          "date_effet": "2025-06-30",
+          "date_depot": "2026-06-24",
+          "url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_mi_siaf_fondations/exemple-piece-jointe-fondation.pdf"
+        },
+        {
+          "id": "7e7867b6-8fe0-11f1-a424-f28dce965a42",
+          "type": "Comptes",
+          "nom_original": "Comptes annuels 2025.pdf",
+          "type_mime": "application/pdf",
+          "taille": 122000,
+          "date_effet": "2025-06-30",
+          "date_depot": "2026-06-24",
+          "url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_mi_siaf_fondations/exemple-piece-jointe-fondation.pdf"
+        },
+        {
+          "id": "7e7867b6-8fe0-11f1-a424-f28dce965a43",
+          "type": "Décision administrative",
+          "nom_original": "Récépissé de déclaration.pdf",
+          "type_mime": "application/pdf",
+          "taille": 123000,
+          "date_effet": "2025-06-30",
+          "date_depot": "2026-06-24",
+          "url": "https://raw.githubusercontent.com/datagouv/apistration/refs/heads/develop/mocks/payloads/api_entreprise_v3_mi_siaf_fondations/exemple-piece-jointe-fondation.pdf"
+        }
+      ]
     },
     "links": {},
     "meta": {}

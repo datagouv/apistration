@@ -3,6 +3,7 @@ class LogStasherFieldsBuilder
 
   CONTROLLER_NOT_TO_STORE_IN_DATABASE = %w[
     api_entreprise/inpi_proxy
+    api_entreprise/siaf_fondations_proxy
     api_entreprise/ping_providers
     api_particulier/france_connect_jwks
     api_particulier/introspect

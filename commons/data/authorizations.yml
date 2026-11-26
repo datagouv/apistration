@@ -1,6 +1,7 @@
 shared:
   api_entreprise/proxied_files: []
   api_entreprise/inpi_proxy: []
+  api_entreprise/siaf_fondations_proxy: []
   api_entreprise/v2/privileges: []
   api_entreprise/v3_and_more/introspect: []
   api_entreprise/privileges: []
@@ -154,6 +155,7 @@ shared:
   api_entreprise/v3_and_more/mi/siaf/fondations:
     - fondations_mi_siaf
     - fondations_mi_siaf_beneficiaires_effectifs
+    - fondations_mi_siaf_comptes
     - fondations_mi_siaf_controle
   api_entreprise/v3_and_more/mi/siaf/associations:
     - associations_mi_siaf

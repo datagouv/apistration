@@ -1,7 +1,7 @@
 siaf:
   fondations:
     title: "Données fondations"
-    description: "Données de référence d'une fondation (FRUP, fondation d'entreprise ou fonds de dotation) issues du Répertoire National des Fondations (RNF), opéré par le Ministère de l'Intérieur via le SIAF : identité, activités, filiation, dirigeants et années de subventions publiques. Selon les scopes du jeton, la réponse sert en plus les bénéficiaires effectifs et les données de contrôle (années d'appel à la générosité publique et de financements étrangers)."
+    description: "Données de référence d'une fondation (FRUP, fondation d'entreprise ou fonds de dotation) issues du Répertoire National des Fondations (RNF), opéré par le Ministère de l'Intérieur via le SIAF : identité, activités, filiation, dirigeants et années de subventions publiques. Selon les scopes du jeton, la réponse sert en plus les bénéficiaires effectifs, les données de contrôle (années d'appel à la générosité publique et de financements étrangers) et les pièces jointes (statuts, comptes, rapports d'activité…)."
     tags:
       - "Informations générales"
     attributes:
@@ -307,6 +307,60 @@ siaf:
             items:
               type: "integer"
             example: []
+      documents:
+        title: "Pièces jointes déposées par la fondation"
+        description: |
+          Pièces déposées par la fondation dans ses démarches, filtrées selon leur type et les scopes du jeton, tels que le Ministère de l'Intérieur les ouvre par cas d'usage :
+          - avec le scope socle `fondations_mi_siaf` : statuts, règlement intérieur d'une FRUP, rapport d'activité d'une FRUP ou d'une fondation d'entreprise ;
+          - avec le scope `fondations_mi_siaf_comptes` en plus : comptes, et rapport d'activité d'un fonds de dotation ;
+          - avec le scope `fondations_mi_siaf_controle`, réservé à la lutte contre la fraude : toutes les autres pièces, dont procès-verbaux, décisions administratives et juridictionnelles, listes de dirigeants, et tout type de pièce ajouté depuis par le ministère.
+          Le type est la rubrique de la démarche dans laquelle l'usager a déposé la pièce : une pièce déposée dans la mauvaise rubrique est servie sous le type de cette rubrique.
+        type: "array"
+        items:
+          type: "object"
+          properties:
+            id:
+              title: "Identifiant de la pièce"
+              type: "string"
+              example: "7e7867b6-8fe0-11f1-a424-f28dce965a41"
+            type:
+              title: "Type de pièce"
+              description: "Rubrique de la démarche. Valeurs servies à ce jour : Statuts, Règlement intérieur, Rapport d'activité, Comptes, Procès verbal, Décision administrative, Décision juridictionnelle, Dirigeants, Patrimoine, Reconnaissance d'utilité publique, Etablissements."
+              type: "string"
+              example: "Statuts"
+            nom_original:
+              title: "Nom du fichier déposé par la fondation"
+              type: "string"
+              nullable: true
+              example: "Statuts 2024.pdf"
+            type_mime:
+              title: "Type MIME déclaré du fichier"
+              description: "Majoritairement application/pdf ; des documents bureautiques, images et archives sont aussi déposés."
+              type: "string"
+              nullable: true
+              example: "application/pdf"
+            taille:
+              title: "Taille du fichier, en octets"
+              type: "integer"
+              nullable: true
+              example: 120000
+            date_effet:
+              title: "Date d'effet de la pièce"
+              type: "string"
+              format: "date"
+              nullable: true
+              example: "2024-03-12"
+            date_depot:
+              title: "Date de dépôt de la pièce"
+              type: "string"
+              format: "date"
+              nullable: true
+              example: "2026-07-22"
+            url:
+              title: "Lien de téléchargement de la pièce"
+              description: "Lien servi par API Entreprise, valable 1 heure et lié au jeton qui l'a obtenu, dont les scopes sont revérifiés à l'appel. Il renvoie une URL de téléchargement du fichier (document_url), valable 24 heures. Sur l'environnement de test, il pointe directement vers un document d'exemple."
+              type: "string"
+              example: "https://entreprise.api.gouv.fr/proxy/siaf/fondations/download/%2FV+svyVVJGVCJroamyqjOrECaXHorkxJ39vZH1IMHz4N+6gvit9zgoQ=--rJ1ss+Brc7oVhloH--huyvWA83YgMFqOnjyKDmXQ=="
 
   associations:
     title: "Données associations"

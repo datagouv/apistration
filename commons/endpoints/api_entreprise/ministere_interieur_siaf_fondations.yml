@@ -50,19 +50,21 @@ fiche:
         - **ses activités** : objet, domaines d'intérêt général, activité internationale prévue par les statuts ;
         - **sa filiation** : organismes dont la fondation est issue (transformation d'une association ou d'un fonds de dotation) ;
         - **ses dirigeants en fonction** : nom, prénom, fonction et qualité ;
-        - **les années pendant lesquelles elle a déclaré avoir reçu des subventions publiques**.
+        - **les années pendant lesquelles elle a déclaré avoir reçu des subventions publiques** ;
+        - **ses statuts**, ainsi que le règlement intérieur et le rapport d'activité d'une FRUP et le rapport d'activité d'une fondation d'entreprise, à télécharger.
 
         Selon les données cochées dans la demande d'habilitation, la réponse sert en plus :
 
         - **les bénéficiaires effectifs** (marchés publics et lutte contre la fraude) : identité complète de toutes les personnes siégeant ou dirigeant la fondation, y compris celles sorties de leurs fonctions ;
-        - **les données de contrôle** (lutte contre la fraude) : années d'appel à la générosité publique et de financements étrangers.
+        - **les comptes**, et le rapport d'activité d'un fonds de dotation (subventions publiques, marchés publics et lutte contre la fraude) ;
+        - **les données de contrôle** (lutte contre la fraude) : années d'appel à la générosité publique et de financements étrangers, et toutes les autres pièces jointes (procès-verbaux, décisions administratives et juridictionnelles…).
 
         Un bloc auquel le jeton n'a pas droit est absent de la réponse.
 
         {:.fr-highlight}
-        > Les pièces justificatives et les données comptables ne sont pas encore
-        > servies : elles seront ajoutées selon les cas d'usage autorisés par le
-        > Ministère de l'Intérieur.
+        > La conformité comptable (état de transmission des comptes) n'est pas
+        > servie : elle ne reflète à ce jour que les dépôts faits depuis la
+        > démarche en ligne.
     opening: protected
     parameters:
       - Numéro de SIREN ou de SIRET de la fondation, ou son identifiant RNF
@@ -101,6 +103,21 @@ fiche:
           d'usage : nom, prénom, fonction et qualité des dirigeants en fonction pour
           tous, identité complète et historique des fonctions pour les marchés
           publics et la lutte contre la fraude.
+      - q: "Quelles pièces jointes sont servies, et comment les télécharger ?"
+        a: |+
+          Les pièces sont servies selon leur **type**, c'est-à-dire la rubrique de la
+          démarche dans laquelle la fondation les a déposées, et les scopes de votre
+          jeton (voir la description des données). Une pièce déposée dans la mauvaise
+          rubrique est servie sous le type de cette rubrique : le contenu d'un fichier
+          n'est pas contrôlé. Un type de pièce ajouté par le Ministère de l'Intérieur
+          n'est servi qu'à la lutte contre la fraude, tant qu'il n'a pas été ouvert à
+          d'autres cas d'usage.
+
+          Chaque pièce porte un lien `url`, valable **1 heure** et lié au jeton qui
+          l'a obtenu, dont les scopes sont vérifiés à nouveau à l'appel. Ce lien
+          renvoie un `document_url`, valable 24 heures, d'où télécharger le fichier.
+          La plupart des pièces sont des PDF ; `type_mime` indique les autres formats
+          (documents bureautiques, images, archives).
       - q: "L'environnement de test applique-t-il les scopes ?"
         a: |+
           Non : l'environnement de test sert toujours la réponse complète, avec des
@@ -115,6 +132,11 @@ fiche:
           déclaration n'a été enregistrée, pas que la fondation n'a reçu aucune
           subvention.
     historique: |+
+      **Retour des pièces jointes :** `documents` est de nouveau servi, filtré
+      selon le type de pièce et les scopes du jeton, avec pour chaque pièce un lien
+      de téléchargement (`url`). Par rapport à l'environnement de test, chaque
+      pièce gagne `taille`, `date_effet` et le lien de téléchargement.
+
       **Ce qui change par rapport à la version proposée en environnement de test :**
       La réponse dépend désormais des scopes du jeton :
       - `dirigeants` ne garde que les dirigeants en fonction, avec leur nom,
@@ -129,8 +151,6 @@ fiche:
         lutte contre la fraude.
 
       Ont été retirés :
-      - les pièces justificatives (`documents`) : les pièces diffusables dépendent
-        de leur type et du cas d'usage ;
       - la conformité comptable (`conformite_comptable`) : l'état de transmission
         des comptes et les exercices transmis ne reflètent à ce jour que les dépôts
         faits depuis la nouvelle démarche en ligne ;

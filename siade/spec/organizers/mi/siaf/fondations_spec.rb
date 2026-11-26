@@ -16,8 +16,8 @@ RSpec.describe MI::SIAF::Fondations, type: :retriever_organizer do
 
     it { is_expected.to be_a_success }
 
-    it 'never serves documents nor accounts' do
-      expect(fondation.to_h.keys).to eq(%i[identifiants identite activites filiation dirigeants beneficiaires_effectifs situation_financiere])
+    it 'never serves the accounting compliance' do
+      expect(fondation.to_h.keys).to eq(%i[identifiants identite activites filiation dirigeants beneficiaires_effectifs situation_financiere documents])
     end
 
     it 'serves only the directors still in office, with name, first name, function and quality' do
