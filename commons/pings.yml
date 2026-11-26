@@ -583,6 +583,18 @@ shared:
         params:
           id: '42135938100033'
 
+    mi/siaf/fondations:
+      kind: 'retriever'
+      cache: <%= 5.minutes %>
+      provider: 'SIAF'
+      status_page:
+        name: 'SIAF - Fondations'
+        alerts_wait: 3
+      driver_params:
+        retriever: 'MI::SIAF::Fondations'
+        params:
+          siren_or_siret_or_rnf: '075-FDD-00700-07'
+
     banque_de_france/bilans:
       kind: 'retriever'
       cache: <%= 10.minutes %>
