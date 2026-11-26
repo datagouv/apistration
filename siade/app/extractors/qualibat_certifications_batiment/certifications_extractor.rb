@@ -1,4 +1,6 @@
 class QUALIBATCertificationsBatiment::CertificationsExtractor < PDFExtractor
+  NOMENCLATURE_PATH = Rails.root.join('config/qualibat/nomenclature.json').to_s
+
   def extract
     certifications
   end
@@ -58,9 +60,22 @@ class QUALIBATCertificationsBatiment::CertificationsExtractor < PDFExtractor
   end
 
   def find_certification_data_from_nomenclature(code)
-    nomenclature_data.find { |nomenclature|
-      nomenclature['code'] == code
-    }.dup.symbolize_keys.except(:type)
+    nomenclature_entry = nomenclature_data.find { |nomenclature| nomenclature['code'] == code }
+
+    return certification_missing_from_nomenclature(code) unless nomenclature_entry
+
+    nomenclature_entry.symbolize_keys.except(:type)
+  end
+
+  def certification_missing_from_nomenclature(code)
+    MonitoringService.instance.track_with_added_context(
+      'warning',
+      '[Qualibat] Certification code missing from nomenclature',
+      { code: },
+      fingerprint: ['qualibat-certification-code-missing-from-nomenclature', code]
+    )
+
+    { code:, nom: nil }
   end
 
   def clean_same_certification_without_rge!(certifications, certification)
@@ -90,7 +105,7 @@ class QUALIBATCertificationsBatiment::CertificationsExtractor < PDFExtractor
   end
 
   def nomenclature_data
-    @nomenclature_data ||= JSON.parse(Rails.root.join('config/qualibat/nomenclature.json').read)
+    @nomenclature_data ||= JSON.parse(File.read(NOMENCLATURE_PATH))
   end
 
   def extract_chunks(page)
