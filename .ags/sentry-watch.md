@@ -39,10 +39,20 @@ For each issue listed by the precheck at the end of this prompt:
    starting with the Sentry link, then the stack trace (app frames), the
    context, the likely cause and the users or endpoints impacted.
 5. When the cause is clear and the fix is localized, hand the fix of the
-   ticket off to a new session in its own worktree with /start. Otherwise
-   leave the ticket for a human. The brief gives the Sentry short id and
-   link; the issue stays unresolved until the fix is deployed, the fix
-   session never resolves it.
+   ticket off to a new session in its own worktree. Otherwise leave the
+   ticket for a human. The brief gives the Sentry short id and link; the
+   issue stays unresolved until the fix is deployed, the fix session
+   never resolves it. The brief also replaces any default end of work
+   that stops on the review of the PR: once the PR is vouched with
+   `bin/vouch-auto-mergeable`, the fix session checks right before
+   merging every condition of `REVIEW.md` § Merging (the
+   `auto-mergeable:<rule>` label still set, the green status on the
+   current head, the CI green), merges it itself (`gh pr merge <number>
+   --merge --admin`), then posts its inbox item waiting for /cleanup,
+   which it never runs itself. A label removed by a reviewer stops the
+   merge, and so does any condition missing. When no rule of
+   `REVIEW.md` applies, the default end stands: the PR waits for a
+   human review.
 
 End with a short report, one line per issue: Sentry link, title, verdict
 (bug, regression, noise), action taken (ticket or comment link, fix handed
