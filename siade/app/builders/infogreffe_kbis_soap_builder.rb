@@ -1,8 +1,9 @@
 class InfogreffeKbisSoapBuilder < ApplicationBuilder
-  attr_reader :siren
+  attr_reader :siren, :version_schema
 
-  def initialize(siren)
+  def initialize(siren, version_schema: nil)
     @siren = siren
+    @version_schema = version_schema
   end
 
   protected

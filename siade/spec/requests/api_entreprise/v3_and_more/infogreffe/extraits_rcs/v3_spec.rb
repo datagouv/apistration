@@ -2,8 +2,10 @@ require 'swagger_helper'
 
 RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swagger] do
   path '/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis' do
-    get SwaggerData.get('infogreffe.extraits_rcs.title') do
-      tags(*SwaggerData.get('infogreffe.extraits_rcs.tags'))
+    get SwaggerData.get('infogreffe.extraits_rcs.v3.title') do
+      deprecated true
+
+      tags(*SwaggerData.get('infogreffe.extraits_rcs.v3.tags'))
 
       common_action_attributes
 
@@ -22,27 +24,35 @@ RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swa
       end
 
       describe 'with valid token and mandatory params', :valid do
-        response '200', 'Entreprise trouvée (personne morale)', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
-          description SwaggerData.get('infogreffe.extraits_rcs.description')
-
-          rate_limit_headers
-
-          schema build_rswag_response(
-            attributes: SwaggerData.get('infogreffe.extraits_rcs.attributes')
-          )
-
-          run_test!
+        before do
+          stub_infogreffe_extrait_rcs(siren: valid_siren(:extrait_rcs), payload: 'personne_morale')
+          stub_infogreffe_extrait_rcs(siren: valid_siren(:extrait_rcs_personne_physique), payload: 'personne_physique')
+          stub_infogreffe_extrait_rcs(siren: not_found_siren(:extrait_rcs), payload: 'siren_not_found')
         end
 
-        response '200', 'Entreprise trouvée (personne physique)', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_physique' } do
-          let(:siren) { valid_siren(:extrait_rcs_personne_physique) }
-
-          description SwaggerData.get('infogreffe.extraits_rcs.description')
+        response '200', 'Entreprise trouvée (personne morale)' do
+          description SwaggerData.get('infogreffe.extraits_rcs.v3.description')
 
           rate_limit_headers
 
           schema build_rswag_response(
-            attributes: SwaggerData.get('infogreffe.extraits_rcs.attributes')
+            attributes: SwaggerData.get('infogreffe.extraits_rcs.v3.attributes')
+          )
+
+          run_test! do |response|
+            expect(JSON.parse(response.body)['data']).not_to have_key('euid')
+          end
+        end
+
+        response '200', 'Entreprise trouvée (personne physique)' do
+          let(:siren) { valid_siren(:extrait_rcs_personne_physique) }
+
+          description SwaggerData.get('infogreffe.extraits_rcs.v3.description')
+
+          rate_limit_headers
+
+          schema build_rswag_response(
+            attributes: SwaggerData.get('infogreffe.extraits_rcs.v3.attributes')
           )
 
           run_test!
@@ -53,7 +63,7 @@ RSpec.describe 'Infogreffe: Extraitsrcs', api: :entreprise, type: %i[request swa
 
           unprocessable_content_error_request(:siren)
 
-          response '404', 'Non trouvée', vcr: { cassette_name: 'infogreffe/with_siren_not_found' } do
+          response '404', 'Non trouvée' do
             let(:siren) { not_found_siren(:extrait_rcs) }
 
             build_rswag_example(NotFoundError.new('Infogreffe'))

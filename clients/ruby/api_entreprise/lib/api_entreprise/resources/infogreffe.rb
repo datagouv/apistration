@@ -12,15 +12,18 @@ module ApiEntreprise
 
       # Extrait RCS
       # Logical endpoint: /infogreffe/rcs/unites_legales/{siren}/extrait_kbis
-      # Versions available: [3] — default: 3
+      # Versions available: [3, 4] — default: 4
       def extrait_kbis(siren, version: nil, recipient: nil, delegation_id: nil, context: nil, object: nil)
         Commons::Siren.validate!(siren, parameter: :siren)
         path =
-          case version || 3
+          case version || 4
           when 3
+          warn "[DEPRECATED] /v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis (#extrait_kbis): marked deprecated in the OpenAPI spec.", uplevel: 1
           "/v3/infogreffe/rcs/unites_legales/#{siren}/extrait_kbis"
+          when 4
+          "/v4/infogreffe/rcs/unites_legales/#{siren}/extrait_kbis"
           else
-            raise ArgumentError, "version #{version.inspect} not available for /infogreffe/rcs/unites_legales/{siren}/extrait_kbis; supported: [3]"
+            raise ArgumentError, "version #{version.inspect} not available for /infogreffe/rcs/unites_legales/{siren}/extrait_kbis; supported: [3, 4]"
           end
         @client.get(path, params: { "recipient" => recipient, "delegation_id" => delegation_id, "context" => context, "object" => object }.compact)
       end

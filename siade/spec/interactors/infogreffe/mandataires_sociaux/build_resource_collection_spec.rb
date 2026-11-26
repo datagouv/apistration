@@ -7,7 +7,7 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
     end
 
     let(:body) do
-      Infogreffe::MakeRequest.call(params:).response.body
+      open_payload_file("infogreffe/#{payload}.xml").read
     end
 
     let(:params) do
@@ -16,8 +16,9 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
 
     let(:resource_collection) { call.bundled_data.data }
 
-    context 'with a SIREN for personne morale', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
+    context 'with a SIREN for personne morale' do
       let(:siren) { valid_siren(:extrait_rcs) }
+      let(:payload) { 'personne_morale' }
 
       let(:valid_pp) do
         {
@@ -78,16 +79,18 @@ RSpec.describe Infogreffe::MandatairesSociaux::BuildResourceCollection, type: :b
         expect(resource_collection.map(&:to_h)).to include(valid_pm)
       end
 
-      context 'when no greffe code in mandataires sociaux payload',
-        vcr: { cassette_name: 'infogreffe/with_valid_siren_no_greffe_code' } do
-          it 'does not raise' do
-            expect { call }.not_to raise_error
-          end
+      context 'when no greffe code in mandataires sociaux payload' do
+        let(:payload) { 'without_greffe_code' }
+
+        it 'does not raise' do
+          expect { call }.not_to raise_error
         end
+      end
     end
 
-    context 'with a SIREN for personne physique', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_physique' } do
+    context 'with a SIREN for personne physique' do
       let(:siren) { valid_siren(:extrait_rcs_personne_physique) }
+      let(:payload) { 'personne_physique' }
 
       let(:valid_pp) do
         {

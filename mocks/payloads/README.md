@@ -90,6 +90,7 @@ génère une payload par défaut basée sur la spécification OpenAPI associée.
 * [Effectifs annuels d'une unité légale](api_entreprise_v3_gip_mds_effectifs_annuels_entreprise) (`/v3/gip_mds/unites_legales/{siren}/effectifs_annuels/{year}`)
 * [Effectifs mensuels d'un établissement](api_entreprise_v3_gip_mds_effectifs_mensuels_etablissement) (`/v3/gip_mds/etablissements/{siret}/effectifs_mensuels/{month}/annee/{year}`)
 * [Extrait RCS](api_entreprise_v3_infogreffe_extraits_rcs) (`/v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis`)
+* [Extrait RCS](api_entreprise_v4_infogreffe_extraits_rcs) (`/v4/infogreffe/rcs/unites_legales/{siren}/extrait_kbis`)
 * [Mandataires sociaux](api_entreprise_v3_infogreffe_mandataires_sociaux) (`/v3/infogreffe/rcs/unites_legales/{siren}/mandataires_sociaux`)
 * [Actes et bilans](api_entreprise_v3_inpi_rne_actes_bilans) (`/v3/inpi/rne/unites_legales/open_data/{siren}/actes_bilans`)
 * [Bénéficiaires effectifs](api_entreprise_v3_inpi_rne_beneficiaires_effectifs) (`/v3/inpi/rne/unites_legales/{siren}/beneficiaires_effectifs`)

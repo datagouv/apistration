@@ -14,13 +14,16 @@ export class Infogreffe {
   /** Extrait RCS */
   async extrait_kbis(siren: string, options: { version?: number; recipient?: string; delegation_id?: string; context?: string; object?: string } = {}) {
     validateSiren(siren, 'siren');
-    const resolvedVersion = options.version ?? 3;
+    const resolvedVersion = options.version ?? 4;
     const path = (() => {
       switch (resolvedVersion) {
       case 3:
+        process.emitWarning('[DEPRECATED] /v3/infogreffe/rcs/unites_legales/{siren}/extrait_kbis (#extrait_kbis): marked deprecated in the OpenAPI spec.', 'DeprecationWarning');
         return `/v3/infogreffe/rcs/unites_legales/${siren}/extrait_kbis`;
+      case 4:
+        return `/v4/infogreffe/rcs/unites_legales/${siren}/extrait_kbis`;
         default:
-          throw new Error(`version ${resolvedVersion} not available for /infogreffe/rcs/unites_legales/{siren}/extrait_kbis; supported: [3]`);
+          throw new Error(`version ${resolvedVersion} not available for /infogreffe/rcs/unites_legales/{siren}/extrait_kbis; supported: [3,4]`);
       }
     })();
     return this.client.get(path, { params: { 'recipient': options.recipient, 'delegation_id': options.delegation_id, 'context': options.context, 'object': options.object } });

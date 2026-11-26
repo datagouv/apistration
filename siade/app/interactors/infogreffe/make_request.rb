@@ -6,7 +6,7 @@ class Infogreffe::MakeRequest < MakeRequest::Post
   end
 
   def build_request_body
-    InfogreffeKbisSoapBuilder.new(siren).render
+    InfogreffeKbisSoapBuilder.new(siren, version_schema: context.version_schema).render
   end
 
   def extra_headers(request)

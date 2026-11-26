@@ -27,6 +27,7 @@ staging:
     - 'api_entreprise_v3_european_commission_vies'
     - 'api_entreprise_v3_fntp_carte_professionnelle_travaux_publics'
     - 'api_entreprise_v3_infogreffe_extraits_rcs'
+    - 'api_entreprise_v4_infogreffe_extraits_rcs'
     - 'api_entreprise_v3_infogreffe_mandataires_sociaux'
     - 'api_entreprise_v3_inpi_actes'
     - 'api_entreprise_v3_insee_adresses_etablissements'

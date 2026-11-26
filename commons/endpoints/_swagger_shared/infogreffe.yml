@@ -140,347 +140,360 @@ infogreffe:
         example: 12
 
   extraits_rcs:
-    title: "Extrait RCS"
-    description: "Extrait d'une partie des données du registre du commerce et des sociétés (RCS), informations générales des mandataires sociaux, ainsi que les commentaires laissés par les greffiers."
-    tags:
-      - "Informations générales"
-    attributes:
-      siren:
-        title: "Siren de l'unité légale"
-        type: "string"
-        example: "130025265"
-      date_radiation:
-        title: "Date de radiation de l'entreprise"
-        description: "Il s'agit de la date de radiation au registre du commerce et des sociétés."
-        type: "string"
-        example: "2019-01-01"
-        nullable: true
-      date_extrait:
-        type: 'string'
-        title: "Date de l'extrait"
-        description: "Il s'agit de la date d'émission de l'extrait RCS."
-        example: '2022-07-11'
-        nullable: true
-      date_immatriculation:
-        type: 'string'
-        title: "Date d'immatriculation au RCS"
-        description: "Il s'agit du jour d'immatriculation de l'entreprise au RCS. À compter de cette date, les sociétés jouissent de la personnalité morale. Cette date d'immatriculation n'est pas la même que celle délivrée par l'Insee. Elle ne correspond pas non plus à la date du début d'activité."
-        example: '1998-07-12'
-        nullable: true
-      mandataires_sociaux:
-        title: "Mandataires sociaux"
-        description: "Liste des mandataires sociaux d'une société inscrite au RCS. Certaines informations telles que le jour de naissance, le lieu ou la nationalité des personnes physiques ne figurent pas dans cette API. Pour plus d'exhaustivité, appeler l'[API Mandataires sociaux - Infogreffe](https://entreprise.api.gouv.fr/catalogue/infogreffe/mandataires_sociaux)."
-        type: "array"
-        items:
-          required: ["fonction"]
-          type: 'object'
-          additionalProperties: false
-          properties:
-            numero_identification:
-              title: "Numéro d'identification"
-              description: "Ce champ est uniquement disponible pour une personne morale."
-              type: "string"
-              example: "784824153"
-              nullable: true
-            type:
-              title: "Type de mandataire social"
-              description: "Ce champ permet de faire la distinction entre les personnes physiques et morales."
-              type: "string"
-              example: "personne_morale"
-              enum:
-                - "personne_morale"
-                - "personne_physique"
-            fonction:
-              title: "Fonction au sein de l'entreprise"
-              description: "Ce champ décrit la fonction du mandataire social au sein de l'entreprise. Cette information est disponible pour les personnes morales et physiques."
-              type: 'string'
-              example: 'COMMISSAIRE AUX COMPTES SUPPLEANT'
-              nullable: true
-            nom:
-              title: 'Nom'
-              description: 'Nom du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
-              type: 'string'
-              example: 'Henri'
-              nullable: true
-            prenom:
-              title: 'Prénom'
-              description: 'Prénom du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
-              type: 'string'
-              example: 'Martin'
-              nullable: true
-            date_naissance:
-              title: 'Mois et année de naissance'
-              description: "Mois et année de naissance du mandataire social. Ce champ est disponible uniquement pour une personne physique. Vous avez besoin d'une donnée plus précise ? L'[API Mandataires sociaux d'Infogreffe](https://entreprise.api.gouv.fr/catalogue/infogreffe/mandataires_sociaux) permet d'accéder à des données protégées : le jour de naissance, le lieu de naissance et la nationalité de la personne physique."
-              type: 'string'
-              example: '1965-01'
-              nullable: true
-            raison_sociale:
-              title: "Raison sociale"
-              description: 'Raison sociale de la personne morale mandataire social. Ce champ est disponible uniquement pour une personne morale.'
-              type: "string"
-              example: "BCRH & ASSOCIES - SOCIETE A RESPONSABILITE LIMITEE A ASSOCIE UNIQUE"
-              nullable: true
-      observations:
-        type: array
-        title: "Ensemble des observations du greffier"
-        description: "Ce champ regroupe tous les messages laissés par le greffier et inscrits dans les observations."
-        items:
-          type: object
-          additionalProperties: false
-          properties:
-            numero:
-              type: 'string'
-              title: "Numéro de l'observation"
-              example: '123456'
-            libelle:
-              type: 'string'
-              title: "Libellé de l'observation"
-              example: "LA SOCIETE NE CONSERVE AUCUNE ACTIVITE A SON ANCIEN SIEGE"
-            date:
-              type: 'string'
-              title: "Date de l'observation"
-              example: "2000-01-01"
-      nom_commercial:
-        type: 'string'
-        title: "Nom commercial"
-        example: "DECATHLON"
-        nullable: true
-      etablissement_principal:
-        title: "Informations de l'établissement principal"
-        type: "object"
-        additionalProperties: false
-        properties:
-          activite:
-            type: "string"
-            title: "Activité de l'établissement principal"
-            nullable: true
-          origine_fonds:
-            type: "string"
-            title: "Origine des fonds"
-            description: "Origine des fonds de l'entreprise"
-            example: "CREATION"
-            nullable: true
-          mode_exploitation:
-            type: "string"
-            title: "Mode d'exploitation"
-            description: "Mode d'exploitation de l'entreprise"
-            example: "EXPLOITATION DIRECTE"
-            nullable: true
-          code_ape:
-            type: "string"
-            title: "Code APE"
-            description: "Le code APE (activité principale exercée) permet d'identifier la branche d'activité principale. Il est attribué par l'Insee lors de l'immatriculation ou la déclaration d'activité de l'entreprise. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee.
-            \n
-            \n
-            À noter qu'une entreprise n'ayant pas encore de code APE peut se voir affecter la valeur '00.00Z' de manière provisoire.
-            \n
-            \n
-            Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
-            Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2120875.
-            \n
-            \n
-            ⚠️ À partir du 6 janvier 2027, le code APE utilisera la nouvelle nomenclature NAF 2025, tel qu'explicité dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067. Des tables de correspondance seront fournies par l'Insee."
-            example: "6420Z"
-      capital:
-        type: "object"
-        additionalProperties: false
-        title: "Capital de l'entreprise"
-        properties:
-          montant:
-            type: "number"
-            title: "Montant du capital"
-            description: "Montant du capital de création de l'entreprise."
-            example: 50123.6
-            nullable: true
-          devise:
-            type: "string"
-            title: "Devise"
-            description: "Devise du capital de création de l'entreprise."
-            example: "EUROS"
-            nullable: true
-          code_devise:
-            type: "string"
-            title: "Code devise"
-            description: "Code de la devise du capital de création de l'entreprise."
-            example: "EUR"
-            nullable: true
-      greffe:
-        type: "object"
-        additionalProperties: false
-        title: "Greffe"
-        description: "Informations sur le greffe."
-        properties:
-          valeur:
-            type: "string"
-            title: "Libellé du greffe"
-            description: "Nom du greffe en charge de l'entreprise."
-            example: "COLMAR"
-          code:
-            type: "string"
-            title: "Code greffe"
-            description: "Code du greffe en charge de l'entreprise."
-            example: "6851"
-      personne_physique:
-        type: "object"
-        additionalProperties: false
-        title: "Personne physique"
-        description: "Informations sur l'entreprise s'il s'agit d'une personne physique. Les champs sont vides si l'entreprise est une personne morale."
-        properties:
-          adresse:
+    v3:
+      title: &infogreffe_extraits_rcs_title "Extrait RCS"
+      description: &infogreffe_extraits_rcs_description "Extrait d'une partie des données du registre du commerce et des sociétés (RCS), informations générales des mandataires sociaux, ainsi que les commentaires laissés par les greffiers."
+      tags: &infogreffe_extraits_rcs_tags
+        - "Informations générales"
+      attributes: &infogreffe_extraits_rcs_v3_attributes
+        siren:
+          title: "Siren de l'unité légale"
+          type: "string"
+          example: "130025265"
+        date_radiation:
+          title: "Date de radiation de l'entreprise"
+          description: "Il s'agit de la date de radiation au registre du commerce et des sociétés."
+          type: "string"
+          example: "2019-01-01"
+          nullable: true
+        date_extrait:
+          type: 'string'
+          title: "Date de l'extrait"
+          description: "Il s'agit de la date d'émission de l'extrait RCS."
+          example: '2022-07-11'
+          nullable: true
+        date_immatriculation:
+          type: 'string'
+          title: "Date d'immatriculation au RCS"
+          description: "Il s'agit du jour d'immatriculation de l'entreprise au RCS. À compter de cette date, les sociétés jouissent de la personnalité morale. Cette date d'immatriculation n'est pas la même que celle délivrée par l'Insee. Elle ne correspond pas non plus à la date du début d'activité."
+          example: '1998-07-12'
+          nullable: true
+        mandataires_sociaux:
+          title: "Mandataires sociaux"
+          description: "Liste des mandataires sociaux d'une société inscrite au RCS. Certaines informations telles que le jour de naissance, le lieu ou la nationalité des personnes physiques ne figurent pas dans cette API. Pour plus d'exhaustivité, appeler l'[API Mandataires sociaux - Infogreffe](https://entreprise.api.gouv.fr/catalogue/infogreffe/mandataires_sociaux)."
+          type: "array"
+          items:
+            required: ["fonction"]
             type: 'object'
             additionalProperties: false
-            title: "Adresse"
-            description: &infogreffe_adresse_description "L'adresse transmise par Infogreffe est renvoyée sous différents formats, utilisant parfois le champ «nom postal», parfois les champs «ligne 1» et «ligne 2», ou encore au travers des champs «numéro de la voie» + «type de la voie» + «nom de la voie». Pour obtenir l'adresse du siège ou l'établissement principal, nous vous recommandons fortement de faire appel à l'API Adresse établissement - Insee."
-            properties: &infogreffe_adresse_properties
-              nom_postal:
+            properties:
+              numero_identification:
+                title: "Numéro d'identification"
+                description: "Ce champ est uniquement disponible pour une personne morale."
                 type: "string"
-                title: "Nom postal"
-                example: "22 RUE DE LA PAIX"
-                nullable: true
-              numero:
-                type: "string"
-                title: "Numéro de voie"
-                example: "22"
+                example: "784824153"
                 nullable: true
               type:
+                title: "Type de mandataire social"
+                description: "Ce champ permet de faire la distinction entre les personnes physiques et morales."
                 type: "string"
-                title: "Type"
-                example: "RUE"
+                example: "personne_morale"
+                enum:
+                  - "personne_morale"
+                  - "personne_physique"
+              fonction:
+                title: "Fonction au sein de l'entreprise"
+                description: "Ce champ décrit la fonction du mandataire social au sein de l'entreprise. Cette information est disponible pour les personnes morales et physiques."
+                type: 'string'
+                example: 'COMMISSAIRE AUX COMPTES SUPPLEANT'
                 nullable: true
-              voie:
+              nom:
+                title: 'Nom'
+                description: 'Nom du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
+                type: 'string'
+                example: 'Henri'
+                nullable: true
+              prenom:
+                title: 'Prénom'
+                description: 'Prénom du mandataire social. Ce champ est disponible uniquement pour une personne physique.'
+                type: 'string'
+                example: 'Martin'
+                nullable: true
+              date_naissance:
+                title: 'Mois et année de naissance'
+                description: "Mois et année de naissance du mandataire social. Ce champ est disponible uniquement pour une personne physique. Vous avez besoin d'une donnée plus précise ? L'[API Mandataires sociaux d'Infogreffe](https://entreprise.api.gouv.fr/catalogue/infogreffe/mandataires_sociaux) permet d'accéder à des données protégées : le jour de naissance, le lieu de naissance et la nationalité de la personne physique."
+                type: 'string'
+                example: '1965-01'
+                nullable: true
+              raison_sociale:
+                title: "Raison sociale"
+                description: 'Raison sociale de la personne morale mandataire social. Ce champ est disponible uniquement pour une personne morale.'
                 type: "string"
-                title: "Nom de la voie"
-                example: "DE LA PAIX"
+                example: "BCRH & ASSOCIES - SOCIETE A RESPONSABILITE LIMITEE A ASSOCIE UNIQUE"
                 nullable: true
-              ligne_1:
-                type: "string"
-                title: "Ligne 1 adresse"
-                nullable: true
-              ligne_2:
-                type: "string"
-                title: "Ligne 2 adresse"
-                nullable: true
-              localite:
-                type: "string"
-                title: "Localité"
-                nullable: true
-              code_postal:
-                type: "string"
-                title: "Code postal"
-                example: 75016"
-                nullable: true
-              bureau_distributeur:
-                type: "string"
-                title: "Bureau distributeur"
-                nullable: true
-              pays:
-                type: "string"
-                title: "Pays"
-                example: "FRANCE"
-                nullable: true
-          nationalite:
-            type: "object"
+        observations:
+          type: array
+          title: "Ensemble des observations du greffier"
+          description: "Ce champ regroupe tous les messages laissés par le greffier et inscrits dans les observations."
+          items:
+            type: object
             additionalProperties: false
-            title: "Nationalité"
-            description: "Nationalité de la personne physique."
             properties:
-              valeur:
-                type: "string"
-                title: "Nationalité"
-                description: "Nationalité de la personne physique."
-                example: "FRANÇAISE"
-                nullable: true
-              code:
-                type: "string"
-                title: "Code Pays"
-                description: "Code pays de la nationalité de la personne physique."
-                example: "FR"
-                nullable: true
-          nom:
-            type: "string"
-            title: "Nom"
-            description: "Nom de la personne physique."
-            example: "MARTIN"
-            nullable: true
-          prenom:
-            type: "string"
-            title: "Prénom"
-            description: "Prénom de la personne physique."
-            example: "JEAN-MARIE"
-            nullable: true
-          naissance:
-            type: "object"
-            additionalProperties: false
-            title: "Naissance"
-            description: "Informations de naissance de la personne physique (lieu, date, pays)"
-            properties:
-              pays:
-                type: "object"
-                additionalProperties: false
-                title: "Pays de naissance"
-                description: "Pays de naissance de la personne physique"
-                properties:
-                  valeur:
-                    type: "string"
-                    title: "Libellé du pays de naissance"
-                    description: "Nom du pays de naissance de la personne physique"
-                    example: "FRANCE"
-                    nullable: true
-                  code:
-                    type: "string"
-                    title: "Code du pays de naissance"
-                    description: "Code du pays de naissance de la personne physique"
-                    example: "FR"
-                    nullable: true
+              numero:
+                type: 'string'
+                title: "Numéro de l'observation"
+                example: '123456'
+              libelle:
+                type: 'string'
+                title: "Libellé de l'observation"
+                example: "LA SOCIETE NE CONSERVE AUCUNE ACTIVITE A SON ANCIEN SIEGE"
               date:
-                type: "string"
-                title: "Date de naissance"
-                description: "Date de naissance de la personne physique"
-                example: "1972-01-30"
-                nullable: true
-              lieu:
-                type: "string"
-                title: "Lieu de naissance"
-                description: "Lieu de naissance de la personne physique"
-                example: "MONTPELLIER"
-                nullable: true
-      personne_morale:
-        type: "object"
-        additionalProperties: false
-        title: "Personne morale"
-        description: "Informations sur l'entreprise s'il s'agit d'une personne morale. Les champs sont vides si l'entreprise est une personne physique."
-        properties:
-          forme_juridique:
-            type: "object"
-            additionalProperties: false
-            title: "Forme juridique"
-            description: "Forme juridique de la personne morale"
-            properties:
-              valeur:
                 type: 'string'
-                title: "Libellé de la forme juridique"
-                example: "SOCIETE PAR ACTIONS SIMPLIFIEES"
-                nullable: true
-              code:
-                type: 'string'
-                title: "Code forme juridique"
-                description: "Code représentant la forme juridique de l'entreprise. Attention, la nomenclature est différente de celle de l'INSEE."
-                example: "SASh"
-                nullable: true
-          denomination:
-            type: 'string'
-            title: "Dénomination ou raison sociale de la personne morale"
-            example: '2X INVEST'
-            nullable: true
-          date_cloture_exercice_comptable:
-            type: 'string'
-            title: "Date de clôture de l'exercice social"
-            description: "Mois et jour de l'année où l'exercice comptable de l'entreprise est clôturé."
-            example: "02-24"
-            nullable: true
-          date_fin_de_vie:
-            type: 'string'
-            title: "Durée de la personne morale"
-            description: "Date à laquelle l'entreprise cesse d'exister, sauf potentiel renouvellement. Correspond souvent à la date de création + 100 ans."
-            example: "2075-05-18"
-            nullable: true
+                title: "Date de l'observation"
+                example: "2000-01-01"
+        nom_commercial:
+          type: 'string'
+          title: "Nom commercial"
+          example: "DECATHLON"
+          nullable: true
+        etablissement_principal:
+          title: "Informations de l'établissement principal"
+          type: "object"
+          additionalProperties: false
+          properties:
+            activite:
+              type: "string"
+              title: "Activité de l'établissement principal"
+              nullable: true
+            origine_fonds:
+              type: "string"
+              title: "Origine des fonds"
+              description: "Origine des fonds de l'entreprise"
+              example: "CREATION"
+              nullable: true
+            mode_exploitation:
+              type: "string"
+              title: "Mode d'exploitation"
+              description: "Mode d'exploitation de l'entreprise"
+              example: "EXPLOITATION DIRECTE"
+              nullable: true
+            code_ape:
+              type: "string"
+              title: "Code APE"
+              description: "Le code APE (activité principale exercée) permet d'identifier la branche d'activité principale. Il est attribué par l'Insee lors de l'immatriculation ou la déclaration d'activité de l'entreprise. Ce code de 4 chiffres + 1 lettre est extrait de la nomenclature d'activité française (NAF) de l'Insee.
+              \n
+              \n
+              À noter qu'une entreprise n'ayant pas encore de code APE peut se voir affecter la valeur '00.00Z' de manière provisoire.
+              \n
+              \n
+              Plus d'informations métier : https://entreprendre.service-public.fr/vosdroits/F33050
+              Nomemclature d'activité française - NAF rév.2 de l'Insee : https://www.insee.fr/fr/information/2120875.
+              \n
+              \n
+              ⚠️ À partir du 6 janvier 2027, le code APE utilisera la nouvelle nomenclature NAF 2025, tel qu'explicité dans ce document : https://www.cnis.fr/evenements/la-revision-de-la-nomenclature-dactivites-francaise-naf-quels-effets-pour-les-utilisateurs/?category=1067. Des tables de correspondance seront fournies par l'Insee."
+              example: "6420Z"
+        capital:
+          type: "object"
+          additionalProperties: false
+          title: "Capital de l'entreprise"
+          properties:
+            montant:
+              type: "number"
+              title: "Montant du capital"
+              description: "Montant du capital de création de l'entreprise."
+              example: 50123.6
+              nullable: true
+            devise:
+              type: "string"
+              title: "Devise"
+              description: "Devise du capital de création de l'entreprise."
+              example: "EUROS"
+              nullable: true
+            code_devise:
+              type: "string"
+              title: "Code devise"
+              description: "Code de la devise du capital de création de l'entreprise."
+              example: "EUR"
+              nullable: true
+        greffe:
+          type: "object"
+          additionalProperties: false
+          title: "Greffe"
+          description: "Informations sur le greffe."
+          properties:
+            valeur:
+              type: "string"
+              title: "Libellé du greffe"
+              description: "Nom du greffe en charge de l'entreprise."
+              example: "COLMAR"
+            code:
+              type: "string"
+              title: "Code greffe"
+              description: "Code du greffe en charge de l'entreprise."
+              example: "6851"
+        personne_physique:
+          type: "object"
+          additionalProperties: false
+          title: "Personne physique"
+          description: "Informations sur l'entreprise s'il s'agit d'une personne physique. Les champs sont vides si l'entreprise est une personne morale."
+          properties:
+            adresse:
+              type: 'object'
+              additionalProperties: false
+              title: "Adresse"
+              description: &infogreffe_adresse_description "L'adresse transmise par Infogreffe est renvoyée sous différents formats, utilisant parfois le champ «nom postal», parfois les champs «ligne 1» et «ligne 2», ou encore au travers des champs «numéro de la voie» + «type de la voie» + «nom de la voie». Pour obtenir l'adresse du siège ou l'établissement principal, nous vous recommandons fortement de faire appel à l'API Adresse établissement - Insee."
+              properties: &infogreffe_adresse_properties
+                nom_postal:
+                  type: "string"
+                  title: "Nom postal"
+                  example: "22 RUE DE LA PAIX"
+                  nullable: true
+                numero:
+                  type: "string"
+                  title: "Numéro de voie"
+                  example: "22"
+                  nullable: true
+                type:
+                  type: "string"
+                  title: "Type"
+                  example: "RUE"
+                  nullable: true
+                voie:
+                  type: "string"
+                  title: "Nom de la voie"
+                  example: "DE LA PAIX"
+                  nullable: true
+                ligne_1:
+                  type: "string"
+                  title: "Ligne 1 adresse"
+                  nullable: true
+                ligne_2:
+                  type: "string"
+                  title: "Ligne 2 adresse"
+                  nullable: true
+                localite:
+                  type: "string"
+                  title: "Localité"
+                  nullable: true
+                code_postal:
+                  type: "string"
+                  title: "Code postal"
+                  example: 75016"
+                  nullable: true
+                bureau_distributeur:
+                  type: "string"
+                  title: "Bureau distributeur"
+                  nullable: true
+                pays:
+                  type: "string"
+                  title: "Pays"
+                  example: "FRANCE"
+                  nullable: true
+            nationalite:
+              type: "object"
+              additionalProperties: false
+              title: "Nationalité"
+              description: "Nationalité de la personne physique."
+              properties:
+                valeur:
+                  type: "string"
+                  title: "Nationalité"
+                  description: "Nationalité de la personne physique."
+                  example: "FRANÇAISE"
+                  nullable: true
+                code:
+                  type: "string"
+                  title: "Code Pays"
+                  description: "Code pays de la nationalité de la personne physique."
+                  example: "FR"
+                  nullable: true
+            nom:
+              type: "string"
+              title: "Nom"
+              description: "Nom de la personne physique."
+              example: "MARTIN"
+              nullable: true
+            prenom:
+              type: "string"
+              title: "Prénom"
+              description: "Prénom de la personne physique."
+              example: "JEAN-MARIE"
+              nullable: true
+            naissance:
+              type: "object"
+              additionalProperties: false
+              title: "Naissance"
+              description: "Informations de naissance de la personne physique (lieu, date, pays)"
+              properties:
+                pays:
+                  type: "object"
+                  additionalProperties: false
+                  title: "Pays de naissance"
+                  description: "Pays de naissance de la personne physique"
+                  properties:
+                    valeur:
+                      type: "string"
+                      title: "Libellé du pays de naissance"
+                      description: "Nom du pays de naissance de la personne physique"
+                      example: "FRANCE"
+                      nullable: true
+                    code:
+                      type: "string"
+                      title: "Code du pays de naissance"
+                      description: "Code du pays de naissance de la personne physique"
+                      example: "FR"
+                      nullable: true
+                date:
+                  type: "string"
+                  title: "Date de naissance"
+                  description: "Date de naissance de la personne physique"
+                  example: "1972-01-30"
+                  nullable: true
+                lieu:
+                  type: "string"
+                  title: "Lieu de naissance"
+                  description: "Lieu de naissance de la personne physique"
+                  example: "MONTPELLIER"
+                  nullable: true
+        personne_morale:
+          type: "object"
+          additionalProperties: false
+          title: "Personne morale"
+          description: "Informations sur l'entreprise s'il s'agit d'une personne morale. Les champs sont vides si l'entreprise est une personne physique."
+          properties:
+            forme_juridique:
+              type: "object"
+              additionalProperties: false
+              title: "Forme juridique"
+              description: "Forme juridique de la personne morale"
+              properties:
+                valeur:
+                  type: 'string'
+                  title: "Libellé de la forme juridique"
+                  example: "SOCIETE PAR ACTIONS SIMPLIFIEES"
+                  nullable: true
+                code:
+                  type: 'string'
+                  title: "Code forme juridique"
+                  description: "Code représentant la forme juridique de l'entreprise. Attention, la nomenclature est différente de celle de l'INSEE."
+                  example: "SASh"
+                  nullable: true
+            denomination:
+              type: 'string'
+              title: "Dénomination ou raison sociale de la personne morale"
+              example: '2X INVEST'
+              nullable: true
+            date_cloture_exercice_comptable:
+              type: 'string'
+              title: "Date de clôture de l'exercice social"
+              description: "Mois et jour de l'année où l'exercice comptable de l'entreprise est clôturé."
+              example: "02-24"
+              nullable: true
+            date_fin_de_vie:
+              type: 'string'
+              title: "Durée de la personne morale"
+              description: "Date à laquelle l'entreprise cesse d'exister, sauf potentiel renouvellement. Correspond souvent à la date de création + 100 ans."
+              example: "2075-05-18"
+              nullable: true
+    v4:
+      title: *infogreffe_extraits_rcs_title
+      description: *infogreffe_extraits_rcs_description
+      tags: *infogreffe_extraits_rcs_tags
+      attributes:
+        <<: *infogreffe_extraits_rcs_v3_attributes
+        euid:
+          title: "EUID de l'entreprise"
+          description: "Identifiant unique européen (European Unique Identifier) de l'entreprise, qui l'identifie dans l'interconnexion des registres du commerce européens (BRIS). Il est fourni par Infogreffe et figure sur l'extrait Kbis. Il est composé du code pays, du code du greffe et du SIREN. Il vaut `null` lorsqu'Infogreffe ne le transmet pas."
+          type: "string"
+          example: "FR7501.418166096"
+          nullable: true

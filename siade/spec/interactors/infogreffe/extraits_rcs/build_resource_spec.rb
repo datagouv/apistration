@@ -8,7 +8,7 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
   end
 
   let(:body) do
-    Infogreffe::MakeRequest.call(params:).response.body
+    open_payload_file("infogreffe/#{payload}.xml").read
   end
 
   let(:params) do
@@ -17,8 +17,9 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
     }
   end
 
-  describe '.call personne morale', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_morale' } do
+  describe '.call personne morale' do
     let(:siren) { valid_siren(:extrait_rcs) }
+    let(:payload) { 'personne_morale' }
 
     it { is_expected.to be_a_success }
 
@@ -73,8 +74,8 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
         subject(:capital) { instance.bundled_data.data.capital }
 
         it { expect(capital[:montant]).to eq(234_567.8) }
-        it { expect(capital[:devise]).to eq('') }
-        it { expect(capital[:code_devise]).to eq('') }
+        it { expect(capital[:devise]).to eq('EUROS') }
+        it { expect(capital[:code_devise]).to eq('EUR') }
       end
 
       its(:observations) { is_expected.to be_an_instance_of(Array) }
@@ -178,7 +179,8 @@ RSpec.describe Infogreffe::ExtraitsRCS::BuildResource, type: :build_resource do
     end
   end
 
-  describe '.call personne physique', vcr: { cassette_name: 'infogreffe/with_valid_siren_personne_physique' } do
+  describe '.call personne physique' do
+    let(:payload) { 'personne_physique' }
     let(:siren) { valid_siren(:extrait_rcs_personne_physique) }
 
     it { is_expected.to be_a_success }

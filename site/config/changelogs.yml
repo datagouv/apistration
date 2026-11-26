@@ -1,3 +1,13 @@
+- date: 2026-11-26
+  scope: api_entreprise
+  title: "Extrait RCS v4 : l'EUID de l'entreprise est disponible"
+  description: |
+    La v4 de l'API [extrait RCS - Infogreffe](<%= endpoint_path(uid: 'infogreffe/rcs/extrait') %>) renvoie l'EUID de l'entreprise dans le nouveau champ `euid`, par exemple `FR3302.919520908`. Cet identifiant unique européen (European Unique Identifier) figure sur les Kbis depuis le 1er décembre 2025 et identifie l'entreprise dans l'interconnexion des registres du commerce européens (BRIS). Il est transmis tel quel par Infogreffe et vaut `null` lorsqu'Infogreffe ne le fournit pas.
+
+    En dehors de ce champ, la réponse de la v4 a la même structure que celle de la v3, mais Infogreffe la produit dans un format plus récent, où beaucoup de textes ne sont plus en majuscules : forme juridique, fonction des mandataires sociaux, activité, date de l'extrait, ville des adresses, une partie des observations, parfois la dénomination et la nationalité (par exemple « Société anonyme » au lieu de « SOCIETE ANONYME »). Les codes et les dates ISO ne changent pas. **La v3 est dépréciée** : elle reste maintenue, sans le champ `euid` et dans l'ancien format. Pour migrer, remplacez `/v3/` par `/v4/` dans l'URL et vérifiez que vos traitements ne dépendent pas de la casse de ces champs.
+
+    Par ailleurs, en v3 comme en v4, les champs `capital.devise` et `capital.code_devise`, jusqu'ici toujours vides, contiennent maintenant la devise du capital (par exemple `EUROS` en v3, `Euros` en v4, et `EUR`).
+
 - date: 2026-11-25
   scope: api_entreprise
   title: "Sirene : bascule du code APE en NAF 2025 le 6 janvier 2027, migrez vers la v4"

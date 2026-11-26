@@ -6,6 +6,11 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- `infogreffe.extrait_kbis(siren)` calls `/v4/infogreffe/rcs/unites_legales/{siren}/extrait_kbis`
+  by default: v4 adds `euid`, the European Unique Identifier sent by
+  Infogreffe. `version: 3` still reaches v3, now deprecated, with a `warn`.
+
 ### Removed
 - **Breaking**: `fabrique_numerique_ministeres_sociaux.conventions_collectives(siret)`
   and the `fabrique_numerique_ministeres_sociaux` resource. The endpoint
