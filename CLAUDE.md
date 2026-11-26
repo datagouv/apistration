@@ -33,6 +33,12 @@ avec les conventions spécifiques :
   n'étant « pas pour un prochainement » : le scaffolding des deux SDKs est
   régénéré comme ci-dessus, mais l'endpoint n'appelle pas à lui seul une
   release ; sa release vient quand il sort du mode prochainement.
+- **Un endpoint ne sort pas en production sans ping** : entrée dans
+  `commons/pings.yml` avec un identifiant réel, validé en production et
+  léger, `ping_url` dans sa fiche et test case dans
+  `siade/config/endpoints_with_test_case.yml`. Détails et specs qui le
+  vérifient : `siade/docs/development/integration_nouvelle_api.md`
+  § Sortie en production.
 
 ## Règles de review
 

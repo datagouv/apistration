@@ -17,6 +17,7 @@ Si l'API n'est pas encore prête à être développée, la commande précédente
 Quand l'API est prête à rentrer en production, vous pouvez relancer la commande sans l'option `--prochainement`, attention à :
 1/ Ne pas écraser les fichiers existants
 2/ Bien modifier le MakeRequest pour ne plus hériter de MockedInteractor
+3/ Ajouter le ping et le test case, obligatoires (voir [Sortie en production](#sortie-en-production--ping-et-test-case))
 
 ## État du mode prochainement
 
@@ -53,7 +54,34 @@ Bien ajouter le provider dans les fichiers suivants:
 - Ajouter les scopes dans le fichier `commons/data/authorizations.yml` (à la racine du dépôt).
 - Ajouter le(s) throttles adéquat dans le fichier `config/throttles.yml`.
 
-## Autres tâches à effectuer plus tard
+## Sortie en production : ping et test case
 
-- Config de ping dans `commons/pings.yml`.
-- Ajout du test case dans `config/endpoints_with_test_case.yml`.
+Un endpoint ne sort pas du mode prochainement sans son ping : sans lui,
+pas de status page ni d'alerte quand le fournisseur tombe.
+
+- Ajouter une entrée dans `commons/pings.yml` (symlinké en
+  `config/pings.yml` dans `siade/` et `site/`), sous `shared.api_entreprise`
+  ou `shared.api_particulier`. Un ping qui couvre déjà le même
+  fournisseur et la même route peut être réutilisé.
+- Le ping d'un driver `retriever` ou `make_request` appelle réellement le
+  fournisseur : son identifiant de test doit exister en production et
+  donner une réponse rapide et légère (peu de données, pas de document).
+  Le valider en production avant de l'inscrire.
+- Renseigner `ping_url` dans la fiche `commons/endpoints/` :
+  `https://entreprise.api.gouv.fr/ping/<clé>` ou
+  `https://particulier.api.gouv.fr/api/<clé>/ping`.
+- Vérifier une fois déployé : `bundle exec rails runner bin/test_pings.rb`.
+- Ajouter le test case dans `config/endpoints_with_test_case.yml`.
+
+Deux specs le vérifient en CI :
+
+- `site/spec/endpoint_ping_urls_consistency_spec.rb` échoue quand une
+  fiche qui n'est ni en prochainement (tag `Prochainement` du swagger) ni
+  dépréciée n'a pas de `ping_url`, ou quand un `ping_url` vise une clé
+  absente de `pings.yml`. Les endpoints déjà en production sans ping y
+  sont listés : la liste ne doit que diminuer ;
+- `spec/acceptances/endpoints_with_test_case_spec.rb` échoue quand un
+  endpoint API Entreprise hors prochainement n'a pas de test case.
+
+Aucune ne vérifie que l'identifiant du ping est réel et léger : c'est au
+relecteur de la PR de sortie du mode prochainement.
