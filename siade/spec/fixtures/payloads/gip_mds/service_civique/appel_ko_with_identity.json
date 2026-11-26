@@ -1,0 +1,8 @@
+{
+  "erreurs": [
+    {
+      "code": "APPEL_KO_APPELANT",
+      "message": "Appel impossible pour les critères saisis : DUPONT, JEAN, 25061990."
+    }
+  ]
+}

@@ -10,7 +10,21 @@ class GIPMDS::ServiceCivique::ValidateResponse < ValidateResponse
     several_service_civiques! if retained_contracts.many?
   end
 
+  protected
+
+  def add_monitoring_private_context(error)
+    super
+
+    error.add_to_monitoring_private_context(http_response_body: encrypted_response_body)
+  end
+
   private
+
+  def encrypted_response_body
+    DataEncryptor.new(context.response.body.to_s).encrypt.to_s
+  rescue GPGME::Error
+    '[DADe response body withheld: encryption failed]'
+  end
 
   def unreadable_body?
     body.blank? || invalid_json?

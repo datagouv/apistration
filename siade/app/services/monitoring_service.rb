@@ -11,6 +11,7 @@ class MonitoringService
   PERSONAL_DATA_JSON_KEYS = %w[
     nom prenom prenoms nomNaissance nomUsage
     email telephone dateNaissance adresse civilite sexe
+    nomFamille lieuNaissance nomFamilleSngi prenomsSngi dateNaissanceSngi
   ].freeze
 
   PERSONAL_DATA_THRESHOLD = 2

@@ -152,6 +152,19 @@ RSpec.describe GIPMDS::ServiceCivique, type: :retriever_organizer do
     it_behaves_like 'an impossible case, since a person does one service civique only and none after an ended one'
   end
 
+  context 'when the web service answers an unexpected error whose message echoes the requested identity' do
+    let(:provider_status) { 501 }
+    let(:provider_body) { read_payload_file('gip_mds/service_civique/appel_ko_with_identity.json') }
+
+    it 'answers a provider error (502) and reports the DADe body to Sentry encrypted, never the identity in clear' do
+      expect(subject).to be_a_failure
+      reported_body = subject.errors.first.monitoring_private_context[:http_response_body]
+
+      expect(reported_body).to start_with('-----BEGIN PGP MESSAGE-----')
+      expect(reported_body).not_to include('DUPONT', '25061990')
+    end
+  end
+
   context 'when the web service hits its contract limit (206 OK_PARTIEL): the list of contracts is incomplete' do
     let(:provider_status) { 206 }
     let(:provider_body) { read_payload_file('gip_mds/service_civique/partial.json') }
