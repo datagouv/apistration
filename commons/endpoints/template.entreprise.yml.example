@@ -30,6 +30,11 @@ fiche:
     # Format : 'api_entreprise/v3_and_more/<provider>/<controller_class>'
     # Cherchez la route dans siade/config/routes/api_entreprise.rb pour la valeur exacte.
     controller: 'api_entreprise/v3_and_more/acoss/attestations_sociales'
+    # Route de ping : 'https://entreprise.api.gouv.fr/ping/<clé>', <clé> étant
+    # l'entrée de shared.api_entreprise dans commons/pings.yml
+    # Obligatoire dès que l'endpoint sort du mode prochainement (vérifié par
+    # site/spec/endpoint_ping_urls_consistency_spec.rb)
+    ping_url: 'https://entreprise.api.gouv.fr/ping/urssaf/attestation_sociale'
     # Date de mise en production de cette version de l'API, au format 'AAAA-MM-JJ' (entre quotes), ou 'AAAA-MM' quand seul le mois est connu (affiché « octobre 2021 »)
     # Facultatif : affichée dans la partie Historique de la fiche
     production_date: '2026-07-07'

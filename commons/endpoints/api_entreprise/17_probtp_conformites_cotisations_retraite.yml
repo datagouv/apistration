@@ -3,6 +3,7 @@ fiche:
   - uid: 'probtp/conformites_cotisations_retraite'
     production_date: '2022-01-12'
     datagouv_uid: '672cf6b46a8456f417812b11'
+    ping_url: 'https://entreprise.api.gouv.fr/ping/probtp/cotisations_retraite'
     path: '/v3/probtp/etablissements/{siret}/conformite_cotisations_retraite'
     controller: 'api_entreprise/v3_and_more/probtp/conformites_cotisations_retraite'
     position: 280
