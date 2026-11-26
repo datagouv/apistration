@@ -7,7 +7,7 @@ fiche:
       - 'cnav/prime_activite'
     path: '/api/v2/prime-activite'
     controller: 'api_particulier/v2/cnav/prime_activite'
-    ping_url: 'https://particulier.api.gouv.fr/api/caf/ping'
+    ping_url: 'https://particulier.api.gouv.fr/api/cnaf_msa_prime_activite/ping'
     position: 700
     perimeter:
       entity_type_description: |+

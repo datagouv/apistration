@@ -7,7 +7,7 @@ fiche:
       - 'cnav/allocation_soutien_familial'
     path: '/api/v2/allocation-soutien-familial'
     controller: 'api_particulier/v2/cnav/allocation_soutien_familial'
-    ping_url: 'https://particulier.api.gouv.fr/api/caf/ping'
+    ping_url: 'https://particulier.api.gouv.fr/api/cnaf_msa_allocation_soutien_familial/ping'
     position: 900
     perimeter:
       entity_type_description:
