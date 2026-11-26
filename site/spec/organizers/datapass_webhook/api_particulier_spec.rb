@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe DatapassWebhook::APIParticulier, type: :interactor do
-  it_behaves_like 'a datapass webhook organizer', 'particulier', :mj_list_id_particulier do
+  it_behaves_like 'a datapass webhook organizer', 'particulier', 4 do
     let(:datapass_webhook_params) do
       build(:datapass_webhook,
         event: 'approve',
@@ -47,7 +47,7 @@ RSpec.describe DatapassWebhook::APIParticulier, type: :interactor do
     let(:legacy_token_id) { 'over-9000' }
 
     before do
-      allow(Mailjet::Contactslist_managemanycontacts).to receive(:create)
+      stub_brevo_contacts_upsert
     end
 
     it 'does not creates contact metier' do

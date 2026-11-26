@@ -18,7 +18,7 @@ RSpec.describe DatapassWebhook::V2::APIParticulierDemarcheNumerique, type: :inte
   end
 
   before do
-    allow(Mailjet::Contactslist_managemanycontacts).to receive(:create)
+    stub_brevo_contacts_upsert
   end
 
   it_behaves_like 'datapass webhooks', 'v2'
@@ -33,14 +33,13 @@ RSpec.describe DatapassWebhook::V2::APIParticulierDemarcheNumerique, type: :inte
     expect(Token.last.api).to eq('particulier')
   end
 
-  describe 'Mailjet adding contacts' do
-    it 'adds contacts to Particulier mailjet list' do
-      expect(Mailjet::Contactslist_managemanycontacts).to receive(:create).with(
-        hash_including(id: AdminApientreprise.credentials[:mj_list_id_particulier]),
-        any_args
-      )
-
+  describe 'Brevo adding contacts' do
+    it 'adds contacts to the API Particulier list' do
       subject
+
+      expect(
+        a_request(:post, BrevoAPIMocks::BREVO_CONTACTS_URL).with(body: hash_including(listIds: [4]))
+      ).to have_been_made.at_least_once
     end
   end
 

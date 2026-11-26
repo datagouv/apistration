@@ -89,6 +89,8 @@ constraints(APIParticulierDomainConstraint.new) do
     get '/nouveautes/desinscription/:token', to: 'changelog_subscriptions#destroy_via_token', as: :changelog_unsubscribe_token
 
     get '/infolettre', to: 'pages#newsletter', as: :newsletter
+    post '/infolettre', to: 'newsletter_subscriptions#create', as: :newsletter_subscribe
+    get '/infolettre/confirmation', to: 'newsletter_subscriptions#confirmed', as: :newsletter_confirmed
     get '/mentions-legales', to: 'pages#mentions', as: :mentions
     get '/cgu', to: 'pages#cgu', as: :cgu
     get '/donnees_personnelles', to: 'pages#donnees_personnelles', as: :donnees_personnelles

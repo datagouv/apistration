@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe DatapassWebhook::APIEntreprise, type: :interactor do
-  it_behaves_like 'a datapass webhook organizer', 'entreprise', :mj_list_id_entreprise do
+  it_behaves_like 'a datapass webhook organizer', 'entreprise', 3 do
     let(:datapass_webhook_params) do
       build(:datapass_webhook,
         event: 'approve',
@@ -33,7 +33,7 @@ RSpec.describe DatapassWebhook::APIEntreprise, type: :interactor do
     let(:previous_enrollment_id) { generate(:authorization_request, :external_id) }
 
     before do
-      allow(Mailjet::Contactslist_managemanycontacts).to receive(:create)
+      stub_brevo_contacts_upsert
       create(:authorization_request, external_id: previous_enrollment_id, tokens: [create(:token)])
     end
 

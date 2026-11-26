@@ -55,6 +55,9 @@ module AdminApientreprise
       namespace: "admin_api_entreprise_cache_#{Rails.env}_#{Time.now.to_i}",
       expires_in: (7 * 24 * 60 * 60)
     )
+    config.rate_limit_store = ActiveSupport::Cache::RedisCacheStore.new(
+      **config_for(:cache_redis), namespace: "admin_api_entreprise_rate_limit_#{Rails.env}"
+    )
 
     config.generators do |g|
       g.test_framework :rspec

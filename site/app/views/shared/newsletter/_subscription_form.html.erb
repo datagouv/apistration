@@ -1,0 +1,25 @@
+<div class="fr-col-xs-12 fr-col-sm-12 fr-col-md-6 fr-col-lg-6 fr-col-xl-6">
+  <h3 class="fr-h4"><%= t("#{namespace}.pages.newsletter.main.newsletter_title").html_safe %></h3>
+  <p><%= t("#{namespace}.pages.newsletter.main.newsletter_description").html_safe %></p>
+  <%= form_with scope: :newsletter_subscription, url: newsletter_subscribe_path, method: :post do |f| %>
+    <fieldset class="fr-fieldset">
+      <legend class="fr-sr-only"><%= t('shared.newsletter_subscriptions.form.legend') %></legend>
+      <div class="fr-fieldset__element">
+        <div class="fr-input-group">
+          <%= f.label :email, class: 'fr-label' do %>
+            <%= t('shared.newsletter_subscriptions.form.email_label') %>
+            <span class="fr-hint-text"><%= t('shared.newsletter_subscriptions.form.email_hint') %></span>
+          <% end %>
+          <%= f.email_field :email, class: 'fr-input', required: true, autocomplete: 'email', spellcheck: false %>
+        </div>
+      </div>
+      <div class="fr-fieldset__element" style="position: absolute; left: -10000px;" aria-hidden="true">
+        <%= f.label :reference, t('shared.newsletter_subscriptions.form.honeypot_label') %>
+        <%= f.text_field :reference, tabindex: -1, autocomplete: 'off' %>
+      </div>
+      <div class="fr-fieldset__element">
+        <%= f.submit t('shared.newsletter_subscriptions.form.submit'), class: 'fr-btn' %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>

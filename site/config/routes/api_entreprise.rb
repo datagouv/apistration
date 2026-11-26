@@ -83,6 +83,8 @@ constraints(APIEntrepriseDomainConstraint.new) do
     get '/robots.txt', to: RobotsTxt.new('entreprise')
 
     get '/infolettre', to: 'pages#newsletter', as: :newsletter
+    post '/infolettre', to: 'newsletter_subscriptions#create', as: :newsletter_subscribe
+    get '/infolettre/confirmation', to: 'newsletter_subscriptions#confirmed', as: :newsletter_confirmed
     get '/mentions-legales', to: 'pages#mentions', as: :mentions
     get '/cgu', to: 'pages#cgu', as: :cgu
     get '/donnees_personnelles', to: 'pages#donnees_personnelles', as: :donnees_personnelles

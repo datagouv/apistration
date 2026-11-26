@@ -16,7 +16,7 @@ RSpec.describe DatapassWebhook::V2::APIEntreprise, type: :interactor do
   let(:token) { create(:token) }
 
   before do
-    allow(Mailjet::Contactslist_managemanycontacts).to receive(:create)
+    stub_brevo_contacts_upsert
   end
 
   it_behaves_like 'datapass webhooks', 'v2'
@@ -60,46 +60,51 @@ RSpec.describe DatapassWebhook::V2::APIEntreprise, type: :interactor do
     end
   end
 
-  describe 'Mailjet adding contacts' do
-    it 'adds contacts to Entreprise mailjet list' do
-      expect(Mailjet::Contactslist_managemanycontacts).to receive(:create).with(
-        id: AdminApientreprise.credentials[:mj_list_id_entreprise],
-        action: 'addnoforce',
-        contacts: [
-          {
-            email: 'applicant@gouv.fr',
-            properties: {
-              'contact_demandeur' => true,
-              'contact_métier' => false,
-              'contact_technique' => false,
-              'nom' => 'Demandeur',
-              'prénom' => 'Nicolas'
-            }
-          },
-          {
-            email: 'metier@gouv.fr',
-            properties: {
-              'contact_demandeur' => false,
-              'contact_métier' => true,
-              'contact_technique' => false,
-              'nom' => 'Metier',
-              'prénom' => 'Jacques'
-            }
-          },
-          {
-            email: 'tech@gouv.fr',
-            properties: {
-              'contact_demandeur' => false,
-              'contact_métier' => false,
-              'contact_technique' => true,
-              'nom' => 'Tech',
-              'prénom' => 'Jean'
-            }
-          }
-        ]
-      )
-
+  describe 'Brevo adding contacts' do
+    it 'adds each contact to the API Entreprise list with its roles' do
       subject
+
+      expect(
+        brevo_contact_upsert(
+          email: 'applicant@gouv.fr',
+          attributes: {
+            'PRENOM' => 'Nicolas',
+            'NOM' => 'Demandeur',
+            'CONTACT_DEMANDEUR' => true,
+            'CONTACT_TECHNIQUE' => false,
+            'CONTACT_METIER' => false
+          },
+          list_id: 3
+        )
+      ).to have_been_made.once
+
+      expect(
+        brevo_contact_upsert(
+          email: 'metier@gouv.fr',
+          attributes: {
+            'PRENOM' => 'Jacques',
+            'NOM' => 'Metier',
+            'CONTACT_DEMANDEUR' => false,
+            'CONTACT_TECHNIQUE' => false,
+            'CONTACT_METIER' => true
+          },
+          list_id: 3
+        )
+      ).to have_been_made.once
+
+      expect(
+        brevo_contact_upsert(
+          email: 'tech@gouv.fr',
+          attributes: {
+            'PRENOM' => 'Jean',
+            'NOM' => 'Tech',
+            'CONTACT_DEMANDEUR' => false,
+            'CONTACT_TECHNIQUE' => true,
+            'CONTACT_METIER' => false
+          },
+          list_id: 3
+        )
+      ).to have_been_made.once
     end
   end
 

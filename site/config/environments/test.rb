@@ -34,6 +34,7 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
   config.cache_store = :memory_store
+  config.rate_limit_store = ActiveSupport::Cache::MemoryStore.new
 
   # Raise exceptions instead of rendering exception templates.
   config.action_dispatch.show_exceptions = :none

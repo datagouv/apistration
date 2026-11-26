@@ -68,7 +68,7 @@ RSpec.describe API::DatapassWebhooksController do
 
       before do
         allow_any_instance_of(HubSignature).to receive(:valid?).and_return(true) # rubocop:todo RSpec/AnyInstance
-        allow(Mailjet::Contactslist_managemanycontacts).to receive(:create)
+        stub_brevo_contacts_upsert
       end
 
       it 'emits the webhook reception by DataPass' do
