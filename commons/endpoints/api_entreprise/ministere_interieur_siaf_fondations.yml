@@ -3,6 +3,7 @@ fiche:
   - uid: 'siaf/fondations'
     path: '/v3/ministere_interieur/siaf/fondations/{siren_or_siret_or_rnf}'
     controller: 'api_entreprise/v3_and_more/mi/siaf/fondations'
+    ping_url: 'https://entreprise.api.gouv.fr/ping/mi/siaf/fondations'
     position: 155
     novelty: true
     perimeter:
