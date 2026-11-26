@@ -8,7 +8,9 @@ class EditorDelegationRequest::DatapassSubmission
   end
 
   def call
-    client.submit_demande(demande_id, consentement: consents)
+    id = demande_id
+    client.attach_documents(id, documents) if documents.any?
+    client.submit_demande(id, consentement: consents)
   end
 
   private
@@ -37,6 +39,10 @@ class EditorDelegationRequest::DatapassSubmission
 
   def data
     request.editor_delegation_campaign.datapass_data.merge(request.datapass_data_protection_officer)
+  end
+
+  def documents
+    request.cadre_juridique_document.attached? ? { 'cadre_juridique_document' => request.cadre_juridique_document } : {}
   end
 
   def metadata

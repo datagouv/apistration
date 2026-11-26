@@ -21,7 +21,7 @@ class EditorDelegationBatch
   end
 
   def pending_requests
-    @pending_requests ||= requests.where(submitted_at: nil).to_a
+    @pending_requests ||= requests.where(submitted_at: nil).includes(cadre_juridique_document_attachment: :blob).to_a
   end
 
   def submitted_requests
@@ -79,6 +79,12 @@ class EditorDelegationBatch
 
   def single?
     pending_requests.one?
+  end
+
+  def conventions?
+    return @conventions if defined?(@conventions)
+
+    @conventions = requests.joins(:cadre_juridique_document_attachment).exists?
   end
 
   def establishment(siret)

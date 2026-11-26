@@ -16,6 +16,10 @@
       <p class="fr-text--bold fr-mb-1v">Lien relatif au traitement</p>
       <p><%= external_link_to data['cadre_juridique_url'], data['cadre_juridique_url'] %></p>
     <% end %>
+    <% if @batch.single? && @batch.pending_requests.first.cadre_juridique_document.attached? %>
+      <p class="fr-text--bold fr-mb-1v">Convention</p>
+      <p><%= render 'convention_link', request: @batch.pending_requests.first %></p>
+    <% end %>
   <% end %>
 <% end %>
 

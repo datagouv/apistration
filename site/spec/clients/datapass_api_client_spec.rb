@@ -210,6 +210,27 @@ RSpec.describe DatapassAPIClient do
     end
   end
 
+  describe '#attach_documents' do
+    let(:request) { create(:editor_delegation_request) }
+
+    before do
+      request.cadre_juridique_document.attach(io: Rails.root.join('spec/fixtures/files/convention.pdf').open, filename: 'convention.pdf', content_type: 'application/pdf')
+      stub_datapass(:patch, 'demandes/123')
+    end
+
+    it 'sends the files as multipart under the document key of the demande data, as DataPass only accepts files there' do
+      client.attach_documents(123, 'cadre_juridique_document' => request.cadre_juridique_document)
+
+      expect(
+        a_request(:patch, "#{url}/demandes/123").with do |sent|
+          sent.headers['Content-Type'].start_with?('multipart/form-data') &&
+            sent.body.include?('name="demande[data][cadre_juridique_document][]"; filename="convention.pdf"') &&
+            sent.body.include?('%PDF-1.4')
+        end
+      ).to have_been_made
+    end
+  end
+
   describe '#get_definition' do
     subject(:get_definition) { client.get_definition('api_particulier') }
 

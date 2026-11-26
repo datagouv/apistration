@@ -212,8 +212,13 @@ class Seeds
     hoptis_establishments.each do |siret, denomination|
       find_or_create_organization(siret, denomination:)
       dpo = siret.start_with?('834567893') ? {} : hoptis_data_protection_officer
-      create_editor_delegation_request(use_case, siret, 'creches@yopmail.com', **dpo)
+      request = create_editor_delegation_request(use_case, siret, 'creches@yopmail.com', **dpo)
+      attach_convention(request) unless siret.start_with?('867901225')
     end
+  end
+
+  def attach_convention(request)
+    request.cadre_juridique_document.attach(io: Rails.root.join('db/seeds/convention.pdf').open, filename: "convention-#{request.siret}.pdf", content_type: 'application/pdf')
   end
 
   def hoptis_establishments

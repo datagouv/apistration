@@ -33,6 +33,8 @@ class EditorDelegationRequest < ApplicationRecord
 
   delegate :editor, to: :editor_delegation_campaign
 
+  has_one_attached :cadre_juridique_document
+
   store_accessor :data, *DATA_PROTECTION_OFFICER_ATTRIBUTES
 
   normalizes :contact_email, with: ->(email) { email.strip.downcase.presence }

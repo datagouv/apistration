@@ -26,6 +26,7 @@ constraints(APIParticulierDomainConstraint.new) do
       get '/verification', action: :verification, as: :verification
       post '/signature', action: :sign, as: :signature
       get '/confirmation', action: :confirmation, as: :confirmation
+      get '/conventions/:siret', action: :convention, as: :convention, constraints: { siret: /\d{14}/ }
       get '/organisations', action: :organizations, as: :organizations
       get '/organisations/:siren', action: :edit_organization, as: :organization, constraints: { siren: /\d{9}/ }
       patch '/organisations/:siren', action: :update_organization, constraints: { siren: /\d{9}/ }

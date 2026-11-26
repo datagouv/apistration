@@ -7,6 +7,9 @@
         <tr>
           <th scope="col">Établissement</th>
           <th scope="col">SIRET</th>
+          <% if @batch.conventions? %>
+            <th scope="col">Convention</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -15,6 +18,9 @@
             <tr>
               <td><%= @batch.establishment(request.siret)&.denomination || organization.name %></td>
               <td><%= request.siret %></td>
+              <% if @batch.conventions? %>
+                <td><%= render 'convention_link', request: %></td>
+              <% end %>
             </tr>
           <% end %>
         <% end %>

@@ -57,6 +57,13 @@ module EditorDelegationRequestsManagement
     @submitted_requests = @batch.submitted_requests.to_a
   end
 
+  def convention
+    document = @batch.requests.find_by!(siret: params.expect(:siret)).cadre_juridique_document
+    raise ActionController::RoutingError, 'Not Found' unless document.attached?
+
+    send_data document.download, filename: document.filename.to_s, type: document.content_type, disposition: :inline
+  end
+
   def organizations; end
 
   def edit_organization; end

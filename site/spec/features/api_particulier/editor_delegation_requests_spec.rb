@@ -33,6 +33,31 @@ RSpec.describe 'Editor delegation request journey on API Particulier', app: :api
     expect(datapass).to have_received(:create_demande).with(hash_including(form_uid: 'api-particulier-tarification-eaje'))
   end
 
+  it 'shows the convention the editor provided for each establishment, then sends it to DataPass with the request' do
+    other_establishment = create(:editor_delegation_request, :with_authorization_request, :with_dpo, editor_delegation_campaign:, siret: '21340172200011', contact_email: user.email)
+    [editor_delegation_request, other_establishment].each do |request|
+      request.cadre_juridique_document.attach(io: Rails.root.join('spec/fixtures/files/convention.pdf').open, filename: "convention-#{request.siret}.pdf", content_type: 'application/pdf')
+    end
+
+    visit editor_delegation_request.invitation_path
+
+    expect(page).to have_css('th', text: 'Convention')
+    expect(page).to have_link('Voir', title: 'Convention de 21340172201787')
+
+    click_on 'Continuer'
+    click_link 'Voir', title: 'Convention de 21340172200011', match: :first
+
+    expect(page.response_headers['Content-Type']).to eq('application/pdf')
+
+    visit "#{editor_delegation_request.invitation_path}/verification"
+    check 'terms_of_service_accepted'
+    check 'data_protection_officer_informed'
+    perform_enqueued_jobs { click_on 'Soumettre les 2 demandes' }
+
+    expect(datapass).to have_received(:attach_documents).with('1001', 'cadre_juridique_document' => an_instance_of(ActiveStorage::Attached::One))
+    expect(datapass).to have_received(:attach_documents).twice
+  end
+
   it 'answers 404 to the link of an API Entreprise request' do
     entreprise_request = create(:editor_delegation_request, :with_authorization_request, contact_email: user.email)
 
