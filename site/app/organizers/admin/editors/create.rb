@@ -5,6 +5,7 @@ class Admin::Editors::Create < ApplicationOrganizer
   end
 
   organize Admin::Editors::CreateModel,
+    Admin::Editors::FetchOrganization,
     Admin::Editors::CaptureCreationAttributes,
     Admin::TrackActivity
 end

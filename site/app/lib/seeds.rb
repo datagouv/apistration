@@ -83,19 +83,15 @@ class Seeds
   def create_editor
     @editor = Editor.create!(
       name: 'MGDIS',
-      form_uids: %w[api-entreprise-mgdis],
       apis: %w[entreprise],
       copy_token: true,
       editor_tokens_enabled: true,
       siret: '32816124500027',
       role: 'manages_token',
-      contact_email: 'contact-mgdis@yopmail.com',
-      contact_phone: '0299000000',
       deployment_type: 'saas',
       domain: 'mgdis.fr',
       languages: 'Java',
-      description: 'Éditeur de solutions de gestion financière pour le secteur public',
-      setup_instructions: "1. Se connecter au portail MGDIS\n2. Administration > Connecteurs API\n3. Renseigner le jeton API Entreprise"
+      description: 'Éditeur de solutions de gestion financière pour le secteur public'
     )
     create_user(
       email: 'editeur@yopmail.com',
@@ -110,13 +106,11 @@ class Seeds
       editor: @editor
     )
 
-    Editor.create!(
+    atexo = Editor.create!(
       name: 'Atexo',
-      form_uids: %w[api-entreprise-atexo],
       apis: %w[entreprise],
       siret: '44090956200033',
       role: 'manages_token',
-      contact_email: 'contact-atexo@yopmail.com',
       deployment_type: 'saas',
       domain: 'atexo.com',
       languages: 'Java, JavaScript',
@@ -124,9 +118,8 @@ class Seeds
       allowed_ips: ['203.0.113.20', '203.0.113.21']
     )
 
-    Editor.create!(
+    aiga = Editor.create!(
       name: 'Aiga',
-      form_uids: %w[api-particulier-aiga api-particulier-aiga-petite-enfance],
       apis: %w[particulier],
       siret: '39825361700045',
       role: 'client_manages_token',
@@ -134,6 +127,28 @@ class Seeds
       domain: 'aiga.fr',
       description: 'Éditeur de logiciels pour la petite enfance et les services périscolaires'
     )
+
+    @editor.contacts.create!(role: 'technical', full_name: 'Paul Martin', email: 'contact-mgdis@yopmail.com', phone: '0299000000')
+    @editor.contacts.create!(role: 'dpo', full_name: 'Claire Petit', email: 'dpo-mgdis@yopmail.com')
+    atexo.contacts.create!(role: 'technical', email: 'contact-atexo@yopmail.com')
+
+    create_editor_use_cases(@editor, 'api-entreprise-mgdis', setup_instructions: "1. Se connecter au portail MGDIS\n2. Administration > Connecteurs API\n3. Renseigner le jeton API Entreprise")
+    create_editor_use_cases(atexo, 'api-entreprise-atexo')
+    create_editor_use_cases(aiga, 'api-particulier-aiga', 'api-particulier-aiga-petite-enfance')
+  end
+
+  def create_editor_use_cases(editor, *form_uids, **attributes)
+    form_uids.each do |form_uid|
+      use_case = DatapassUseCase.for_form(form_uid)
+
+      editor.use_cases.create!(
+        form_uid:,
+        use_case: use_case.key,
+        software: editor.name,
+        scopes: DatapassReferential.new(use_case.api).form(form_uid).scopes,
+        **attributes
+      )
+    end
   end
 
   def create_provider_user

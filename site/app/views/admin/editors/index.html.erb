@@ -21,35 +21,46 @@
   </div>
 <% end %>
 
-<div class="fr-table fr-table--bordered fr-table--layout-fixed">
+<div class="fr-table fr-table--bordered">
   <table>
     <caption>Éditeurs (<%= @editors.total_count %>)</caption>
     <thead>
       <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">SIRET</th>
-        <th scope="col">Formulaires</th>
-        <th scope="col">Membres</th>
-        <th scope="col">Actions</th>
+        <% ['Éditeur', 'Fiche', 'Démarches', 'Membres', 'Double authentification', 'Déploiement'].each do |header| %>
+          <th scope="col"><%= header %></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
       <% @editors.each do |editor| %>
+        <% gaps = EditorProfileGaps.new(editor) %>
+        <% use_cases = editor.use_cases.to_a %>
         <tr id="<%= dom_id(editor) %>">
           <td>
             <%= link_to editor.name, admin_editor_path(editor), class: 'fr-link' %>
-          </td>
-          <td>
             <% if editor.siret.present? %>
-              <%= external_link_to editor.siret, "https://annuaire-entreprises.data.gouv.fr/etablissement/#{editor.siret}", class: 'fr-link' %>
+              <br><%= external_link_to editor.siret, "https://annuaire-entreprises.data.gouv.fr/etablissement/#{editor.siret}", class: 'fr-link fr-link--sm' %>
             <% end %>
           </td>
-          <td><%= editor.form_uids.size %></td>
-          <td><%= @users_counts.fetch(editor.id, 0) %></td>
           <td>
-            <%= link_to 'Voir', admin_editor_path(editor), class: 'fr-btn fr-btn--sm fr-btn--tertiary' %>
-            <%= link_to 'Modifier', edit_admin_editor_path(editor), class: 'fr-btn fr-btn--sm fr-btn--secondary' %>
+            <% if gaps.any? %>
+              <%= link_to admin_editor_path(editor), class: 'fr-badge fr-badge--sm fr-badge--warning', title: gaps.all.map(&:label).join(', ') do %>
+                <%= pluralize(gaps.size, 'information manquante', plural: 'informations manquantes') %>
+              <% end %>
+            <% else %>
+              <p class="fr-badge fr-badge--sm fr-badge--success">Complète</p>
+            <% end %>
           </td>
+          <td>
+            <%= use_cases.size %>
+            <% with_form = use_cases.count(&:form_uid) %>
+            <% if with_form.positive? %>
+              <br><span class="fr-text--xs fr-text-mention--grey">dont <%= with_form %> avec formulaire DataPass</span>
+            <% end %>
+          </td>
+          <td><%= @users_counts.fetch(editor.id, 0) %></td>
+          <td><%= editor.decorate.two_factor_label %></td>
+          <td><%= editor.deployment_type ? editor.decorate.deployment_type_label : tag.span('Non renseigné', class: 'fr-text-mention--grey') %></td>
         </tr>
       <% end %>
     </tbody>

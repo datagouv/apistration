@@ -1,0 +1,9 @@
+fr:
+  editor_profile:
+    sections:
+      general: Infos générales
+      contacts: Contacts
+      security: Sécurité & hébergement
+      use_cases: Démarches
+  editor_use_cases:
+    unknown_use_case: Démarche à préciser

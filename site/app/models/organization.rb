@@ -21,6 +21,19 @@ class Organization < ApplicationRecord
     insee_payload_value('etablissement', 'adresseEtablissement', 'codePostalEtablissement')
   end
 
+  def address
+    address = insee_payload_value('etablissement', 'adresseEtablissement') || {}
+
+    [
+      address.values_at('numeroVoieEtablissement', 'typeVoieEtablissement', 'libelleVoieEtablissement').compact.join(' '),
+      address.values_at('codePostalEtablissement', 'libelleCommuneEtablissement').compact.join(' ')
+    ].compact_blank.join(', ').presence
+  end
+
+  def naf_code
+    insee_payload_value('etablissement', 'uniteLegale', 'activitePrincipaleUniteLegale')
+  end
+
   private
 
   def insee_payload_value(*keys)

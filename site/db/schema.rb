@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
     t.string "status"
     t.timestamptz "timestamp", null: false
     t.uuid "token_id"
+    t.string "ip"
   end
 
   create_table "admin_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -100,6 +101,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
     t.index ["user_id", "scope"], name: "index_changelog_subscriptions_on_user_id_and_scope_active", unique: true, where: "(disabled_at IS NULL)"
   end
 
+  create_table "editor_contacts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "editor_id", null: false
+    t.string "role", null: false
+    t.string "full_name"
+    t.string "email"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["editor_id"], name: "index_editor_contacts_on_editor_id"
+  end
+
   create_table "editor_delegations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "authorization_request_id", null: false
     t.datetime "created_at", null: false
@@ -122,6 +134,27 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
     t.index ["scopes"], name: "index_editor_tokens_on_scopes", using: :gin
   end
 
+  create_table "editor_use_cases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "editor_id", null: false
+    t.string "use_case"
+    t.string "software"
+    t.text "software_description"
+    t.string "software_url"
+    t.string "scopes", default: [], null: false, array: true
+    t.integer "data_retention_months"
+    t.text "data_recipients"
+    t.text "setup_instructions"
+    t.string "form_uid"
+    t.boolean "security_accreditation"
+    t.date "security_accreditation_begin_date"
+    t.date "security_accreditation_end_date"
+    t.string "mon_service_securise_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["editor_id"], name: "index_editor_use_cases_on_editor_id"
+    t.index ["form_uid"], name: "index_editor_use_cases_on_form_uid", unique: true, where: "(form_uid IS NOT NULL)"
+  end
+
   create_table "editors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.jsonb "allowed_ips", default: [], null: false
     t.string "apis", default: [], null: false, array: true
@@ -140,6 +173,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
     t.text "setup_instructions"
     t.string "siret"
     t.datetime "updated_at", null: false
+    t.string "two_factor_status"
+    t.date "two_factor_deadline"
+    t.string "two_factor_methods", default: [], null: false, array: true
+    t.string "hosting_provider"
+    t.string "hosting_country"
+    t.string "certifications", default: [], null: false, array: true
+    t.text "credentials_management"
   end
 
   create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -391,8 +431,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_100000) do
   add_foreign_key "admin_activities", "users", column: "admin_id"
   add_foreign_key "authorization_request_security_settings", "authorization_requests"
   add_foreign_key "changelog_subscriptions", "users", validate: false
+  add_foreign_key "editor_contacts", "editors"
   add_foreign_key "editor_delegations", "authorization_requests"
   add_foreign_key "editor_delegations", "editors"
+  add_foreign_key "editor_use_cases", "editors"
   add_foreign_key "magic_links", "tokens"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"

@@ -1,0 +1,79 @@
+<% scope_groups = use_case.scope_groups %>
+<%= form_with(model: use_case, url: use_case.persisted? ? editor_profile_use_case_path(editor, use_case, admin:) : editor_profile_use_cases_path(editor, admin:), method: use_case.persisted? ? :patch : :post) do |f| %>
+  <%= f.hidden_field :use_case %>
+  <%= editor_profile_readonly('Démarche DataPass', use_case.label) %>
+  <% unless use_case.persisted? %>
+    <p class="fr-text--sm"><%= link_to 'Choisir une autre démarche', editor_profile_new_use_case_path(editor, admin:), class: 'fr-link' %></p>
+  <% end %>
+
+  <h2 class="fr-h5 fr-mt-4w">Logiciel</h2>
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :text_field, :software, 'Nom du logiciel', hint: 'Le logiciel qui implémente cette démarche') %>
+  <% end %>
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :text_area, :software_description, 'Description du logiciel', hint: 'En quelques phrases, ce que fait le logiciel', rows: 3) %>
+  <% end %>
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :url_field, :software_url, 'Page de présentation du logiciel', hint: 'La page de votre site qui présente ce logiciel, par exemple https://exemple.fr/logiciel', placeholder: 'https://') %>
+  <% end %>
+
+  <h2 class="fr-h5 fr-mt-4w">Données déjà exploitées par le logiciel</h2>
+  <p class="fr-text--sm">Cochez les données que votre logiciel exploite déjà, c’est-à-dire celles des API auxquelles il est déjà raccordé. Les données du formulaire DataPass de cette démarche sont pré-cochées : décochez celles que votre logiciel n'exploite pas.</p>
+  <% if scope_groups.any? || use_case.other_scope_groups.any? %>
+    <%= hidden_field_tag 'editor_use_case[scopes][]', '', id: nil %>
+    <% scope_groups.each do |group, options| %>
+      <%= render 'shared/editor_use_cases/scope_group', use_case:, group:, options:, muted: false %>
+    <% end %>
+    <% other_groups = use_case.other_scope_groups %>
+    <% if other_groups.any? %>
+      <section class="fr-accordion fr-mb-3w">
+        <h3 class="fr-accordion__title">
+          <button type="button" class="fr-accordion__btn" aria-expanded="false" aria-controls="editor-use-case-other-scopes">
+            Autres données de l'API, hors de cette démarche (<%= pluralize(other_groups.size, 'groupe', plural: 'groupes') %>)
+          </button>
+        </h3>
+        <div class="fr-collapse" id="editor-use-case-other-scopes">
+          <% other_groups.each do |group, options| %>
+            <%= render 'shared/editor_use_cases/scope_group', use_case:, group:, options:, muted: true %>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+  <% else %>
+    <% use_case.scopes.each do |scope| %>
+      <%= hidden_field_tag 'editor_use_case[scopes][]', scope, id: nil %>
+    <% end %>
+    <div class="fr-alert fr-alert--warning fr-alert--sm fr-mb-3w">
+      <p>La liste des données DataPass n'est pas disponible pour le moment : les données déjà cochées sont conservées.</p>
+    </div>
+  <% end %>
+
+  <h2 class="fr-h5 fr-mt-4w">Données personnelles</h2>
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :text_field, :data_recipients, 'Destinataires des données', hint: 'Par exemple : agents du service enfance de la collectivité') %>
+  <% end %>
+  <%= editor_profile_row(width: 3) do %>
+    <%= editor_profile_field(f, :number_field, :data_retention_months, 'Durée de conservation', hint: 'En mois, par exemple 36', min: 1) %>
+  <% end %>
+
+  <%= render('shared/editor_use_cases/accreditation', f:) %>
+
+  <h2 class="fr-h5 fr-mt-4w">Configuration du jeton</h2>
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :text_area, :setup_instructions, 'Instructions de configuration du jeton', hint: 'Comment vos clients renseignent leur jeton dans ce logiciel. Ce texte sera partagé avec vos clients.', rows: 5) %>
+  <% end %>
+
+  <% if admin %>
+    <h2 class="fr-h5 fr-mt-4w">Rattachement DataPass</h2>
+    <%= editor_profile_row do %>
+      <%= editor_profile_field(f, :text_field, :form_uid, 'Formulaire DataPass', hint: "Identifiant du formulaire. Les habilitations validées avec ce formulaire sont déléguées automatiquement à l'éditeur.") %>
+    <% end %>
+  <% elsif use_case.form_uid %>
+    <%= editor_profile_readonly('Formulaire DataPass', tag.code(use_case.form_uid)) %>
+  <% end %>
+
+  <div class="fr-btns-group fr-btns-group--inline fr-mt-2w">
+    <%= f.submit 'Enregistrer', class: 'fr-btn' %>
+    <%= link_to 'Annuler', back_path, class: 'fr-btn fr-btn--secondary' %>
+  </div>
+<% end %>

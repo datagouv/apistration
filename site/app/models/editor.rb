@@ -2,6 +2,11 @@ class Editor < ApplicationRecord
   APIS = %w[entreprise particulier].freeze
   ROLES = %w[manages_token client_manages_token both].freeze
   DEPLOYMENT_TYPES = %w[saas on_premise both other].freeze
+  TWO_FACTOR_STATUSES = %w[yes in_progress no].freeze
+  TWO_FACTOR_METHODS = %w[totp sms email_otp hardware_key other].freeze
+  CERTIFICATIONS = %w[iso_27001 hds secnumcloud iso_9001 other].freeze
+
+  self.ignored_columns += %w[form_uids contact_email contact_phone setup_instructions]
 
   has_many :users,
     dependent: :nullify
@@ -10,22 +15,31 @@ class Editor < ApplicationRecord
   has_many :tokens,
     class_name: 'EditorToken',
     dependent: :destroy
+  has_many :contacts,
+    class_name: 'EditorContact',
+    dependent: :destroy
+  has_many :use_cases,
+    class_name: 'EditorUseCase',
+    dependent: :destroy
 
-  normalizes :deployment_type, with: ->(value) { value.presence }
-  normalizes :contact_email, with: ->(email) { Rails.env.staging? ? PersonalDataAnonymizer.email(email) : email }
-  normalizes :contact_phone, with: ->(phone) { Rails.env.staging? ? PersonalDataAnonymizer.phone(phone) : phone }
+  normalizes :deployment_type, :two_factor_status, :hosting_provider, :hosting_country, with: ->(value) { value.strip.presence }
+  normalizes :two_factor_methods, :certifications, with: ->(values) { values.compact_blank.uniq }
 
   validates :name, presence: true
+  validates :apis, presence: true
   validates :siret, format: { with: /\A\d{14}\z/ }, allow_blank: true
   validates :role, inclusion: { in: ROLES }, allow_nil: true
   validates :deployment_type, inclusion: { in: DEPLOYMENT_TYPES }, allow_nil: true
-  validates :contact_email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   validates :allowed_ips, allowed_ips: true, if: :allowed_ips_changed?
+  validates :two_factor_status, inclusion: { in: TWO_FACTOR_STATUSES }, allow_nil: true
+  validates :two_factor_deadline, presence: true, if: :two_factor_in_progress?
+  validate :two_factor_methods_included_in_list
+  validate :certifications_included_in_list
   validate :apis_included_in_list
 
   scope :delegable, -> { where(editor_tokens_enabled: true) }
   scope :for_api, ->(api) { where('ARRAY[:api]::varchar[] <@ apis', api:) }
-  scope :for_demarche, ->(demarche) { where(':demarche = ANY(form_uids)', demarche:) }
+  scope :for_demarche, ->(demarche) { where(id: EditorUseCase.where(form_uid: demarche).select(:editor_id)) }
   scope :search_by_name_or_siret, lambda { |query|
     where('name ILIKE :q OR siret ILIKE :q', q: "%#{query}%")
   }
@@ -46,7 +60,15 @@ class Editor < ApplicationRecord
   def authorization_requests(api:)
     AuthorizationRequest
       .where(api:)
-      .where(demarche: form_uids)
+      .where(demarche: use_cases.with_form.select(:form_uid))
+  end
+
+  def form_uids
+    use_cases.with_form.order(:form_uid).pluck(:form_uid)
+  end
+
+  def organization
+    Organization.find_by(siret:) if siret.present?
   end
 
   def serves_api?(api)
@@ -63,6 +85,14 @@ class Editor < ApplicationRecord
 
   def both_roles?
     role == 'both'
+  end
+
+  def two_factor_in_progress?
+    two_factor_status == 'in_progress'
+  end
+
+  def security_contacts
+    contacts.select { |contact| contact.role == 'security' }
   end
 
   def saas?
@@ -82,6 +112,14 @@ class Editor < ApplicationRecord
   end
 
   private
+
+  def two_factor_methods_included_in_list
+    errors.add(:two_factor_methods, :inclusion) unless (two_factor_methods - TWO_FACTOR_METHODS).empty?
+  end
+
+  def certifications_included_in_list
+    errors.add(:certifications, :inclusion) unless (certifications - CERTIFICATIONS).empty?
+  end
 
   def apis_included_in_list
     return if apis.all? { |api| APIS.include?(api) }

@@ -210,6 +210,18 @@ RSpec.describe DatapassAPIClient do
     end
   end
 
+  describe '#get_definition' do
+    subject(:get_definition) { client.get_definition('api_particulier') }
+
+    let(:definition) { JSON.parse(Rails.root.join('spec/fixtures/datapass_api/definition_api_particulier.json').read) }
+
+    before { stub_datapass(:get, 'definitions/api_particulier', body: definition) }
+
+    it 'returns the definition with its scope catalogue' do
+      expect(get_definition['scopes']).to include(a_hash_including('value' => 'cnaf_quotient_familial'))
+    end
+  end
+
   describe '#list_formulaires' do
     subject(:list_formulaires) { client.list_formulaires('api_entreprise') }
 

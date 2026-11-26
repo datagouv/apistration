@@ -1,0 +1,12 @@
+<fieldset class="editor-scopes-group <%= 'editor-scopes-group--muted' if muted %> fr-mb-3w">
+  <legend class="editor-scopes-group__title"><%= group %></legend>
+  <div class="editor-scopes-group__grid">
+    <% options.each do |label, value| %>
+      <% input_id = "editor_use_case_scopes_#{value}" %>
+      <div class="fr-checkbox-group">
+        <%= check_box_tag 'editor_use_case[scopes][]', value, use_case.scopes.include?(value), id: input_id %>
+        <%= label_tag input_id, label, class: 'fr-label' %>
+      </div>
+    <% end %>
+  </div>
+</fieldset>

@@ -1,0 +1,9 @@
+<% observed_ips = EditorObservedIpsQuery.new(editor).count %>
+<p class="fr-text--sm">
+  <% if observed_ips %>
+    <strong><%= pluralize(observed_ips, 'adresse IP distincte', plural: 'adresses IP distinctes') %></strong> sur 7 jours dans les appels des habilitations de l'éditeur.
+    Une ou deux IP évoquent un déploiement SaaS, une IP par client un déploiement on-premise.
+  <% else %>
+    Indice indisponible : le décompte des IP a dépassé le délai imparti.
+  <% end %>
+</p>

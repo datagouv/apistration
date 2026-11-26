@@ -1,0 +1,65 @@
+[
+  {
+    "uid": "api-particulier",
+    "name": "API Particulier",
+    "description": "Demande libre",
+    "use_case": null,
+    "definition_id": "api_particulier",
+    "authorization_request_class": "AuthorizationRequest::APIParticulier",
+    "data": {}
+  },
+  {
+    "uid": "api-particulier-tarification-municipale-enfance",
+    "name": "Tarification sociale des services municipaux à l’enfance",
+    "description": "Formulaire générique",
+    "use_case": "tarification_municipale_enfance",
+    "definition_id": "api_particulier",
+    "authorization_request_class": "AuthorizationRequest::APIParticulier",
+    "data": {
+      "intitule": "Tarification sociale des services municipaux à l’enfance",
+      "cadre_juridique_nature": "Code des relations entre le public et l’administration",
+      "scopes": ["cnaf_adresse", "cnaf_allocataires", "cnaf_enfants", "cnaf_quotient_familial"]
+    }
+  },
+  {
+    "uid": "api-particulier-abelium",
+    "name": "Abelium",
+    "description": "Gestion des services périscolaires",
+    "use_case": "tarification_municipale_enfance",
+    "definition_id": "api_particulier",
+    "authorization_request_class": "AuthorizationRequest::APIParticulier",
+    "data": {
+      "intitule": "Abelium | Gestion des services périscolaires",
+      "description": "Tarification des services périscolaires selon le quotient familial.",
+      "cadre_juridique_nature": "Code des relations entre le public et l’administration",
+      "duree_conservation_donnees_caractere_personnel": "36",
+      "destinataire_donnees_caractere_personnel": "Agents du service enfance",
+      "scopes": ["cnaf_quotient_familial"]
+    }
+  },
+  {
+    "uid": "api-particulier-tarification-eaje",
+    "name": "Tarification d’accueil du jeune enfant",
+    "description": "Formulaire générique",
+    "use_case": "tarification_eaje",
+    "definition_id": "api_particulier",
+    "authorization_request_class": "AuthorizationRequest::APIParticulier",
+    "data": {
+      "intitule": "Tarification EAJE",
+      "scopes": ["cnav_participation_familiale_eaje_allocataires", "cnav_participation_familiale_eaje_enfants"]
+    }
+  },
+  {
+    "uid": "api-particulier-abelium-petite-enfance",
+    "name": "Abelium Petite enfance",
+    "description": "Tarification PSU",
+    "use_case": "tarification_eaje",
+    "definition_id": "api_particulier",
+    "authorization_request_class": "AuthorizationRequest::APIParticulier",
+    "data": {
+      "intitule": "Abelium | Tarification PSU",
+      "description": "Tarification PSU dans les établissements d’accueil du jeune enfant.",
+      "scopes": ["cnav_participation_familiale_eaje_allocataires"]
+    }
+  }
+]

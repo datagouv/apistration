@@ -1,8 +1,9 @@
 class Admin::EditorsController < AdminController
-  before_action :set_editor, only: %i[show edit update]
+  before_action :set_editor, only: %i[show update]
+  before_action :set_section, only: %i[show update]
 
   def index
-    @editors = Editor.for_api(namespace).filtered(params).order(:name).page(params[:page])
+    @editors = Editor.for_api(namespace).filtered(params).includes(:contacts, :use_cases).order(:name).page(params[:page])
     @users_counts = User.where(editor_id: @editors.map(&:id)).group(:editor_id).count
   end
 
@@ -12,10 +13,8 @@ class Admin::EditorsController < AdminController
     @editor = Editor.new
   end
 
-  def edit; end
-
   def create
-    result = Admin::Editors::Create.call(editor_params:, admin: true_user, namespace:)
+    result = Admin::Editors::Create.call(editor_params: editor_params(EditorProfileSection.find('general')), admin: true_user, namespace:)
     @editor = result.editor
 
     if result.success?
@@ -28,14 +27,14 @@ class Admin::EditorsController < AdminController
   end
 
   def update
-    result = Admin::Editors::Update.call(editor: @editor, editor_params:, admin: true_user, namespace:)
+    result = Admin::Editors::Update.call(editor: @editor, editor_params: editor_params(@section), admin: true_user, namespace:)
 
     if result.success?
       success_message(title: 'Éditeur mis à jour')
-      redirect_to admin_editor_path(@editor)
+      redirect_to admin_editor_path(@editor, onglet: @section.key)
     else
       error_message(title: "Erreur lors de la mise à jour de l'éditeur")
-      render 'edit', status: :unprocessable_content
+      render 'show', status: :unprocessable_content
     end
   end
 
@@ -45,33 +44,18 @@ class Admin::EditorsController < AdminController
     @editor = Editor.find(params.expect(:id))
   end
 
-  def editor_params
-    params.expect(
-      editor: [
-        :name,
-        :siret,
-        :role,
-        :contact_email,
-        :contact_phone,
-        :deployment_type,
-        :setup_instructions,
-        :domain,
-        :languages,
-        :description,
-        :form_uids,
-        :allowed_ips,
-        :copy_token,
-        :editor_tokens_enabled,
-        { apis: [] }
-      ]
-    ).tap { |whitelisted| normalize_editor_params(whitelisted) }
+  def set_section
+    @section = EditorProfileSection.find(params.fetch(:onglet, nil))
+  end
+
+  def editor_params(section)
+    params.expect(editor: section.permitted_attributes(admin: true)).tap { |whitelisted| normalize_editor_params(whitelisted) }
   end
 
   def normalize_editor_params(whitelisted)
-    whitelisted[:form_uids] = parse_comma_separated(whitelisted[:form_uids])
-    whitelisted[:allowed_ips] = parse_comma_separated(whitelisted[:allowed_ips])
-    whitelisted[:apis] = (whitelisted[:apis] || []).compact_blank
-    whitelisted[:role] = nil if whitelisted[:role].blank?
+    whitelisted[:allowed_ips] = parse_comma_separated(whitelisted[:allowed_ips]) if whitelisted.key?(:allowed_ips)
+    whitelisted[:apis] = whitelisted[:apis].compact_blank if whitelisted.key?(:apis)
+    whitelisted[:role] = whitelisted[:role].presence if whitelisted.key?(:role)
   end
 
   def parse_comma_separated(value)

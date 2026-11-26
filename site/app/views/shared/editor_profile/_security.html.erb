@@ -1,0 +1,58 @@
+<% toggle = { action: 'change->conditional-fields#toggle' } %>
+<%= form_with(model: editor, url: editor_profile_path_for(editor, section.key, admin:), method: :patch) do |f| %>
+  <h2 class="fr-h4">Double authentification de vos usagers</h2>
+  <p class="fr-text--sm">Vos usagers (agents des collectivités, CCAS…) se connectent-ils à votre logiciel avec un second facteur ?</p>
+
+  <%= editor_profile_conditional(f, :two_factor_status) do %>
+    <%= editor_profile_choices(f, :two_factor_status, 'Double authentification', Editor::TWO_FACTOR_STATUSES.map { |status| [t(status, scope: 'editors.two_factor_statuses'), status] }, input_data: toggle) %>
+
+    <%= editor_profile_shown_when('in_progress') do %>
+      <%= editor_profile_row(width: 4) do %>
+        <%= editor_profile_field(f, :date_field, :two_factor_deadline, 'Échéance de mise en place') %>
+      <% end %>
+    <% end %>
+
+    <%= editor_profile_shown_when('yes', 'in_progress') do %>
+      <%= editor_profile_choices(f, :two_factor_methods, 'Méthodes proposées', Editor::TWO_FACTOR_METHODS.map { |method| [t(method, scope: 'editors.two_factor_methods'), method] }, multiple: true) %>
+    <% end %>
+  <% end %>
+
+  <h2 class="fr-h4 fr-mt-6w">Hébergement</h2>
+
+  <%= editor_profile_row do %>
+    <%= editor_profile_select(f, :deployment_type, 'Type de déploiement', Editor.deployment_type_options) %>
+    <%= editor_profile_field(f, :text_field, :hosting_provider, 'Hébergeur', hint: 'Par exemple OVHcloud, Scaleway, vos propres serveurs') %>
+    <%= editor_profile_field(f, :text_field, :hosting_country, "Pays d'hébergement", hint: 'Par exemple France') %>
+  <% end %>
+
+  <h2 class="fr-h4 fr-mt-6w">Certifications</h2>
+
+  <%= editor_profile_choices(f, :certifications, 'Certifications de votre logiciel ou de son hébergement', Editor::CERTIFICATIONS.map { |certification| [t(certification, scope: 'editors.certifications'), certification] }, multiple: true) %>
+
+  <h2 class="fr-h4 fr-mt-6w">Gestion des jetons</h2>
+
+  <%= editor_profile_row do %>
+    <%= editor_profile_field(f, :text_area, :credentials_management, 'Comment gérez-vous les jetons d’accès à nos API ?', hint: 'Jetons de vos clients comme jeton éditeur : où ils sont stockés (coffre-fort de secrets, base chiffrée, variables d’environnement, fichier de configuration…), qui y a accès, comment ils sont renouvelés, et ce que vous faites si l’un d’eux est compromis', rows: 5) %>
+  <% end %>
+
+  <%= render 'shared/editor_profile/security_contacts', editor:, admin: %>
+
+  <h2 class="fr-h4 fr-mt-6w">Adresses IP autorisées</h2>
+  <% if admin %>
+    <%= editor_profile_field(f, :text_area, :allowed_ips, 'IPs autorisées', hint: 'Séparées par des virgules ou retours à la ligne. Adresses publiques uniquement, 10 maximum, préfixe IPv4 minimum : /24', value: editor.allowed_ips.join(', '), rows: 3) %>
+    <%= render 'shared/editor_profile/observed_ips', editor: %>
+  <% else %>
+    <p class="fr-text--sm">Appels acceptés uniquement depuis ces adresses. Pour les modifier, écrivez à <a href="mailto:support@<%= namespace %>.api.gouv.fr?subject=Modification des adresses IP autorisées">support@<%= namespace %>.api.gouv.fr</a>.</p>
+    <% if editor.allowed_ips.any? %>
+      <ul class="fr-tags-group fr-mb-3w">
+        <% editor.allowed_ips.each do |ip| %>
+          <li><p class="fr-tag"><%= ip %></p></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="fr-text--sm fr-text-mention--grey">Aucune restriction d'adresse IP configurée.</p>
+    <% end %>
+  <% end %>
+
+  <%= f.submit 'Enregistrer', class: 'fr-btn' %>
+<% end %>

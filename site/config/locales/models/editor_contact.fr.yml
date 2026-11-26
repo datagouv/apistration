@@ -1,0 +1,20 @@
+fr:
+  activerecord:
+    attributes:
+      editor_contact:
+        role: "Rôle"
+        full_name: "Nom"
+        email: "Email"
+        phone: "Téléphone"
+    errors:
+      models:
+        editor_contact:
+          attributes:
+            base:
+              email_or_phone_missing: "Renseignez un email ou un téléphone"
+  editor_contacts:
+    roles:
+      technical: "Technique"
+      business: "Métier"
+      dpo: "Délégué à la protection des données (DPO)"
+      security: "Sécurité (RSSI)"

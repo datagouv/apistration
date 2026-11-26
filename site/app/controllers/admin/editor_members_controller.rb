@@ -10,7 +10,7 @@ class Admin::EditorMembersController < AdminController
       error_message(title: result.message)
     end
 
-    redirect_to admin_editor_path(@editor)
+    redirect_to admin_editor_path(@editor, onglet: 'contacts')
   end
 
   def destroy
@@ -22,7 +22,7 @@ class Admin::EditorMembersController < AdminController
       error_message(title: result.message)
     end
 
-    redirect_to admin_editor_path(@editor)
+    redirect_to admin_editor_path(@editor, onglet: 'contacts')
   end
 
   private

@@ -1,0 +1,10 @@
+<% if gaps.any? %>
+  <div class="fr-alert fr-alert--warning fr-mt-4w">
+    <h2 class="fr-alert__title"><%= admin ? 'Fiche incomplète' : 'Votre fiche est à compléter' %> : <%= pluralize(gaps.size, 'information manquante', plural: 'informations manquantes') %></h2>
+    <ul class="fr-mb-0">
+      <% gaps.all.each do |gap| %>
+        <li><%= link_to gap.label.upcase_first, editor_profile_path_for(editor, gap.section_key, admin:), class: 'fr-link' %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,52 @@
+<% use_cases = editor.use_cases.order(:created_at).to_a %>
+<div class="fr-grid-row fr-grid-row--gutters fr-grid-row--middle">
+  <div class="fr-col">
+    <h2 class="fr-h4 fr-mb-0">Démarches</h2>
+  </div>
+  <div class="fr-col-auto">
+    <%= link_to 'Ajouter une démarche', editor_profile_new_use_case_path(editor, admin:), class: 'fr-btn fr-btn--secondary fr-icon-add-line fr-btn--icon-left' %>
+  </div>
+</div>
+<p class="fr-text--sm fr-mt-2w">Les démarches d’habilitation que vos clients déposent avec votre logiciel, par exemple la tarification sociale de la cantine. Pour chacune, décrivez le logiciel et les données qu'il exploite déjà : cela nous permettra de paramétrer les formulaires d’habilitation de vos clients. Un même logiciel peut porter plusieurs démarches.</p>
+
+<% if use_cases.any? %>
+  <div class="fr-table fr-table--no-caption">
+    <div class="fr-table__wrapper">
+      <div class="fr-table__container">
+        <div class="fr-table__content">
+          <table>
+            <caption>Démarches de l'éditeur</caption>
+            <thead>
+              <tr>
+                <% ['Démarche', 'Logiciel', 'Scopes', 'Formulaire DataPass'].each do |header| %>
+                  <th scope="col"><%= header %></th>
+                <% end %>
+                <th scope="col"><span class="fr-sr-only">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% use_cases.each do |use_case| %>
+                <tr id="<%= dom_id(use_case) %>">
+                  <td><%= use_case.label %></td>
+                  <td><%= use_case.software.presence || editor_profile_blank %></td>
+                  <td><%= pluralize(use_case.scopes.size, 'scope', plural: 'scopes') %></td>
+                  <td><%= use_case.form_uid ? tag.code(use_case.form_uid) : editor_profile_blank %></td>
+                  <td>
+                    <div class="fr-btns-group fr-btns-group--inline fr-btns-group--sm">
+                      <%= editor_profile_edit_link(editor_profile_edit_use_case_path(editor, use_case, admin:), "la démarche #{use_case.label}, #{use_case.software}") %>
+                      <% if admin || policy(use_case).destroy? %>
+                        <%= editor_profile_remove_button(editor_profile_use_case_path(editor, use_case, admin:), "la démarche #{use_case.label}, #{use_case.software}", 'Retirer cette démarche ?') %>
+                      <% end %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <p class="fr-text--sm fr-text-mention--grey">Aucune démarche déclarée.</p>
+<% end %>

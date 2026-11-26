@@ -1,9 +1,0 @@
-<h1 class="fr-mb-2w">Modifier l'éditeur : <%= @editor.name %></h1>
-
-<%= link_to 'Retour à la fiche', admin_editor_path(@editor), class: 'fr-link fr-mb-4w' %>
-
-<%= render 'form',
-  editor: @editor,
-  url: admin_editor_path(@editor),
-  method: :patch,
-  label: 'Sauvegarder' %>

@@ -3,7 +3,7 @@ RSpec.describe DatapassWebhook::CreateEditorDelegation do
 
   let(:event) { 'approve' }
   let(:authorization_request) { create(:authorization_request, demarche: 'umad-editor') }
-  let!(:editor) { create(:editor) }
+  let!(:editor) { create(:editor, form_uids: %w[umad-editor]) }
 
   it 'creates a delegation attributed to datapass_auto, even for an editor with delegations disabled' do
     expect { result }.to change(EditorDelegation, :count).by(1)

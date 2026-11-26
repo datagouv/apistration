@@ -11,17 +11,23 @@ class Editor::TrackConfigChange < ApplicationOrganizer
   tracks_security_event 'access.editor_config.changed',
     target: :editor,
     actor: ADMIN_ACTOR,
-    computed_details: ->(context) { config_change(context.editor) },
-    only_if: ->(context) { changed_settings(context.editor).any? }
+    computed_details: ->(context) { config_change(context) },
+    only_if: ->(context) { changed_settings(context).any? }
 
   organize SecurityEvent::Track
 
-  def self.changed_settings(editor)
-    editor.saved_changes.slice(*SETTINGS.keys).transform_keys(SETTINGS)
+  def self.changed_settings(context)
+    context.editor.saved_changes.slice(*SETTINGS.keys).merge(form_uids_change(context)).transform_keys(SETTINGS)
   end
 
-  def self.config_change(editor)
-    changes = changed_settings(editor)
+  def self.form_uids_change(context)
+    before = context.form_uids_before
+    after = context.editor.form_uids
+    before.nil? || before == after ? {} : { 'form_uids' => [before, after] }
+  end
+
+  def self.config_change(context)
+    changes = changed_settings(context)
 
     {
       changed_settings: changes.keys,

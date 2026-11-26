@@ -1,0 +1,116 @@
+entreprise:
+  aides_publiques:
+    - api-entreprise-aides-publiques
+    - api-entreprise-mgdis
+  detection_fraude:
+    - api-entreprise-detection-fraude
+  marches_publics:
+    - api-entreprise-achat-solution
+    - api-entreprise-atexo
+    - api-entreprise-e-attestations
+    - api-entreprise-inetum
+    - api-entreprise-marches-publics
+    - api-entreprise-provigis
+    - api-entreprise-setec-atexo
+  socle_de_base:
+    - api-entreprise-socle-de-base
+  subventions_associations:
+    - api-entreprise-subventions-associations
+particulier:
+  aides_facultatives:
+    - api-particulier-aides-facultatives-departementales
+    - api-particulier-aides-facultatives-regionales
+    - api-particulier-arche-mc2-solis
+    - api-particulier-dialog
+    - api-particulier-mgdis-aides-facultatives-departementales
+  cantines-colleges-lycees-tarification:
+    - api-particulier-capdemat-capdemat-evolution
+    - api-particulier-ianord-tarification-cantines-colleges
+    - api-particulier-ianord-tarification-cantines-lycees
+    - api-particulier-kosmos-education
+    - api-particulier-mgdis-tarification-cantines-lycees
+    - api-particulier-tarification-cantines-colleges
+    - api-particulier-tarification-cantines-lycees
+  ccas:
+    - api-particulier-aides-sociales-ccas
+    - api-particulier-aides-sociales-ccas-dont-facultatives
+    - api-particulier-ccas-arche-mc2
+    - api-particulier-ccas-arpege
+    - api-particulier-ccas-melissandre-afi
+    - api-particulier-ccas-paxtel
+  gestion_rh_secteur_public:
+    - api-particulier-gestion-rh-secteur-public
+  inscription_administrative_etudiant:
+    - api-particulier-edhec
+    - api-particulier-inscription-administrative-etudiant
+  stationnement_residentiel:
+    - api-particulier-extenso-partner-extenso-cloud
+    - api-particulier-polycea
+    - api-particulier-stationnement-residentiel
+  tarification_eaje:
+    - api-particulier-abelium-petite-enfance
+    - api-particulier-agora-baby
+    - api-particulier-aiga-petite-enfance
+    - api-particulier-arpege-concerto-petite-enfance
+    - api-particulier-bl-enfance-petite-enfance
+    - api-particulier-capcreche-petite-enfance
+    - api-particulier-carte-plus-petite-enfance
+    - api-particulier-city-family-mushroom-software-petite-enfance
+    - api-particulier-civil-petite-enfance-ciril-group
+    - api-particulier-clartec-petite-enfance
+    - api-particulier-daycare-app-petite-enfance
+    - api-particulier-docaposte-fast-petite-enfance
+    - api-particulier-entrouvert-publik-famille-petite-enfance
+    - api-particulier-familea-petite-enfance
+    - api-particulier-hoptis-petite-enfance
+    - api-particulier-opticreche-petite-enfance
+    - api-particulier-sigec-maelis-petite-enfance
+    - api-particulier-studio1247-petite-enfance
+    - api-particulier-tarification-eaje
+    - api-particulier-teamnet-axel-petite-enfance
+    - api-particulier-technocarte-babicarte
+  tarification_municipale_enfance:
+    - api-particulier-3d-ouest
+    - api-particulier-abelium
+    - api-particulier-acheteza
+    - api-particulier-agedi-proxima-enf
+    - api-particulier-agora-plus
+    - api-particulier-aiga
+    - api-particulier-amiciel-malice
+    - api-particulier-andyvie
+    - api-particulier-arpege-concerto
+    - api-particulier-bl-enfance-berger-levrault
+    - api-particulier-cantine-de-france
+    - api-particulier-carte-plus
+    - api-particulier-city-family-mushroom-software
+    - api-particulier-civil-enfance-ciril-group
+    - api-particulier-clartec
+    - api-particulier-cosoluce-fluo
+    - api-particulier-docaposte-fast
+    - api-particulier-e1os
+    - api-particulier-ecorestauration-loyfeey
+    - api-particulier-entrouvert-publik
+    - api-particulier-familea
+    - api-particulier-hoptis
+    - api-particulier-jcdeveloppement-familyclic
+    - api-particulier-jvs-mairistem
+    - api-particulier-nfi
+    - api-particulier-noethys
+    - api-particulier-nouvelle-epoque-industries
+    - api-particulier-odyssee-informatique-pandore
+    - api-particulier-periscolia
+    - api-particulier-qiis-eticket
+    - api-particulier-resagenda
+    - api-particulier-sigec-maelis
+    - api-particulier-tarification-municipale-enfance
+    - api-particulier-teamnet-axel
+    - api-particulier-technocarte-ile
+    - api-particulier-waigeo-myperischool
+    - api-particulier-ypok-ykidz
+  tarification_transports:
+    - api-particulier-airweb
+    - api-particulier-coexya
+    - api-particulier-esabora-pourmesdossiers
+    - api-particulier-keolis
+    - api-particulier-monkey-factory-maasify
+    - api-particulier-tarification-transports

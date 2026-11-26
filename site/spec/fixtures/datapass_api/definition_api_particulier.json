@@ -1,0 +1,16 @@
+{
+  "id": "api_particulier",
+  "name": "API Particulier",
+  "multi_stage?": false,
+  "authorization_request_class": "AuthorizationRequest::APIParticulier",
+  "scopes": [
+    { "name": "Quotient familial CAF & MSA", "value": "cnaf_quotient_familial", "group": "Quotient familial", "link": null, "included": false, "disabled": false, "deprecated": false, "deprecated_date": null },
+    { "name": "Allocataires", "value": "cnaf_allocataires", "group": "Quotient familial", "link": null, "included": false, "disabled": false, "deprecated": false, "deprecated_date": null },
+    { "name": "Enfants", "value": "cnaf_enfants", "group": "Quotient familial", "link": null, "included": false, "disabled": false, "deprecated": false, "deprecated_date": null },
+    { "name": "Adresse", "value": "cnaf_adresse", "group": "Quotient familial", "link": null, "included": false, "disabled": false, "deprecated": false, "deprecated_date": null },
+    { "name": "Allocataires EAJE", "value": "cnav_participation_familiale_eaje_allocataires", "group": "Participation familiale EAJE", "link": null, "included": false, "disabled": false, "deprecated": false, "deprecated_date": null },
+    { "name": "Enfants EAJE", "value": "cnav_participation_familiale_eaje_enfants", "group": "Participation familiale EAJE", "link": null, "included": false, "disabled": false, "deprecated": false, "deprecated_date": null },
+    { "name": "Ancien scope", "value": "old_scope", "group": "Archives", "link": null, "included": false, "disabled": true, "deprecated": true, "deprecated_date": "2025-01-01" }
+  ],
+  "consentements": []
+}

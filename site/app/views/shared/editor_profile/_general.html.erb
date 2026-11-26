@@ -1,0 +1,68 @@
+<% organization = editor.organization %>
+<%= form_with(model: editor, url: editor.new_record? ? admin_editors_path : editor_profile_path_for(editor, section.key, admin:), method: editor.new_record? ? :post : :patch) do |f| %>
+  <h2 class="fr-h4">Identité</h2>
+
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-12 fr-col-md-6">
+      <%= editor_profile_field(f, :text_field, :name, 'Nom public de l’entreprise', hint: 'Visible par vos usagers', placeholder: 'Raison sociale ou nom commercial') %>
+    </div>
+    <div class="fr-col-12 fr-col-md-6">
+      <% if admin %>
+        <%= editor_profile_field(f, :text_field, :siret, 'SIRET', hint: '14 chiffres', maxlength: 14) %>
+      <% else %>
+        <%= editor_profile_readonly('SIRET', editor.siret) %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= editor_profile_field(f, :text_area, :description, 'Description', hint: 'Visible par les usagers (collectivités, CCAS)', rows: 3) %>
+
+  <%= editor_profile_field(f, :text_field, :domain, 'Site internet', hint: 'Nom de domaine, par exemple exemple.fr') %>
+
+  <% if admin %>
+    <div class="fr-grid-row fr-grid-row--gutters">
+      <div class="fr-col-12 fr-col-md-6">
+        <%= editor_profile_choices(f, :apis, 'APIs', Editor::APIS.map { |api| [api.capitalize, api] }, multiple: true) %>
+      </div>
+      <div class="fr-col-12 fr-col-md-6">
+        <%= editor_profile_select(f, :role, 'Rôle', Editor.role_options) %>
+      </div>
+    </div>
+    <div class="fr-grid-row fr-grid-row--gutters fr-mb-3w">
+      <% { copy_token: 'Peut copier les jetons de ses clients', editor_tokens_enabled: 'Jetons éditeurs activés' }.each do |attribute, label| %>
+        <div class="fr-col-12 fr-col-md-6"><%= editor_profile_checkbox(f, attribute, label) %></div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="fr-grid-row fr-grid-row--gutters">
+      <div class="fr-col-12 fr-col-md-6">
+        <%= editor_profile_readonly('APIs', editor.apis.map(&:capitalize).to_sentence) %>
+      </div>
+      <div class="fr-col-12 fr-col-md-6">
+        <%= editor_profile_readonly('Rôle', editor.decorate.role_label) %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= f.submit editor.new_record? ? "Créer l'éditeur" : 'Enregistrer', class: 'fr-btn' %>
+<% end %>
+
+<% if editor.persisted? %>
+<h2 class="fr-h4 fr-mt-6w">Données INSEE</h2>
+<% if editor.siret.present? %>
+  <p class="fr-text--sm"><%= external_link_to "Voir #{editor.siret} sur l'Annuaire des Entreprises", "https://annuaire-entreprises.data.gouv.fr/etablissement/#{editor.siret}", class: 'fr-link' %></p>
+<% end %>
+<% if organization&.denomination %>
+  <div class="fr-grid-row fr-grid-row--gutters">
+    <div class="fr-col-12 fr-col-md-4"><%= editor_profile_readonly('Raison sociale', organization.denomination) %></div>
+    <div class="fr-col-12 fr-col-md-5"><%= editor_profile_readonly('Adresse', organization.address) %></div>
+    <div class="fr-col-12 fr-col-md-3"><%= editor_profile_readonly('Code NAF', organization.naf_code) %></div>
+  </div>
+<% else %>
+  <p class="fr-text--sm fr-text-mention--grey">Aucune donnée INSEE connue pour ce SIRET.</p>
+<% end %>
+<% end %>
+
+<% if admin && editor.persisted? %>
+  <%= render 'admin/editors/editor_tokens', editor: %>
+<% end %>
