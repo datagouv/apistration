@@ -1,7 +1,7 @@
 class Editor::ContactsController < EditorController
-  def edit
-    @contact = current_editor.contacts.find(params.expect(:id))
-  end
+  before_action :set_contact, only: %i[edit update]
+
+  def edit; end
 
   def create
     contact = current_editor.contacts.build(contact_params)
@@ -16,8 +16,6 @@ class Editor::ContactsController < EditorController
   end
 
   def update
-    @contact = current_editor.contacts.find(params.expect(:id))
-
     if @contact.update(contact_params)
       success_message(title: 'Contact mis à jour')
       redirect_to editor_settings_path(onglet: 'contacts')
@@ -27,13 +25,21 @@ class Editor::ContactsController < EditorController
   end
 
   def destroy
-    current_editor.contacts.find(params.expect(:id)).destroy!
+    authorize(find_contact).destroy!
     success_message(title: 'Contact retiré')
 
     redirect_to editor_settings_path(onglet: 'contacts')
   end
 
   private
+
+  def set_contact
+    @contact = authorize(find_contact, :update?)
+  end
+
+  def find_contact
+    current_editor.contacts.find(params.expect(:id))
+  end
 
   def contact_params
     params.expect(editor_contact: EditorContact::EDITABLE_ATTRIBUTES)

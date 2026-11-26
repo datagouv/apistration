@@ -34,7 +34,7 @@
                   <td>
                     <div class="fr-btns-group fr-btns-group--inline fr-btns-group--sm">
                       <%= editor_profile_edit_link(editor_profile_edit_use_case_path(editor, use_case, admin:), "la démarche #{use_case.label}, #{use_case.software}") %>
-                      <% if admin || use_case.form_uid.nil? %>
+                      <% if admin || policy(use_case).destroy? %>
                         <%= editor_profile_remove_button(editor_profile_use_case_path(editor, use_case, admin:), "la démarche #{use_case.label}, #{use_case.software}", 'Retirer cette démarche ?') %>
                       <% end %>
                     </div>

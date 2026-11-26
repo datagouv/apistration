@@ -30,12 +30,8 @@ class Editor::UseCasesController < EditorController
   end
 
   def destroy
-    if @use_case.form_uid
-      error_message(title: 'Cette démarche est rattachée à un formulaire DataPass : écrivez au support pour la retirer')
-    else
-      @use_case.destroy!
-      success_message(title: 'Démarche retirée')
-    end
+    authorize(@use_case).destroy!
+    success_message(title: 'Démarche retirée')
 
     redirect_to editor_settings_path(onglet: 'use_cases')
   end
@@ -43,7 +39,7 @@ class Editor::UseCasesController < EditorController
   private
 
   def set_use_case
-    @use_case = current_editor.use_cases.find(params.expect(:id))
+    @use_case = authorize(current_editor.use_cases.find(params.expect(:id)), :update?)
   end
 
   def use_case_params
