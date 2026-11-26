@@ -45,11 +45,11 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateHTTPResponse, type:
     end
   end
 
-  context 'with an http 500' do
-    let(:response) { instance_double(Net::HTTPServerError, code: '500') }
+  context 'when ANTS answers a 500 with a SOAP Fault' do
+    let(:response) { instance_double(Net::HTTPInternalServerError, code: '500', body: read_payload_file('ants/soap_fault_internal_error.xml')) }
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+    its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
   end
 end

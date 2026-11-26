@@ -82,6 +82,6 @@ RSpec.describe ANTS::ExtraitImmatriculationVehicule::ValidateResponse, type: :va
 
     it { is_expected.to be_a_failure }
 
-    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+    its(:errors) { is_expected.to include(instance_of(ProviderInternalServerError)) }
   end
 end
