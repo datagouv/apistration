@@ -303,6 +303,17 @@ RSpec.describe MonitoringService, type: :service do
         end
       end
 
+      context 'when context contains a body tagged UTF-8 with invalid bytes' do
+        let(:body) { "{\"error\": \"donn\xE9es\"}".dup.force_encoding(Encoding::UTF_8) }
+        let(:context) { { http_response_body: body, status: 500 } }
+
+        it 'still sends the context to Sentry instead of raising' do
+          expect(Sentry).to receive(:set_context).with(title, context)
+
+          subject
+        end
+      end
+
       context 'when context contains body without personal data' do
         let(:context) { { http_response_body: '{"error": "not_found"}', status: 404 } }
 

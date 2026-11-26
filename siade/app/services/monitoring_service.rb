@@ -95,11 +95,15 @@ class MonitoringService
   end
 
   def sanitize_personal_data(context)
-    body_key = RESPONSE_BODY_KEYS.find { |k| context[k].present? }
+    body_key = RESPONSE_BODY_KEYS.find { |k| readable_body(context[k]).present? }
     return context unless body_key
-    return context unless contains_personal_data?(context[body_key])
+    return context unless contains_personal_data?(readable_body(context[body_key]))
 
     context.merge(body_key => encrypt_body(context[body_key]))
+  end
+
+  def readable_body(body)
+    body.to_s.scrub
   end
 
   def contains_personal_data?(body)
