@@ -101,6 +101,28 @@ RSpec.describe MakeRequestPingDriver, type: :ping_driver do
       end
     end
 
+    context 'when the expected status is a provider error, recognised by a marker in its body' do
+      let(:params) do
+        Rails.application.config_for(:pings)[:api_kind][:with_make_request_and_body_to_check][:driver_params]
+      end
+
+      before do
+        stub_request(:post, Siade.credentials[:ants_siv_url]).to_return(status: 404, body:)
+      end
+
+      context 'when the body carries the marker: the provider answered as expected' do
+        let(:body) { '{"erreurs": [{"code": "NOT_FOUND"}]}' }
+
+        it { is_expected.to eq(:ok) }
+      end
+
+      context 'when the body lacks it: the same status came from elsewhere, e.g. a missing route on a gateway' do
+        let(:body) { '<html>404 Not Found</html>' }
+
+        it { is_expected.to eq(:bad_gateway) }
+      end
+    end
+
     context 'when there is no response from organizer' do
       before do
         allow(ANTS::ExtraitImmatriculationVehicule::MakeRequest).to receive(:call).and_return(Interactor::Context.new)

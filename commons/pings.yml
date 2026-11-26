@@ -78,6 +78,16 @@ test:
           immatriculation: 'AAA-000-AAA'
         status_to_check: 200
 
+    with_make_request_and_body_to_check:
+      kind: 'make_request'
+      provider: 'whatever'
+      driver_params:
+        make_request: 'ANTS::ExtraitImmatriculationVehicule::MakeRequest'
+        params:
+          immatriculation: 'AAA-000-AAA'
+        status_to_check: 404
+        body_to_check: 'NOT_FOUND'
+
     with_make_request_and_token:
       kind: 'make_request'
       provider: 'whatever'
