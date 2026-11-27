@@ -15,6 +15,8 @@ class MonitoringService
 
   PERSONAL_DATA_THRESHOLD = 2
 
+  RETRIEVER_CONTEXT_CLEAR_KEYS = %i[operation_id provider_name recipient cacheable data_source].freeze
+
   ENCRYPTION_FAILED_PLACEHOLDER = '[personal data not sent: encryption failed]'.freeze
 
   def_delegators :Sentry,
@@ -79,7 +81,17 @@ class MonitoringService
   end
 
   def set_retriever_context(context)
-    set_context('Retriever', context.to_h)
+    set_context('Retriever', retriever_summary(context))
+  end
+
+  def set_retriever_crash_context(context)
+    set_context(
+      'Retriever',
+      retriever_summary(context).merge(encrypted_details: encrypt_for_tracking(retriever_details(context)))
+    )
+  rescue StandardError => e
+    set_retriever_context(context)
+    track(:error, "Failed to build the Retriever monitoring details (#{e.class.name})")
   end
 
   def encrypt_for_tracking(data)
@@ -101,6 +113,26 @@ class MonitoringService
 
   def params_filter
     @params_filter ||= ActiveSupport::ParameterFilter.new(Rails.application.config.filter_parameters)
+  end
+
+  def retriever_summary(context)
+    context.to_h.slice(*RETRIEVER_CONTEXT_CLEAR_KEYS).merge(
+      http_response_code: context.response.try(:code),
+      error_codes: retriever_error_codes(context)
+    ).compact
+  end
+
+  def retriever_error_codes(context)
+    Array(context.errors).map(&:code)
+  rescue StandardError
+    nil
+  end
+
+  def retriever_details(context)
+    {
+      params: context.params,
+      http_response_body: readable_body(context.response.try(:body))
+    }.to_json
   end
 
   def sanitize_personal_data(context)

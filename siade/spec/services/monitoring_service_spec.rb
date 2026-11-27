@@ -138,12 +138,12 @@ RSpec.describe MonitoringService, type: :service do
       subject { instance.set_retriever_context(retriever_context) }
 
       let(:retriever_context) { Interactor::Context.new(context_data) }
-      let(:context_data) { { foo: 'bar' } }
+      let(:context_data) { { operation_id: 'api_particulier_v3_dummy', params: { nomNaissance: 'DUPONT' }, json_body: { nom: 'DUPONT' } } }
 
-      it 'sets extra context on Sentry' do
+      it 'sends only the keys known to hold no personal data' do
         expect(Sentry).to receive(:set_context).with(
           'Retriever',
-          context_data
+          { operation_id: 'api_particulier_v3_dummy', error_codes: [] }
         )
 
         subject
