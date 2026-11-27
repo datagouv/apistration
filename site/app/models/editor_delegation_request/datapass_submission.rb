@@ -1,4 +1,6 @@
 class EditorDelegationRequest::DatapassSubmission
+  SUBMITTABLE_STATES = %w[draft changes_requested].freeze
+
   attr_reader :request, :signatory, :consents
 
   def initialize(request, signatory:, consents:)
@@ -8,12 +10,20 @@ class EditorDelegationRequest::DatapassSubmission
   end
 
   def call
+    return if received_by_datapass?
+
     id = demande_id
     client.attach_documents(id, documents) if documents.any?
     client.submit_demande(id, consentement: consents)
   end
 
   private
+
+  def received_by_datapass?
+    external_id = request.authorization_request.external_id
+
+    external_id.present? && SUBMITTABLE_STATES.exclude?(client.get_demande(external_id)['state'])
+  end
 
   def demande_id
     authorization_request = request.authorization_request
