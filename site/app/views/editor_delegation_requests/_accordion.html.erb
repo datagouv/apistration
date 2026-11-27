@@ -1,0 +1,8 @@
+<section class="fr-accordion">
+  <h3 class="fr-accordion__title">
+    <button type="button" class="fr-accordion__btn" aria-expanded="<%= local_assigns.fetch(:expanded, false) %>" aria-controls="<%= id %>"><%= title %></button>
+  </h3>
+  <div class="fr-collapse <%= 'fr-collapse--expanded' if local_assigns.fetch(:expanded, false) %>" id="<%= id %>">
+    <%= yield %>
+  </div>
+</section>

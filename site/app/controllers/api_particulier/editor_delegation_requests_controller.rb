@@ -1,0 +1,3 @@
+class APIParticulier::EditorDelegationRequestsController < APIParticulierController
+  include EditorDelegationRequestsManagement
+end

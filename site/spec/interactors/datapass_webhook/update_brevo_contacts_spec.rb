@@ -126,4 +126,16 @@ RSpec.describe DatapassWebhook::UpdateBrevoContacts, type: :interactor do
       expect { subject }.to raise_error(Faraday::BadRequestError)
     end
   end
+
+  describe 'when the authorization request comes from an editor delegation request' do
+    let(:authorization_request) { create(:authorization_request, :with_demandeur) }
+
+    before { create(:editor_delegation_request, authorization_request:) }
+
+    it 'does not subscribe its contacts' do
+      subject
+
+      expect(a_request(:post, BrevoAPIMocks::BREVO_CONTACTS_URL)).not_to have_been_made
+    end
+  end
 end

@@ -1,0 +1,13 @@
+<% name = [data["#{kind}_given_name"], data["#{kind}_family_name"]].compact_blank.join(' ') %>
+<% details = [data["#{kind}_job_title"], data["#{kind}_email"], data["#{kind}_phone_number"]].compact_blank %>
+<% if name.present? || details.any? %>
+  <div class="fr-col-12 fr-col-md-6">
+    <p class="fr-text--bold fr-mb-1v"><%= label %></p>
+    <% if name.present? %>
+      <p class="fr-mb-0"><%= name %></p>
+    <% end %>
+    <% details.each do |detail| %>
+      <p class="fr-mb-0"><%= detail %></p>
+    <% end %>
+  </div>
+<% end %>

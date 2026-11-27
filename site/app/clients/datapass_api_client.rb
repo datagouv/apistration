@@ -1,4 +1,5 @@
 require 'faraday'
+require 'faraday/multipart'
 
 class DatapassAPIClient
   class Error < StandardError
@@ -26,6 +27,12 @@ class DatapassAPIClient
 
   def update_demande(id, attributes)
     request { http_connection.patch("demandes/#{id}", { demande: attributes }) }
+  end
+
+  def attach_documents(id, documents)
+    data = documents.transform_values { |document| [Faraday::Multipart::FilePart.new(StringIO.new(document.download), document.content_type, document.filename.to_s)] }
+
+    request { multipart_connection.patch("demandes/#{id}", { demande: { data: } }) }
   end
 
   def list_demandes(siret: nil, state: nil, limit: nil, offset: nil)
@@ -74,9 +81,17 @@ class DatapassAPIClient
   end
 
   def http_connection
+    connection(:json)
+  end
+
+  def multipart_connection
+    connection(:multipart)
+  end
+
+  def connection(encoding)
     Faraday.new(url: AdminApientreprise.credentials[:datapass_api][:url]) do |conn|
       conn.request :authorization, 'Bearer', -> { DatapassAPIAuthentication.new.access_token }
-      conn.request :json
+      conn.request encoding
       conn.request :retry, max: 2
       conn.response :raise_error
       conn.response :json

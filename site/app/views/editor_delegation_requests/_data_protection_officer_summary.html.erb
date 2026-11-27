@@ -1,0 +1,16 @@
+<% common = @batch.common_data_protection_officer %>
+<%= render layout: 'section', locals: { title: 'Délégué à la protection des données (DPD)' } do %>
+  <% if common %>
+    <p class="fr-mb-1v">
+      <%= [common['delegue_protection_donnees_email'], common['delegue_protection_donnees_phone_number']].compact_blank.join(' · ') %>
+      <% if @batch.organizations.size > 1 %>, pour vos <%= @batch.organizations.size %> organisations<% end %>
+    </p>
+  <% else %>
+    <ul>
+      <% @batch.organizations.each do |organization| %>
+        <li><%= organization.name %>&nbsp;: <%= organization.data_protection_officer['delegue_protection_donnees_email'] %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <p class="fr-mb-0"><%= link_to 'Modifier', editor_delegation_request_path, class: 'fr-link' %></p>
+<% end %>

@@ -1,0 +1,3 @@
+<p class="fr-text--sm">Les champs marqués d’un <span class="fr-text-default--error">*</span> sont obligatoires.</p>
+<%= render 'field', form:, attribute: :delegue_protection_donnees_email, label: 'Adresse électronique', required: true, hint: 'Elle peut être générique, par exemple dpo@…', type: 'email', autocomplete: 'off' %>
+<%= render 'field', form:, attribute: :delegue_protection_donnees_phone_number, label: 'Téléphone', hint: 'Facultatif', type: 'tel', autocomplete: 'off' %>

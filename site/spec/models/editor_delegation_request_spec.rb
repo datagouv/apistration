@@ -1,0 +1,135 @@
+RSpec.describe EditorDelegationRequest do
+  it 'has a valid factory' do
+    expect(build(:editor_delegation_request)).to be_valid
+    expect(build(:editor_delegation_request, :with_authorization_request)).to be_valid
+    expect(build(:editor_delegation_request, :submitted)).to be_valid
+  end
+
+  it 'requires a 14 digits siret' do
+    expect(build(:editor_delegation_request, siret: '213401821')).not_to be_valid
+  end
+
+  it 'is unique per delegation campaign and siret' do
+    existing = create(:editor_delegation_request)
+
+    expect(build(:editor_delegation_request, editor_delegation_campaign: existing.editor_delegation_campaign, siret: existing.siret)).not_to be_valid
+    expect(build(:editor_delegation_request, siret: existing.siret)).to be_valid
+  end
+
+  it 'stores the contact email trimmed and downcased, so that it matches the ProConnect email of the signatory' do
+    expect(build(:editor_delegation_request, contact_email: ' Achats@Saint-Exemple.fr ').contact_email).to eq('achats@saint-exemple.fr')
+  end
+
+  describe 'invitation token' do
+    let(:editor_delegation_request) { create(:editor_delegation_request) }
+
+    it 'resolves the request' do
+      token = editor_delegation_request.generate_token_for(:invitation)
+
+      expect(described_class.find_by_token_for(:invitation, token)).to eq(editor_delegation_request)
+    end
+
+    it 'is stable, so that links can be generated again' do
+      token = editor_delegation_request.generate_token_for(:invitation)
+
+      expect(described_class.find(editor_delegation_request.id).generate_token_for(:invitation)).to eq(token)
+    end
+
+    it 'is reachable under the editor name' do
+      editor_delegation_request.editor.update!(name: 'Omnikles ')
+
+      expect(editor_delegation_request.invitation_path).to eq("/editeurs/omnikles/habilitation/#{editor_delegation_request.generate_token_for(:invitation)}")
+    end
+
+    it 'rejects a forged token' do
+      expect(described_class.find_by_token_for(:invitation, 'forged')).to be_nil
+    end
+  end
+
+  describe '#datapass_data' do
+    subject(:datapass_data) { editor_delegation_request.datapass_data }
+
+    let(:editor_delegation_campaign) { build(:editor_delegation_campaign, data: { 'intitule' => 'Omnikles', 'delegue_protection_donnees_email' => 'editor@omnikles.fr' }) }
+    let(:editor_delegation_request) { build(:editor_delegation_request, :with_dpo, editor_delegation_campaign:) }
+
+    before { stub_datapass_formulaires }
+
+    it 'merges DataPass formulaire, delegation campaign and client data, from the most generic to the most specific' do
+      expect(datapass_data).to include(
+        'cadre_juridique_nature' => 'Marchés publics',
+        'intitule' => 'Omnikles',
+        'delegue_protection_donnees_email' => 'dpo@saint-exemple.fr'
+      )
+    end
+  end
+
+  describe 'data protection officer' do
+    subject(:editor_delegation_request) { build(:editor_delegation_request, :with_dpo) }
+
+    it 'requires an email only, the phone being optional' do
+      editor_delegation_request.assign_attributes(delegue_protection_donnees_given_name: nil, delegue_protection_donnees_job_title: nil, delegue_protection_donnees_phone_number: ' ')
+
+      expect(editor_delegation_request).to be_valid(:data_protection_officer)
+
+      editor_delegation_request.delegue_protection_donnees_email = ' '
+
+      expect(editor_delegation_request).not_to be_valid(:data_protection_officer)
+      expect(editor_delegation_request.errors.attribute_names).to eq([:delegue_protection_donnees_email])
+    end
+
+    it 'requires a valid email' do
+      editor_delegation_request.delegue_protection_donnees_email = 'not an email'
+
+      expect(editor_delegation_request).not_to be_valid(:data_protection_officer)
+    end
+
+    it 'normalizes values like DataPass' do
+      editor_delegation_request.delegue_protection_donnees_email = ' DPO@Saint-Exemple.fr '
+      editor_delegation_request.delegue_protection_donnees_given_name = ' Dominique '
+
+      expect(editor_delegation_request.delegue_protection_donnees_email).to eq('dpo@saint-exemple.fr')
+      expect(editor_delegation_request.delegue_protection_donnees_given_name).to eq('Dominique')
+    end
+
+    it 'is not required outside of this step' do
+      expect(build(:editor_delegation_request)).to be_valid
+    end
+  end
+
+  describe 'submission' do
+    subject(:editor_delegation_request) do
+      build(:editor_delegation_request, :with_dpo, submitted_at: Time.zone.now, submitted_by_user: create(:user), terms_of_service_accepted: '1', data_protection_officer_informed: '1')
+    end
+
+    it 'is valid once both boxes are checked by an agent' do
+      expect(editor_delegation_request).to be_valid(:submission)
+    end
+
+    it 'requires both boxes' do
+      editor_delegation_request.terms_of_service_accepted = '0'
+      editor_delegation_request.data_protection_officer_informed = nil
+
+      expect(editor_delegation_request).not_to be_valid(:submission)
+      expect(editor_delegation_request.errors.attribute_names).to contain_exactly(:terms_of_service_accepted, :data_protection_officer_informed)
+    end
+
+    it 'requires the data protection officer' do
+      editor_delegation_request.delegue_protection_donnees_email = nil
+
+      expect(editor_delegation_request).not_to be_valid(:submission)
+    end
+  end
+
+  describe '#submitted?' do
+    it { expect(build(:editor_delegation_request)).not_to be_submitted }
+    it { expect(build(:editor_delegation_request, :submitted)).to be_submitted }
+  end
+
+  describe '#editor' do
+    it 'is the editor of the campaign' do
+      editor_delegation_request = build(:editor_delegation_request)
+
+      expect(editor_delegation_request.editor).to eq(editor_delegation_request.editor_delegation_campaign.editor)
+    end
+  end
+end

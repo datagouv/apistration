@@ -1,0 +1,6 @@
+<%# locals: (request:) -%>
+<% if request.cadre_juridique_document.attached? %>
+  <%= external_link_to 'Voir', editor_delegation_request_convention_path(siret: request.siret), title: "Convention de #{request.siret}" %>
+<% else %>
+  <p class="fr-badge fr-badge--warning fr-badge--sm">Manquante</p>
+<% end %>

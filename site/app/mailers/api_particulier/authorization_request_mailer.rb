@@ -15,6 +15,9 @@ class APIParticulier::AuthorizationRequestMailer < APIParticulierMailer
       embarquement_valide_to_demandeur_seulement
       embarquement_valide_to_tech_cc_demandeur
       update_embarquement_valide_to_demandeur
+      delegation_editeur_demande_recue
+      delegation_editeur_demande_validee
+      delegation_editeur_demande_refusee
     ]
   )
 end

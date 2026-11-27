@@ -1,0 +1,61 @@
+<% signed_count = @submitted_requests.size %>
+<% several = signed_count > 1 %>
+<% last_signature = @submitted_requests.max_by(&:submitted_at) %>
+<% editor_name = @batch.editor.name.strip %>
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: several ? 'Vos demandes d’habilitation sont soumises' : 'Votre demande d’habilitation est soumise' %>
+
+    <p>
+      <%= several ? "Vos #{signed_count} demandes partent" : 'Elle part' %> en instruction chez <%= delegation_api_name(@batch) %>,
+      qui délivrera, ou non, <%= several ? 'les habilitations' : 'l’habilitation' %>.
+    </p>
+
+    <% if @batch.pending_requests.any? %>
+      <div class="fr-alert fr-alert--info fr-mb-4w">
+        <p>
+          <%= pending_count = @batch.pending_requests.size %> <%= pending_count > 1 ? 'demandes restent' : 'demande reste' %> en attente de soumission.
+          <%= link_to pending_count > 1 ? 'Les soumettre maintenant' : 'La soumettre maintenant', editor_delegation_request_path %>
+        </p>
+      </div>
+    <% end %>
+
+    <h2 class="fr-h4">Et ensuite&nbsp;?</h2>
+    <ul>
+      <li>Pendant l’instruction, <%= editor_name %> continue de récupérer les données comme d’habitude. Vous n’avez rien à faire.</li>
+      <li>Vous êtes informé(e) de la décision par courriel.</li>
+      <li>Si <%= several ? 'une habilitation est refusée' : 'l’habilitation est refusée' %>, nous vous contacterons.</li>
+    </ul>
+
+    <% if several %>
+      <div class="fr-table fr-mb-1w">
+        <table>
+          <caption>Demandes soumises</caption>
+          <thead>
+            <tr>
+              <th scope="col">Établissement</th>
+              <th scope="col">SIRET</th>
+              <th scope="col">Soumise le</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @submitted_requests.each do |request| %>
+              <tr>
+                <td><%= @batch.establishment(request.siret)&.denomination %></td>
+                <td><%= request.siret %></td>
+                <td><%= l(request.submitted_at, format: :long) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+
+    <% if last_signature %>
+      <p class="fr-text--sm">
+        <%= several ? 'Dernière soumission' : 'Soumise' %> le <%= l(last_signature.submitted_at, format: :long) %> par
+        <%= last_signature.submitted_by_user.full_name %>, identifié(e) par ProConnect.
+      </p>
+    <% end %>
+  </div>
+</div>

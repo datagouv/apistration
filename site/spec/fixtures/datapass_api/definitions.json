@@ -1,0 +1,44 @@
+{
+  "api_entreprise": {
+    "id": "api_entreprise",
+    "name": "API Entreprise",
+    "scopes": [
+      {
+        "name": "Données des entreprises",
+        "value": "entreprises",
+        "group": "Informations générales"
+      },
+      {
+        "name": "Données des établissements",
+        "value": "etablissements",
+        "group": "Informations générales"
+      },
+      {
+        "name": "Attestation de vigilance - Urssaf",
+        "value": "attestation_sociale_urssaf",
+        "group": "Informations de régularité"
+      }
+    ]
+  },
+  "api_particulier": {
+    "id": "api_particulier",
+    "name": "API Particulier",
+    "scopes": [
+      {
+        "name": "Allocataires",
+        "value": "cnav_participation_familiale_eaje_allocataires",
+        "group": "API Participation familiale EAJE"
+      },
+      {
+        "name": "Enfants",
+        "value": "cnav_participation_familiale_eaje_enfants",
+        "group": "API Participation familiale EAJE"
+      },
+      {
+        "name": "Quotient familial",
+        "value": "cnaf_quotient_familial",
+        "group": "API Quotient familial CAF & MSA"
+      }
+    ]
+  }
+}

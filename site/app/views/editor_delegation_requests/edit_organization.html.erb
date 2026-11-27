@@ -1,0 +1,14 @@
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'header', title: "DPD de #{@organization.name}" %>
+    <p>SIREN <%= @organization.siren %>. Ce délégué ne vaut que pour cette organisation.</p>
+
+    <%= render 'data_protection_officer_suggestion' if @organization.data_protection_officer_suggested? %>
+
+    <%= form_with(model: @organization.data_protection_officer_form, url: editor_delegation_request_organization_path(siren: @organization.siren), method: :patch) do |f| %>
+      <%= render 'data_protection_officer_fields', form: f %>
+
+      <%= render 'form_actions', form: f, submit: 'Enregistrer', back: 'Annuler', back_path: editor_delegation_request_organizations_path %>
+    <% end %>
+  </div>
+</div>

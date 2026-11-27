@@ -17,6 +17,9 @@ class APIEntreprise::AuthorizationRequestMailer < APIEntrepriseMailer
       update_embarquement_valide_to_demandeur
       demande_recue
       update_demande_recue
+      delegation_editeur_demande_recue
+      delegation_editeur_demande_validee
+      delegation_editeur_demande_refusee
     ]
   )
 end

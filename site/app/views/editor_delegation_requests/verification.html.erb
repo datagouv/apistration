@@ -1,0 +1,34 @@
+<% count = @batch.pending_requests.size %>
+<% organizations_count = @batch.organizations.size %>
+<div class="fr-grid-row">
+  <div class="fr-col-12 fr-col-md-8">
+    <%= render 'journey_header', current_step: 2 %>
+
+    <%= render 'what_you_sign', requests_count: count %>
+
+    <%= render 'data_protection_officer_summary' %>
+
+    <%= form_with(model: @signature, scope: :signature, url: editor_delegation_request_signature_path, method: :post, data: { controller: 'batch-selection' }) do |f| %>
+      <% unless @batch.single? %>
+        <div class="fr-accordions-group fr-mb-4w">
+          <%= render layout: 'accordion', locals: { id: 'establishments', title: 'Exclure des établissements', expanded: @signature.errors[:included_ids].any? } do %>
+            <%= render 'establishments' %>
+          <% end %>
+        </div>
+
+        <% if @signature.errors[:included_ids].any? %>
+          <p class="fr-error-text fr-mb-2w">Cochez au moins un établissement pour soumettre.</p>
+        <% end %>
+      <% end %>
+
+      <%= render 'base_errors', record: @signature %>
+
+      <%= render 'consents', signature: @signature, several_organizations: organizations_count > 1 %>
+
+      <ul class="fr-btns-group fr-btns-group--inline-md fr-btns-group--right">
+        <li><%= link_to 'Revenir', editor_delegation_request_path, class: %w(fr-btn fr-btn--secondary) %></li>
+        <li><%= f.button count > 1 ? "Soumettre les #{count} demandes" : 'Soumettre la demande', class: 'fr-btn', data: { batch_selection_target: 'submit' } %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_27_170000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "btree_gin"
   enable_extension "pg_catalog.plpgsql"
@@ -28,6 +28,34 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.timestamptz "timestamp", null: false
     t.uuid "token_id"
     t.string "ip"
+  end
+
+  create_table "active_storage_attachments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.uuid "record_id", null: false
+    t.uuid "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "admin_activities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -85,6 +113,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.string "siret"
     t.string "status"
     t.datetime "validated_at", precision: nil
+    t.datetime "datapass_updated_at"
     t.index ["external_id"], name: "index_authorization_requests_on_external_id", unique: true, where: "(external_id IS NOT NULL)"
     t.index ["scopes"], name: "index_authorization_requests_on_scopes", using: :gin
     t.check_constraint "NOT status::text IS DISTINCT FROM 'draft'::text OR COALESCE(btrim(external_id::text), ''::text) <> ''::text", name: "external_id_required_outside_draft"
@@ -110,6 +139,33 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["editor_id"], name: "index_editor_contacts_on_editor_id"
+  end
+
+  create_table "editor_delegation_campaigns", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "editor_id", null: false
+    t.string "api", null: false
+    t.string "datapass_form_uid", null: false
+    t.jsonb "data", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["editor_id", "datapass_form_uid"], name: "idx_on_editor_id_datapass_form_uid_52da00b36b", unique: true
+  end
+
+  create_table "editor_delegation_requests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "editor_delegation_campaign_id", null: false
+    t.string "siret", null: false
+    t.string "contact_email"
+    t.uuid "authorization_request_id"
+    t.jsonb "data", default: {}, null: false
+    t.datetime "submitted_at"
+    t.uuid "submitted_by_user_id"
+    t.text "datapass_error"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["authorization_request_id"], name: "index_editor_delegation_requests_on_authorization_request_id", unique: true
+    t.index ["contact_email"], name: "index_editor_delegation_requests_on_contact_email"
+    t.index ["editor_delegation_campaign_id", "siret"], name: "idx_on_editor_delegation_campaign_id_siret_6d9a74dd1c", unique: true
+    t.index ["submitted_by_user_id"], name: "index_editor_delegation_requests_on_submitted_by_user_id"
   end
 
   create_table "editor_delegations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -428,10 +484,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_25_095000) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "admin_activities", "users", column: "admin_id"
   add_foreign_key "authorization_request_security_settings", "authorization_requests"
   add_foreign_key "changelog_subscriptions", "users", validate: false
   add_foreign_key "editor_contacts", "editors"
+  add_foreign_key "editor_delegation_campaigns", "editors"
+  add_foreign_key "editor_delegation_requests", "authorization_requests"
+  add_foreign_key "editor_delegation_requests", "editor_delegation_campaigns"
+  add_foreign_key "editor_delegation_requests", "users", column: "submitted_by_user_id"
   add_foreign_key "editor_delegations", "authorization_requests"
   add_foreign_key "editor_delegations", "editors"
   add_foreign_key "editor_use_cases", "editors"

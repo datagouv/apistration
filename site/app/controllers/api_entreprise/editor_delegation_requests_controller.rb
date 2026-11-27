@@ -1,0 +1,3 @@
+class APIEntreprise::EditorDelegationRequestsController < APIEntrepriseController
+  include EditorDelegationRequestsManagement
+end

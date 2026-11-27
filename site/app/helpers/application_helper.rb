@@ -59,7 +59,7 @@ module ApplicationHelper
     namespace = controller_path.split('/').first
     site_name = t("layouts.#{namespace}.application.title")
     title = content_for?(:page_title) ? content_for(:page_title) : static_page_title
-    title.present? ? "#{title} — #{site_name}" : site_name
+    title.present? ? safe_join([title, site_name], ' — ') : site_name
   end
 
   def icon(kind)

@@ -11,6 +11,7 @@ class Seeds
     create_data_for_api_particulier
     create_data_shared
     create_editor_delegations
+    create_editor_delegation_requests
     create_editor_token
     create_audit_notifications
     create_provider_dashboard_data
@@ -22,7 +23,7 @@ class Seeds
 
     load_all_models!
 
-    ProlongTokenWizard.destroy_all
+    delete_records_referencing_others
 
     ActiveRecord::Base.connection.transaction do
       MagicLink.delete_all
@@ -30,6 +31,12 @@ class Seeds
       ApplicationRecord.descendants.reject { |k| views.include?(k.table_name) }.each(&:delete_all)
       AccessLog.delete_all
     end
+  end
+
+  def delete_records_referencing_others
+    ProlongTokenWizard.destroy_all
+    EditorDelegationRequest.delete_all
+    EditorDelegationCampaign.delete_all
   end
 
   def create_scopes(api)
@@ -179,6 +186,120 @@ class Seeds
   def create_editor_delegations
     ar = AuthorizationRequest.find_by(demarche: 'api-entreprise-mgdis')
     EditorDelegation.create!(editor: @editor, authorization_request: ar) if ar
+  end
+
+  def create_editor_delegation_requests
+    create_omnikles_delegation_requests
+    create_hoptis_delegation_requests
+  end
+
+  def create_omnikles_delegation_requests
+    use_case = create_editor_delegation_campaign('Omnikles')
+
+    create_user(email: 'achats@yopmail.com', first_name: 'Camille', last_name: 'Martin')
+    find_or_create_organization('21340172201787', denomination: 'COMMUNE DE MONTPELLIER')
+    create_editor_delegation_request(use_case, '21340172201787', 'achats@yopmail.com')
+
+    create_user(email: 'mairie@yopmail.com', first_name: 'Claude', last_name: 'Bernard')
+    find_or_create_organization('21670482500019', denomination: 'COMMUNE DE STRASBOURG')
+    create_editor_delegation_request(use_case, '21670482500019', 'mairie@yopmail.com')
+  end
+
+  def create_hoptis_delegation_requests
+    use_case = create_editor_delegation_campaign('Hoptis')
+
+    create_user(email: 'creches@yopmail.com', first_name: 'Dominique', last_name: 'Petit')
+    hoptis_establishments.each do |siret, denomination|
+      find_or_create_organization(siret, denomination:)
+      dpo = siret.start_with?('834567893') ? {} : hoptis_data_protection_officer
+      request = create_editor_delegation_request(use_case, siret, 'creches@yopmail.com', **dpo)
+      attach_convention(request) unless siret.start_with?('867901225')
+    end
+  end
+
+  def attach_convention(request)
+    request.cadre_juridique_document.attach(io: Rails.root.join('db/seeds/convention.pdf').open, filename: "convention-#{request.siret}.pdf", content_type: 'application/pdf')
+  end
+
+  def hoptis_establishments
+    {
+      'CRÈCHE LES LUCIOLES' => %w[81234567600017 81234567600025 81234567600033],
+      'CRÈCHE PETITS PAS' => %w[82345678500018],
+      'MICRO-CRÈCHE ARC-EN-CIEL' => %w[83456789300013],
+      'CRÈCHE LA RONDE' => %w[84567900000016 84567900000024],
+      'CRÈCHE LES PETITS LOUPS' => %w[85679011800017 85679011800025 85679011800033],
+      'CRÈCHE PIROUETTE' => %w[86790122500013 86790122500021]
+    }.flat_map { |denomination, sirets| sirets.map { |siret| [siret, denomination] } }
+  end
+
+  def hoptis_data_protection_officer
+    {
+      delegue_protection_donnees_given_name: 'Sacha',
+      delegue_protection_donnees_family_name: 'Moreau',
+      delegue_protection_donnees_email: 'dpo@groupe-creches.yopmail.com',
+      delegue_protection_donnees_phone_number: '0102030405',
+      delegue_protection_donnees_job_title: 'Délégué à la protection des données'
+    }
+  end
+
+  def create_editor_delegation_campaign(name)
+    siret, api, datapass_form_uid, *data = editor_delegation_campaigns.fetch(name)
+    editor = Editor.create!(name:, apis: [api], editor_tokens_enabled: true, siret:)
+    EditorDelegationCampaign.create!(editor:, api:, datapass_form_uid:, data: editor_delegation_campaign_data(name.downcase, *data).merge(editor_legal_frameworks.fetch(name, {})))
+  end
+
+  def editor_delegation_campaigns
+    {
+      'Omnikles' => ['44973625500018', 'entreprise', 'api-entreprise-marches-publics', "Dématérialisation des appels d'offres des marchés publics",
+                     'Récupération des pièces justificatives des entreprises candidates aux marchés publics', 'Acheteurs publics', '36'],
+      'Hoptis' => ['80295478500027', 'particulier', 'api-particulier-hoptis-petite-enfance', 'Tarification des crèches du groupe',
+                   'Calcul de la participation familiale des crèches bénéficiant de la PSU', 'Directions des crèches', '12']
+    }
+  end
+
+  def editor_legal_frameworks
+    {
+      'Hoptis' => {
+        'cadre_juridique_url' => 'https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048436553'
+      }
+    }
+  end
+
+  def editor_delegation_campaign_data(editor_slug, intitule, description, destinataires, duree_conservation)
+    {
+      'intitule' => intitule,
+      'description' => description,
+      'destinataire_donnees_caractere_personnel' => destinataires,
+      'duree_conservation_donnees_caractere_personnel' => duree_conservation,
+      **editor_contact('contact_metier', "metier-#{editor_slug}@yopmail.com", 'Responsable métier'),
+      **editor_contact('contact_technique', "technique-#{editor_slug}@yopmail.com", 'Responsable technique')
+    }
+  end
+
+  def editor_contact(kind, email, job_title)
+    {
+      "#{kind}_email" => email,
+      "#{kind}_given_name" => 'Alex',
+      "#{kind}_family_name" => 'Durand',
+      "#{kind}_phone_number" => '0102030405',
+      "#{kind}_job_title" => job_title
+    }
+  end
+
+  def create_editor_delegation_request(use_case, siret, contact_email, **data_protection_officer)
+    authorization_request = create_authorization_request(
+      api: use_case.api, demarche: use_case.datapass_form_uid, siret:, status: 'draft',
+      intitule: use_case.data['intitule'], description: use_case.data['description'], scopes: editor_delegation_scopes.fetch(use_case.api)
+    )
+    EditorDelegation.create!(editor: use_case.editor, authorization_request:, created_via: 'editor_delegation_request')
+    EditorDelegationRequest.create!(editor_delegation_campaign: use_case, siret:, contact_email:, authorization_request:, **data_protection_officer)
+  end
+
+  def editor_delegation_scopes
+    {
+      'entreprise' => %w[unites_legales_etablissements_insee attestations_fiscales],
+      'particulier' => %w[cnav_participation_familiale_eaje_allocataires cnav_participation_familiale_eaje_enfants]
+    }
   end
 
   def create_editor_token
@@ -351,15 +472,15 @@ class Seeds
     AuthorizationRequest.create!(params)
   end
 
-  def find_or_create_organization(siret)
-    organization = Organization.find_by(siret:)
+  def find_or_create_organization(siret, denomination: nil)
+    Organization.find_by(siret:) || Organization.create!(siret:, insee_payload: insee_payload(siret, denomination))
+  end
 
-    return organization if organization
+  def insee_payload(siret, denomination)
+    fixture = Rails.root.join("spec/fixtures/insee/#{siret}.json")
+    return JSON.parse(fixture.read) if fixture.exist?
 
-    Organization.create!(
-      siret:,
-      insee_payload: JSON.parse(Rails.root.join("spec/fixtures/insee/#{siret}.json").read)
-    )
+    { 'etablissement' => { 'uniteLegale' => { 'denominationUniteLegale' => denomination || "ORGANISATION #{siret.first(9)}" } } }
   end
 
   def create_user_authorization_request_role(params = {})

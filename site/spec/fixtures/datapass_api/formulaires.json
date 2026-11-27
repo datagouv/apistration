@@ -5,7 +5,11 @@
     "description": "Accédez aux informations et aux documents administratifs des entreprises",
     "use_case": null,
     "prefilled?": false,
-    "data": ["cadre_juridique_nature", "cadre_juridique_url", "scopes"]
+    "data": [
+      "cadre_juridique_nature",
+      "cadre_juridique_url",
+      "scopes"
+    ]
   },
   {
     "uid": "api-entreprise-marches-publics",
@@ -16,7 +20,24 @@
     "data": {
       "cadre_juridique_nature": "Marchés publics",
       "cadre_juridique_url": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000037703425/",
-      "scopes": ["entreprises", "etablissements"]
+      "scopes": [
+        "entreprises",
+        "etablissements"
+      ]
+    }
+  },
+  {
+    "uid": "api-particulier-tarification-eaje",
+    "name": "API Particulier - Tarification des EAJE",
+    "description": "Formulaire spécialisé pour la tarification des crèches",
+    "use_case": "tarification_eaje",
+    "prefilled?": true,
+    "data": {
+      "cadre_juridique_nature": "Convention d’objectifs et de gestion CNAF",
+      "scopes": [
+        "cnav_participation_familiale_eaje_allocataires",
+        "cnav_participation_familiale_eaje_enfants"
+      ]
     }
   }
 ]

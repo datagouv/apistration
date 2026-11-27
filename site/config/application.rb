@@ -4,7 +4,7 @@ require "rails"
 require "active_model/railtie"
 require "active_job/railtie"
 require "active_record/railtie"
-# require "active_storage/engine"
+require "active_storage/engine"
 # require "action_mailbox/engine"
 # require "action_text/engine"
 require "action_controller/railtie"
@@ -58,6 +58,8 @@ module AdminApientreprise
     config.rate_limit_store = ActiveSupport::Cache::RedisCacheStore.new(
       **config_for(:cache_redis), namespace: "admin_api_entreprise_rate_limit_#{Rails.env}"
     )
+
+    config.active_storage.draw_routes = false
 
     config.generators do |g|
       g.test_framework :rspec

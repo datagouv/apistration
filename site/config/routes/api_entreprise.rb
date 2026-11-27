@@ -34,6 +34,18 @@ constraints(APIEntrepriseDomainConstraint.new) do
     post '/compte/demandes/:authorization_request_id/delegations', to: 'delegations#create', as: :authorization_request_delegations
     delete '/compte/demandes/:authorization_request_id/delegations/:id', to: 'delegations#destroy', as: :authorization_request_delegation
 
+    scope '/editeurs/:editor_slug/habilitation/:token', controller: :editor_delegation_requests, as: :editor_delegation_request do
+      get '/', action: :show
+      patch '/delegue-protection-donnees', action: :update_data_protection_officer, as: :data_protection_officer
+      get '/verification', action: :verification, as: :verification
+      post '/signature', action: :sign, as: :signature
+      get '/confirmation', action: :confirmation, as: :confirmation
+      get '/conventions/:siret', action: :convention, as: :convention, constraints: { siret: /\d{14}/ }
+      get '/organisations', action: :organizations, as: :organizations
+      get '/organisations/:siren', action: :edit_organization, as: :organization, constraints: { siren: /\d{9}/ }
+      patch '/organisations/:siren', action: :update_organization, constraints: { siren: /\d{9}/ }
+    end
+
     post '/compte/jetons/:id/partager', to: 'transfer_tokens#create', as: :token_create_magic_link
     get '/compte/jetons/:id/partager', to: 'transfer_tokens#new', as: :token_transfer
     get '/compte/jetons/:id', to: 'tokens#show', as: :token

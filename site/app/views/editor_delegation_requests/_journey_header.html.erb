@@ -1,0 +1,10 @@
+<%# locals: (current_step:) -%>
+<% count = @batch.pending_requests.size %>
+<%= render 'header', title: count > 1 ? "Vos #{count} habilitations DataPass" : "Habilitation DataPass de #{@batch.organizations.first.name}" %>
+<p class="fr-text--sm">
+  Identifié(e) en tant que <%= current_user.full_name %> (<%= current_user.email %>)<% if count == 1 %> · SIRET <%= @batch.pending_requests.first.siret %><% end %>
+</p>
+
+<%= render 'datapass_refusals' %>
+
+<%= delegation_stepper(current_step) %>
