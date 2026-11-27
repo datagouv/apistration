@@ -67,6 +67,44 @@ RSpec.describe QUALIBATCertificationsBatimentExtractor, type: :extractor do
       end
     end
 
+    context 'when a certification code is missing from the nomenclature' do
+      let(:filename) { 'one_page' }
+      let(:nomenclature_without_code) { Tempfile.new(['nomenclature', '.json']) }
+
+      before do
+        nomenclature = JSON.parse(File.read(QUALIBATCertificationsBatiment::CertificationsExtractor::NOMENCLATURE_PATH))
+        nomenclature_without_code.write(nomenclature.reject { |entry| entry['code'] == '5211' }.to_json)
+        nomenclature_without_code.flush
+        stub_const('QUALIBATCertificationsBatiment::CertificationsExtractor::NOMENCLATURE_PATH', nomenclature_without_code.path)
+        allow(Sentry).to receive(:capture_message)
+      end
+
+      after { nomenclature_without_code.close! }
+
+      it 'returns the certification with its code and without label' do
+        expect(extract[:entity][:certifications]).to include(
+          code: '5211',
+          nom: nil,
+          rge: false,
+          date_attribution: Date.new(2020, 4, 3)
+        )
+      end
+
+      it 'keeps the certifications known by the nomenclature' do
+        expect(extract[:entity][:certifications].pluck(:code)).to eq(%w[5111 5211])
+      end
+
+      it 'reports the unknown code to complete the nomenclature' do
+        extract
+
+        expect(Sentry).to have_received(:capture_message).with(
+          '[Qualibat] Certification code missing from nomenclature',
+          level: 'warning',
+          fingerprint: %w[qualibat-certification-code-missing-from-nomenclature 5211]
+        )
+      end
+    end
+
     context 'with invalid files' do
       %i[
         amiante
