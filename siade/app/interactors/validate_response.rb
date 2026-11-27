@@ -59,16 +59,12 @@ class ValidateResponse < ApplicationInteractor
     return unless api_particulier?
 
     error.add_to_monitoring_private_context({
-      encrypted_params: encrypt_params.to_s
+      encrypted_params: encrypt_params
     })
   end
 
   def encrypt_params
-    DataEncryptor.new(context.params.to_json).encrypt
-  rescue GPGME::Error::InvalidValue
-    MonitoringService.instance.track(:error, 'GPGME::Error::InvalidValue')
-
-    {}
+    MonitoringService.instance.encrypt_for_tracking(context.params.to_json)
   end
 
   def api_particulier?

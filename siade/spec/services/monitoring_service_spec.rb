@@ -355,7 +355,7 @@ RSpec.describe MonitoringService, type: :service do
         it 'replaces body with failure message' do
           expect(Sentry).to receive(:set_context).with(
             title,
-            { http_response_body: '[personal data detected but encryption failed]', status: 200 }
+            { http_response_body: described_class::ENCRYPTION_FAILED_PLACEHOLDER, status: 200 }
           )
 
           subject

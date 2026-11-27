@@ -96,7 +96,7 @@ class SDH::StatutSportif::BuildResource < BuildResource
       {
         fiches_count: current_fiches.length,
         fiches_ids: current_fiches.pluck('fiche'),
-        encrypted_params: DataEncryptor.new(context.params.to_json).encrypt.to_s
+        encrypted_params: MonitoringService.instance.encrypt_for_tracking(context.params.to_json)
       }
     )
   end

@@ -29,7 +29,7 @@ class DSNJ::ServiceNational::ValidateResponse < ValidateResponse
     MonitoringService.instance.track_with_added_context(
       'info',
       'DSNJ ServiceNational: successful match with apostrophe in name or first_name',
-      { encrypted_params: DataEncryptor.new(context.params.to_json).encrypt.to_s }
+      { encrypted_params: encrypt_params }
     )
   end
 

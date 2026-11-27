@@ -94,19 +94,41 @@ RSpec.describe ValidateResponse do
         end
       end
 
-      describe 'when data encryptor fails' do
+      describe 'when a GPG public key cannot be read' do
         before do
-          allow(encrypt_data).to receive(:encrypt).and_raise(GPGME::Error::InvalidValue.new('whatever'))
+          allow(DataEncryptor).to receive(:new).and_raise(Errno::EACCES)
         end
 
-        it 'tracks error' do
-          expect(MonitoringService.instance).to receive(:track).with(:error, 'GPGME::Error::InvalidValue').and_call_original
+        it 'still fails with the provider error, without the params in clear' do
+          expect(subject.errors).to include(instance_of(ProviderUnknownError))
+          expect(subject.errors.first.monitoring_private_context).to include(encrypted_params: MonitoringService::ENCRYPTION_FAILED_PLACEHOLDER)
+        end
+      end
+
+      describe 'when data encryptor fails' do
+        let(:params) { { nom: 'DUPONT', prenoms: ['JEAN'] } }
+
+        before do
+          allow(encrypt_data).to receive(:encrypt).and_raise(GPGME::Error::UnusablePublicKey.new(0))
+        end
+
+        it 'does not let the encryption error escape' do
+          expect { subject }.not_to raise_error
+        end
+
+        it 'reports the encryption failure without any params value' do
+          allow(MonitoringService.instance).to receive(:track).and_call_original
 
           subject
+
+          expect(MonitoringService.instance).to have_received(:track).with(:error, 'Failed to encrypt personal data for monitoring (GPGME::Error::UnusablePublicKey)')
         end
 
-        it 'does not raises error' do
-          expect { subject }.not_to raise_error
+        it 'never puts the identity in clear in the monitoring context' do
+          error = subject.errors.first
+
+          expect(error.monitoring_private_context.to_s).not_to include('DUPONT')
+          expect(error.monitoring_private_context[:encrypted_params]).to eq(MonitoringService::ENCRYPTION_FAILED_PLACEHOLDER)
         end
       end
     end

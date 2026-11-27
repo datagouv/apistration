@@ -15,6 +15,8 @@ class MonitoringService
 
   PERSONAL_DATA_THRESHOLD = 2
 
+  ENCRYPTION_FAILED_PLACEHOLDER = '[personal data not sent: encryption failed]'.freeze
+
   def_delegators :Sentry,
     :capture_message,
     :set_user,
@@ -80,6 +82,13 @@ class MonitoringService
     set_context('Retriever', context.to_h)
   end
 
+  def encrypt_for_tracking(data)
+    DataEncryptor.new(data).encrypt.to_s
+  rescue StandardError => e
+    track(:error, "Failed to encrypt personal data for monitoring (#{e.class.name})")
+    ENCRYPTION_FAILED_PLACEHOLDER
+  end
+
   def track(level, message, fingerprint: nil)
     options = { level: }
     options[:fingerprint] = fingerprint if fingerprint
@@ -99,7 +108,7 @@ class MonitoringService
     return context unless body_key
     return context unless contains_personal_data?(readable_body(context[body_key]))
 
-    context.merge(body_key => encrypt_body(context[body_key]))
+    context.merge(body_key => encrypt_for_tracking(context[body_key]))
   end
 
   def readable_body(body)
@@ -108,13 +117,6 @@ class MonitoringService
 
   def contains_personal_data?(body)
     PERSONAL_DATA_JSON_KEYS.count { |key| body.match?(/"#{key}"\s*:/i) } >= PERSONAL_DATA_THRESHOLD
-  end
-
-  def encrypt_body(body)
-    DataEncryptor.new(body).encrypt.to_s
-  rescue GPGME::Error => e
-    track(:error, "Failed to encrypt personal data in response body: #{e.message}")
-    '[personal data detected but encryption failed]'
   end
 
   def set_extra_context(title, context)
