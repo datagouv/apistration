@@ -1,4 +1,10 @@
 class SubmitEditorDelegationRequestToDatapassJob < ApplicationJob
+  UNREACHABLE_DATAPASS_REASON = 'DataPass n’a pas pu recevoir la demande, soumettez-la à nouveau'.freeze
+
+  after_discard do |job|
+    EditorDelegationRequest.find(job.arguments.first).refused_by_datapass!(UNREACHABLE_DATAPASS_REASON)
+  end
+
   def perform(editor_delegation_request_id, consents)
     request = EditorDelegationRequest.find(editor_delegation_request_id)
     return unless request.submitted?

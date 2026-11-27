@@ -19,4 +19,18 @@ RSpec.describe SubmitEditorDelegationRequestToDatapassJob do
       expect(editor_delegation_request.reload).to be_submitted
     end
   end
+
+  context 'when DataPass stays unreachable through every attempt' do
+    before { allow(datapass).to receive(:submit_demande).and_raise(DatapassAPIClient::Error.new('timeout')) }
+
+    it 'puts the request back to submit, saying DataPass could not receive it' do
+      expect {
+        perform_enqueued_jobs { described_class.perform_later(editor_delegation_request.id, consents) }
+      }.to raise_error(/timeout/)
+
+      expect(editor_delegation_request.reload).not_to be_submitted
+      expect(editor_delegation_request.datapass_error).to eq(described_class::UNREACHABLE_DATAPASS_REASON)
+      expect(datapass).to have_received(:submit_demande).exactly(5).times
+    end
+  end
 end
