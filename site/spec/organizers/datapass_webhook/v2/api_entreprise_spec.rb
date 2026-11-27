@@ -147,7 +147,7 @@ RSpec.describe DatapassWebhook::V2::APIEntreprise, type: :interactor do
           state:,
           form_uid: 'api-entreprise-marches-publics',
           organization: build(:datapass_webhook_organization_v2, siret: '21340172201787')
-        )
+        ).merge('metadata' => { 'editor_delegation_request_id' => editor_delegation_request.id })
       )
     end
 

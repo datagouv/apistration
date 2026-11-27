@@ -30,10 +30,12 @@ class DatapassWebhook::FindOrCreateAuthorizationRequestModel < ApplicationIntera
   end
 
   def editor_delegation_request_authorization_request_without_datapass_id
+    editor_delegation_request_id = context.data['pass'].dig('metadata', 'editor_delegation_request_id')
+    return if editor_delegation_request_id.blank?
+
     authorization_request = AuthorizationRequest
-      .joins(editor_delegation_request: :editor_delegation_campaign)
-      .where(external_id: nil, siret: context.data['pass']['siret'])
-      .find_by(editor_delegation_campaigns: { datapass_form_uid: context.data['pass']['demarche'] })
+      .joins(:editor_delegation_request)
+      .find_by(external_id: nil, editor_delegation_requests: { id: editor_delegation_request_id })
 
     authorization_request&.external_id = datapass_id
     authorization_request

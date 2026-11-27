@@ -319,13 +319,14 @@ RSpec.describe DatapassWebhook::FindOrCreateAuthorizationRequest, type: :interac
         siret: '21340172201787',
         status: 'draft',
         team_members: team_members_payload
-      })
+      }).tap { |params| params['data']['pass']['metadata'] = metadata }
     end
 
     let(:editor_delegation_request) do
       create(:editor_delegation_request, :with_authorization_request, siret: '21340172201787', editor_delegation_campaign: create(:editor_delegation_campaign, datapass_form_uid: 'api-entreprise-marches-publics'))
     end
     let!(:authorization_request) { editor_delegation_request.authorization_request }
+    let(:metadata) { { 'editor_delegation_request_id' => editor_delegation_request.id } }
 
     it 'attaches the webhook to the local authorization request of the delegation request' do
       expect { subject }.not_to change(AuthorizationRequest, :count)
@@ -342,24 +343,18 @@ RSpec.describe DatapassWebhook::FindOrCreateAuthorizationRequest, type: :interac
       end
     end
 
-    context 'when the delegation request targets another formulaire' do
-      let(:datapass_webhook_params) do
-        build(:datapass_webhook, fired_at:, event: 'create', demarche: 'api-entreprise', authorization_request_attributes: {
-          id: authorization_id,
-          siret: '21340172201787',
-          team_members: team_members_payload
-        })
-      end
+    context 'when an agent of the establishment creates a classic demande on the same formulaire' do
+      let(:metadata) { {} }
 
-      it 'creates another authorization request' do
+      it 'creates another authorization request, leaving the delegation request alone' do
         expect { subject }.to change(AuthorizationRequest, :count).by(1)
+
+        expect(authorization_request.reload.external_id).to be_nil
       end
     end
 
-    context 'when the delegation request targets another SIRET' do
-      let(:editor_delegation_request) do
-        create(:editor_delegation_request, :with_authorization_request, siret: '21340172201795', editor_delegation_campaign: create(:editor_delegation_campaign, datapass_form_uid: 'api-entreprise-marches-publics'))
-      end
+    context 'when the demande names another delegation request' do
+      let(:metadata) { { 'editor_delegation_request_id' => SecureRandom.uuid } }
 
       it 'creates another authorization request' do
         expect { subject }.to change(AuthorizationRequest, :count).by(1)
