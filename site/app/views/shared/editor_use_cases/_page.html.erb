@@ -1,7 +1,24 @@
 <% back_path = admin ? admin_editor_path(editor, onglet: 'use_cases') : editor_settings_path(onglet: 'use_cases') %>
-<%= link_to 'Retour aux démarches', back_path, class: 'fr-link fr-icon-arrow-left-line fr-link--icon-left' %>
+<% page_heading = use_case.persisted? ? 'Modifier une démarche' : 'Ajouter une démarche' %>
+<% software = use_case.software_in_database.presence %>
 
-<h1 class="fr-mt-2w"><%= use_case.persisted? ? 'Modifier une démarche' : 'Ajouter une démarche' %></h1>
+<% if admin %>
+  <% content_for :page_title, [software, editor.name, page_heading].compact.join(' – ') %>
+  <%= link_to "Retour aux démarches de #{editor.name}", back_path, class: 'fr-link fr-icon-arrow-left-line fr-link--icon-left' %>
+<% else %>
+  <%= link_to 'Retour aux démarches', back_path, class: 'fr-link fr-icon-arrow-left-line fr-link--icon-left' %>
+<% end %>
+
+<h1 class="fr-mt-2w"><%= page_heading %></h1>
+
+<% if admin %>
+  <p class="fr-text--lead" id="editor-use-case-context">
+    Éditeur : <strong><%= editor.name %></strong>
+    <% if software %>
+      <br>Logiciel : <strong><%= software %></strong>
+    <% end %>
+  </p>
+<% end %>
 
 <% if use_case.use_case.blank? %>
   <%= render 'shared/editor_use_cases/picker', editor:, use_case:, admin: %>

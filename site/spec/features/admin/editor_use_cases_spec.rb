@@ -1,6 +1,6 @@
 RSpec.describe 'Admin: editor use cases', app: :api_particulier do
   let(:admin) { create(:user, :admin) }
-  let(:editor) { create(:editor, apis: %w[particulier]) }
+  let(:editor) { create(:editor, name: 'UMAD & Co', apis: %w[particulier]) }
 
   before do
     stub_datapass_referential
@@ -28,6 +28,10 @@ RSpec.describe 'Admin: editor use cases', app: :api_particulier do
 
     it 'warns the CISRT when the form changes' do
       visit edit_admin_editor_use_case_path(editor, use_case)
+      expect(page).to have_title('Logiciel enfance – UMAD & Co – Modifier une démarche')
+      expect(page).to have_css('#editor-use-case-context', text: 'Éditeur : UMAD & Co')
+      expect(page).to have_css('#editor-use-case-context', text: 'Logiciel : Logiciel enfance')
+      expect(page).to have_link('Retour aux démarches de UMAD & Co', href: admin_editor_path(editor, onglet: 'use_cases'))
       fill_in 'Formulaire DataPass', with: 'api-particulier-umad-v2'
 
       expect { click_on 'Enregistrer' }.to emit_security_event('access.editor_config.changed').with(
