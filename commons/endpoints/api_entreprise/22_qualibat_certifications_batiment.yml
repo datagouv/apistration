@@ -178,7 +178,10 @@ fiche:
                       example: '4322'
                     nom:
                       title: Libellé de la certification
+                      description: Libellé issu de la nomenclature Qualibat. Nul si le
+                        code de la certification est absent de cette nomenclature.
                       type: string
+                      nullable: true
                       example: Fabrication et pose de menuiserie intérieure en bois
                     rge:
                       title: Indique si la certification est RGE
