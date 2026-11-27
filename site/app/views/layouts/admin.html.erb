@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" data-fr-scheme="light">
   <head>
-    <title>Admin – API Entreprise / API Particulier</title>
+    <title><% if content_for?(:page_title) %><%= yield(:page_title) %> — <% end %>Admin – API Entreprise / API Particulier</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <%= render partial: 'shared/favicons' %>
