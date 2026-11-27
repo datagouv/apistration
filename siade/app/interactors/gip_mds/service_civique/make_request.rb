@@ -1,10 +1,11 @@
 class GIPMDS::ServiceCivique::MakeRequest < MakeRequest::Get
   SERVICE_CIVIQUE_CODE = '89'.freeze
+  PERIODE_COUVERTE = 5.years
 
   protected
 
   def request_uri
-    URI("#{gip_mds_domain}/contrats-generique")
+    URI("#{gip_mds_domain}/api-fraude/1.0.0/api/dade/generique")
   end
 
   def mocking_params # rubocop:disable Metrics/AbcSize
@@ -23,7 +24,8 @@ class GIPMDS::ServiceCivique::MakeRequest < MakeRequest::Get
       prenom: context.params[:prenoms]&.first,
       dateNaissance: formatted_date_naissance,
       listeCodeNature: SERVICE_CIVIQUE_CODE,
-      comparaisonCertifiee: '1'
+      comparaisonCertifiee: '1',
+      dateDebutPeriode: (Time.zone.today - PERIODE_COUVERTE).iso8601
     }
   end
 

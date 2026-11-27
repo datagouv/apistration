@@ -2,60 +2,50 @@ class GIPMDS::ServiceCivique::ValidateResponse < ValidateResponse
   raises ProviderUnprocessableEntityError, reason: :ambiguous_identity
 
   def call
-    monitor_multiple_contracts if multiple_contracts?
-
-    return if successful_response?
-    return if not_found_contrat?
-
-    resource_not_found! if not_found_individu?
+    unknown_provider_response! if unreadable_body?
+    resource_not_found! if not_found?
     too_many_individus! if too_many_individus?
+    unknown_provider_response! unless complete_response?
+    resource_not_found! if retained_contracts.empty?
+    several_service_civiques! if retained_contracts.many?
+  end
 
-    unknown_provider_response!
+  protected
+
+  def add_monitoring_private_context(error)
+    super
+
+    error.add_to_monitoring_private_context(http_response_body: encrypted_response_body)
   end
 
   private
 
-  def successful_response?
-    http_code == 200 && valid_payload?
+  def encrypted_response_body
+    DataEncryptor.new(context.response.body.to_s).encrypt.to_s
+  rescue GPGME::Error
+    '[DADe response body withheld: encryption failed]'
   end
 
-  def valid_payload?
-    json_body.key?('individu')
+  def unreadable_body?
+    body.blank? || invalid_json?
   end
 
-  def multiple_contracts?
-    return false unless successful_response?
-
-    all_contracts.size > 1
+  def complete_response?
+    http_code == 200 && json_body.key?('individu')
   end
 
-  def all_contracts
-    @all_contracts ||= extract_all_contracts
+  def retained_contracts
+    @retained_contracts ||= GIPMDS::ServiceCivique::Contracts.new(json_body).retained
   end
 
-  def extract_all_contracts
-    entreprises = json_body.dig('individu', 'entreprise') || []
-    entreprises.flat_map { |e| extract_contracts_from_entreprise(e) }
-  end
-
-  def extract_contracts_from_entreprise(entreprise)
-    etablissements = entreprise['etablissement'] || []
-    etablissements.flat_map { |e| e['contrat'] || [] }
-  end
-
-  def monitor_multiple_contracts
-    MonitoringService.instance.track(
-      'warning',
-      'GIPMDS::ServiceCivique: individual has multiple service civique contracts'
+  def several_service_civiques!
+    unknown_provider_response!(
+      "Plusieurs contrats de service civique sont déclarés pour cette personne, alors qu'une personne ne peut effectuer qu'un seul service civique : la réponse du fournisseur est incohérente et nous ne pouvons pas déterminer le bon contrat."
     )
   end
 
-  def not_found_individu?
-    http_code == 404 && error_code == 'NOT_FOUND_INDIVIDU'
-  end
-
-  def not_found_contrat?
-    http_code == 404 && error_code == 'NOT_FOUND_CONTRAT'
+  def not_found?
+    http_code == 404 && %w[NOT_FOUND_INDIVIDU NOT_FOUND_CONTRAT].include?(error_code)
   end
 
   def too_many_individus?

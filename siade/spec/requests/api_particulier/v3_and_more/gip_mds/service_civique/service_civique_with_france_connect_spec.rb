@@ -13,7 +13,7 @@ RSpec.describe 'GIPMDS: Servicecivique With FranceConnect', api: :particulier, t
       forbidden_france_connect_request
       missing_france_connect_bearer_token_request
 
-      let(:scopes) { %i[gip_mds_service_civique_statut_actuel gip_mds_service_civique_statut_passe gip_mds_service_civique_organisme_accueil gip_mds_service_civique_dates] }
+      let(:scopes) { %i[gip_mds_service_civique_organisme_accueil gip_mds_service_civique_dates] }
 
       describe 'with a FranceConnect token' do
         before do

@@ -14,7 +14,8 @@ RSpec.describe 'Ping routes' do
         allow(ping_driver.send(:make_request)).to receive(:call).and_return(
           Interactor::Context.new(
             response: OpenStruct.new(
-              code: ping_driver.send(:status_to_check)
+              code: ping_driver.send(:status_to_check),
+              body: ping_driver.send(:body_to_check)
             )
           )
         )

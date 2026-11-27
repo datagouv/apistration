@@ -285,6 +285,20 @@ RSpec.describe MonitoringService, type: :service do
         end
       end
 
+      context 'when context contains a GIP-MDS DADe identity, certified by the SNGI' do
+        let(:body) { '{"individu": {"nomFamilleSngi": "DUPONT", "prenomsSngi": "JEAN", "dateNaissanceSngi": "01011990"}}' }
+        let(:context) { { http_response_body: body, status: 200 } }
+
+        it 'encrypts the body before sending to Sentry' do
+          data_encryptor = instance_double(DataEncryptor, encrypt: 'encrypted_data')
+          allow(DataEncryptor).to receive(:new).with(body).and_return(data_encryptor)
+
+          expect(Sentry).to receive(:set_context).with(title, { http_response_body: 'encrypted_data', status: 200 })
+
+          subject
+        end
+      end
+
       context 'when context contains body key with personal data' do
         let(:body) { '{"nom": "Dupont", "prenom": "Jean"}' }
         let(:context) { { body:, status: 200 } }

@@ -36,7 +36,7 @@ RSpec.describe 'GIPMDS: Servicecivique With Civility', api: :particulier, type: 
 
       too_many_requests(GIPMDS::ServiceCivique)
 
-      let(:scopes) { %i[gip_mds_service_civique] }
+      let(:scopes) { %i[gip_mds_service_civique_organisme_accueil gip_mds_service_civique_dates] }
 
       describe 'with valid token and mandatory params', :valid do
         describe 'when found' do

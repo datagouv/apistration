@@ -1,7 +1,7 @@
 RSpec.describe GIPMDS::ServiceCivique::MakeRequest, type: :make_request do
   subject { described_class.call(token:, params:) }
 
-  let(:token) { GIPMDS::Authenticate.call.token }
+  let(:token) { GIPMDS::ServiceCivique::Authenticate.call.token }
 
   let(:params) do
     {
@@ -26,13 +26,14 @@ RSpec.describe GIPMDS::ServiceCivique::MakeRequest, type: :make_request do
 
   context 'with valid civility params' do
     let!(:stubbed_request) do
-      stub_request(:get, "#{Siade.credentials[:gip_mds_domain]}/contrats-generique").with(
+      stub_request(:get, "#{Siade.credentials[:gip_mds_domain]}/api-fraude/1.0.0/api/dade/generique").with(
         query: {
           nom: 'DUPONT',
           prenom: 'Jean',
           dateNaissance: '01102000',
           listeCodeNature: '89',
-          comparaisonCertifiee: '1'
+          comparaisonCertifiee: '1',
+          dateDebutPeriode: '2019-06-15'
         },
         headers: {
           'Content-Type' => 'application/json',

@@ -1,3 +1,9 @@
+- date: 2026-11-27
+  scope: api_particulier
+  title: "Nouvelle API : statut service civique (GIP-MDS)"
+  description: |
+    Mise en service, en bêta, de la fiche [statut service civique](<%= endpoint_path(uid: 'gip_mds/service_civique') %>), qui indique si un jeune est engagé dans un contrat de service civique, ou l'a été lors des cinq dernières années. Elle restitue le SIRET de la structure d'accueil et les dates du contrat (début, fin réelle une fois le contrat clôturé, et s'il est en cours), à partir des déclarations sociales nominatives transmises au GIP-MDS, avec un mois de décalage. Elle s'appelle avec l'identité pivot du jeune (nom de naissance, prénoms, date de naissance) ou via FranceConnect.
+
 - date: 2026-11-26
   scope: api_particulier
   title: "Nouvelle API : composition du foyer RSA (CNAV)"

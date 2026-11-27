@@ -1,74 +1,4 @@
 # [FranceConnect] Statut service civique
-* [200-volontaire-actif-et-passe.yaml](200-volontaire-actif-et-passe.yaml)
-
-  Status `200`
-
-  ## VOLONTAIRE AVEC CONTRAT ACTIF ET PASSÉ
-
-Ce cas représente une personne ayant effectué un premier service civique
-par le passé et actuellement engagée dans un second service civique.
-Identité FranceConnect: Lucie PLACARD.
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "prenoms": [
-      "Lucie"
-    ],
-    "nomNaissance": "PLACARD",
-    "anneeDateNaissance": 1987,
-    "moisDateNaissance": 4,
-    "jourDateNaissance": 13
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "data": {
-      "statut_actuel": {
-        "contrat_trouve": true,
-        "organisme_accueil": {
-          "siret": "18009202500059",
-          "raison_sociale": "MINISTERE DE L EDUCATION NATIONALE"
-        },
-        "date_debut_contrat": "2024-10-01",
-        "date_fin_contrat": "2025-07-31"
-      },
-      "statut_passe": {
-        "contrat_trouve": true,
-        "organisme_accueil": {
-          "siret": "42229566900026",
-          "raison_sociale": "UNIS CITE"
-        },
-        "date_debut_contrat": "2021-03-15",
-        "date_fin_contrat": "2021-11-14"
-      }
-    },
-    "links": {},
-    "meta": {}
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/gip_mds/service_civique/france_connect?recipient=13002526500013"
-  ```
-
-  </p>
-  </details>
 * [200-volontaire-actif.yaml](200-volontaire-actif.yaml)
 
   Status `200`
@@ -76,7 +6,7 @@ Identité FranceConnect: Lucie PLACARD.
   ## VOLONTAIRE EN SERVICE CIVIQUE ACTIF
 
 Ce cas représente une personne actuellement engagée dans un service civique.
-Le contrat est en cours auprès de la DINUM.
+La mission est en cours auprès de la DINUM.
 Identité FranceConnect: Angela DUBOIS.
 
   <details><summary>Paramètres</summary>
@@ -105,23 +35,13 @@ Identité FranceConnect: Angela DUBOIS.
   ```json
   {
     "data": {
-      "statut_actuel": {
-        "contrat_trouve": true,
-        "organisme_accueil": {
-          "siret": "13002526500013",
-          "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
-        },
-        "date_debut_contrat": "2024-09-01",
-        "date_fin_contrat": "2025-06-30"
+      "organisme_accueil": {
+        "siret": "13002526500013"
       },
-      "statut_passe": {
-        "contrat_trouve": false,
-        "organisme_accueil": {
-          "siret": null,
-          "raison_sociale": null
-        },
-        "date_debut_contrat": null,
-        "date_fin_contrat": null
+      "dates": {
+        "debut": "2025-09-01",
+        "fin": null,
+        "en_cours": true
       }
     },
     "links": {},
@@ -148,7 +68,7 @@ Identité FranceConnect: Angela DUBOIS.
   ## ANCIEN VOLONTAIRE SERVICE CIVIQUE
 
 Ce cas représente une personne ayant effectué un service civique par le passé.
-Le contrat est terminé, la personne n'a pas de contrat actif.
+La mission est terminée.
 Identité FranceConnect: Jean MERCIER.
 
   <details><summary>Paramètres</summary>
@@ -175,93 +95,13 @@ Identité FranceConnect: Jean MERCIER.
   ```json
   {
     "data": {
-      "statut_actuel": {
-        "contrat_trouve": false,
-        "organisme_accueil": {
-          "siret": null,
-          "raison_sociale": null
-        },
-        "date_debut_contrat": null,
-        "date_fin_contrat": null
+      "organisme_accueil": {
+        "siret": "77567227221138"
       },
-      "statut_passe": {
-        "contrat_trouve": true,
-        "organisme_accueil": {
-          "siret": "77567227221138",
-          "raison_sociale": "CROIX ROUGE FRANCAISE"
-        },
-        "date_debut_contrat": "2022-01-10",
-        "date_fin_contrat": "2022-09-09"
-      }
-    },
-    "links": {},
-    "meta": {}
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Commande cURL</summary>
-  <p>
-
-  ```bash
-  curl -H "Authorization: Bearer $token_france_connect" --url "https://staging.particulier.api.gouv.fr/v3/gip_mds/service_civique/france_connect?recipient=13002526500013"
-  ```
-
-  </p>
-  </details>
-* [200-volontaire-sans-contrat.yaml](200-volontaire-sans-contrat.yaml)
-
-  Status `200`
-
-  ## PERSONNE SANS CONTRAT SERVICE CIVIQUE
-
-Ce cas représente une personne connue du système mais qui n'a jamais
-effectué de service civique (ni actif, ni passé).
-Identité FranceConnect: Marie COMMODE.
-
-  <details><summary>Paramètres</summary>
-  <p>
-
-  ```json
-  {
-    "prenoms": [
-      "Marie"
-    ],
-    "nomNaissance": "COMMODE",
-    "anneeDateNaissance": 1980,
-    "moisDateNaissance": 6,
-    "jourDateNaissance": 27
-  }
-  ```
-
-  </p>
-  </details>
-
-  <details><summary>Réponse API</summary>
-  <p>
-
-  ```json
-  {
-    "data": {
-      "statut_actuel": {
-        "contrat_trouve": false,
-        "organisme_accueil": {
-          "siret": null,
-          "raison_sociale": null
-        },
-        "date_debut_contrat": null,
-        "date_fin_contrat": null
-      },
-      "statut_passe": {
-        "contrat_trouve": false,
-        "organisme_accueil": {
-          "siret": null,
-          "raison_sociale": null
-        },
-        "date_debut_contrat": null,
-        "date_fin_contrat": null
+      "dates": {
+        "debut": "2022-01-10",
+        "fin": "2022-09-09",
+        "en_cours": false
       }
     },
     "links": {},
@@ -343,7 +183,7 @@ Identité FranceConnect: Marie COMMODE.
   ## VOLONTAIRE EN SERVICE CIVIQUE ACTIF (Token all_fc)
 
 Ce cas représente une personne actuellement engagée dans un service civique.
-Le contrat est en cours auprès de la DINUM.
+La mission est en cours auprès de la DINUM.
 Identité FranceConnect: Thomas DELATOUR (token all_fc).
 
   <details><summary>Paramètres</summary>
@@ -370,23 +210,13 @@ Identité FranceConnect: Thomas DELATOUR (token all_fc).
   ```json
   {
     "data": {
-      "statut_actuel": {
-        "contrat_trouve": true,
-        "organisme_accueil": {
-          "siret": "13002526500013",
-          "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
-        },
-        "date_debut_contrat": "2024-09-01",
-        "date_fin_contrat": "2025-06-30"
+      "organisme_accueil": {
+        "siret": "13002526500013"
       },
-      "statut_passe": {
-        "contrat_trouve": false,
-        "organisme_accueil": {
-          "siret": null,
-          "raison_sociale": null
-        },
-        "date_debut_contrat": null,
-        "date_fin_contrat": null
+      "dates": {
+        "debut": "2025-09-01",
+        "fin": null,
+        "en_cours": true
       }
     },
     "links": {},
@@ -413,7 +243,7 @@ Identité FranceConnect: Thomas DELATOUR (token all_fc).
   ## VOLONTAIRE EN SERVICE CIVIQUE ACTIF (Token service_civique)
 
 Ce cas représente une personne actuellement engagée dans un service civique.
-Le contrat est en cours auprès de la DINUM.
+La mission est en cours auprès de la DINUM.
 Identité FranceConnect: Jean SERVICE CIVIQUE (token service_civique).
 
   <details><summary>Paramètres</summary>
@@ -440,23 +270,13 @@ Identité FranceConnect: Jean SERVICE CIVIQUE (token service_civique).
   ```json
   {
     "data": {
-      "statut_actuel": {
-        "contrat_trouve": true,
-        "organisme_accueil": {
-          "siret": "13002526500013",
-          "raison_sociale": "DIRECTION INTERMINISTERIELLE DU NUMERIQUE"
-        },
-        "date_debut_contrat": "2024-09-01",
-        "date_fin_contrat": "2025-06-30"
+      "organisme_accueil": {
+        "siret": "13002526500013"
       },
-      "statut_passe": {
-        "contrat_trouve": false,
-        "organisme_accueil": {
-          "siret": null,
-          "raison_sociale": null
-        },
-        "date_debut_contrat": null,
-        "date_fin_contrat": null
+      "dates": {
+        "debut": "2025-09-01",
+        "fin": null,
+        "en_cours": true
       }
     },
     "links": {},

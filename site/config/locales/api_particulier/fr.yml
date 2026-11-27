@@ -328,14 +328,10 @@ fr:
             label: ANTS || API Extrait d'immatriculation véhicule || Données d'immatriculation
           ants_extrait_immatriculation_vehicule_caracteristiques_techniques_vehicule:
             label: ANTS || API Extrait d'immatriculation véhicule || Caractéristiques techniques du véhicule
-          gip_mds_service_civique_statut_actuel:
-            label: GIP-MDS || API Service civique || Statut actuel
-          gip_mds_service_civique_statut_passe:
-            label: GIP-MDS || API Service civique || Statut passé
           gip_mds_service_civique_organisme_accueil:
-            label: GIP-MDS || API Service civique || Organisme d'accueil
+            label: GIP-MDS || API Service civique || Structure d'accueil
           gip_mds_service_civique_dates:
-            label: GIP-MDS || API Service civique || Dates de contrat
+            label: GIP-MDS || API Service civique || Dates du contrat
           men_statut_identite:
             label: Min. éducation nationale || API Statut élève scolarisé et boursier || Identité de l'élève
           men_statut_etablissement:

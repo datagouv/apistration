@@ -1,0 +1,43 @@
+{
+  "individu": {
+    "entreprise": [
+      {
+        "siren": "130025265",
+        "etablissement": [
+          {
+            "siret": "13002526500013",
+            "contrat": [
+              {
+                "dateDebutContrat": "2025-09-01",
+                "natureContrat": "89",
+                "dateFinPrevisionnelle": "2026-04-30",
+                "dateFinContrat": "2025-12-31",
+                "motifRupture": "100"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "siren": "775672272",
+        "etablissement": [
+          {
+            "siret": "77567227221138",
+            "contrat": [
+              {
+                "dateDebutContrat": "2023-01-01",
+                "natureContrat": "89",
+                "dateFinPrevisionnelle": "2023-06-30",
+                "dateFinContrat": "2023-06-30",
+                "motifRupture": "01"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "retour": {
+    "codeRetour": "OK"
+  }
+}

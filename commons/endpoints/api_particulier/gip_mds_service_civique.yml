@@ -1,0 +1,85 @@
+---
+fiche:
+  - uid: 'gip_mds/service_civique'
+    opening: protected
+    beta: true
+    path: '/v3/gip_mds/service_civique/identite'
+    controller: 'api_particulier/v3_and_more/gip_mds/service_civique_with_civility'
+    ping_url: 'https://particulier.api.gouv.fr/api/gip_mds_service_civique/ping'
+    position: 602
+    perimeter:
+      entity_type_description: |+
+        Cette API concerne **✅ les jeunes, quelle que soit leur nationalité, ayant signé un contrat de service civique agréé par l'Agence du service civique** :
+        - actuellement engagés dans une mission de service civique, donc âgés de 16 à 25 ans, ou jusqu'à 30 ans pour les jeunes en situation de handicap ;
+        - ayant effectué une mission de service civique lors des cinq dernières années.
+
+        Tous les contrats enregistrés par les structures agréées par l'Agence du service civique, publiques ou associatives, sont inclus dans le périmètre.
+
+        **Ne sont pas concernés par cette API** :
+        - ❌ les jeunes ayant effectué une mission de service civique il y a plus de 5 ans ;
+        - ❌ les volontariats d'autres dispositifs (volontariat associatif, SNU, VSI, etc.).
+      geographical_scope_description: |+
+        - ✅ France métropolitaine ;
+        - ✅ Départements et régions d'outre-mer (DROM) ;
+        - ✅ Collectivités d'outre-mer (COM) ayant l'obligation légale de déclarer en DSN : Saint-Barthélemy et Saint-Martin ;
+        - ✅ Missions à l'étranger sous tutelle française.
+      updating_rules_description: |+
+        Les données proviennent des **déclarations sociales nominatives (DSN)** que les structures d'accueil transmettent chaque mois. L'API est opérée par le GIP-MDS (modernisation des déclarations sociales).
+
+        Elles sont **mises à jour mensuellement, au plus tard le 21 du mois** suivant la validation, la modification ou la clôture d'un contrat. Les données disponibles au mois M correspondent donc à l'état du contrat au mois M-1.
+
+        {:.fr-highlight}
+        > ⚠️ **Fraîcheur M-1** : les DSN étant déclarées le mois suivant le mois travaillé, un contrat de service civique signé le mois M n'est connu de l'API qu'à partir du mois M+1. De même, une mission terminée le mois M apparaît encore en cours jusqu'à la déclaration suivante.
+        >
+        > Nous vous recommandons donc de toujours permettre au jeune de transmettre un justificatif, notamment quand l'API ne trouve pas de mission.
+    data:
+      description: |+
+        Cette API indique si une personne **est actuellement engagée dans une mission de service civique**, ou **l'a été lors des cinq dernières années**.
+
+        Elle restitue :
+        - **la structure d'accueil** : le numéro SIRET de la structure agréée qui accueille ou a accueilli le volontaire ;
+        - **les dates du contrat** : la date de début du contrat, la date de fin réelle, renseignée seulement quand le contrat a été clôturé, et l'indication que le contrat est en cours.
+
+        Quand l'API ne trouve aucune mission en cours ou terminée lors des cinq dernières années, elle renvoie une erreur 404.
+    parameters_details:
+      description: |+
+        Cette API propose deux modalités d'appel&nbsp;:
+        <p class="fr-badge fr-badge--blue-ecume">![Cette API est FranceConnectée](<%= image_path('api_particulier/cas_usages/pictos/modalite_appel_france_connect.svg') %>){:width="20px"} FranceConnect</p>
+        **Avec la [modalité d'appel FranceConnect](<%= cas_usage_path('modalite_appel_france_connect') %>)**.
+
+        <p class="fr-badge fr-badge--brown-cafe-creme">Identité pivot</p>
+        **Avec les données d'identité** :
+        - Nom de famille (nom de naissance)<sup>*</sup> ;
+        - Prénoms<sup>*</sup><sup>1</sup> ;
+        - Date de naissance<sup>*</sup>.
+
+        <span class="fr-text--xs fr-m-0">
+        <sup>*</sup> Obligatoire<br>
+        <sup>1</sup> Seul le premier prénom est transmis au fournisseur de données.
+        </span>
+
+        Le lieu de naissance n'est pas nécessaire : il est facultatif dans les déclarations sociales nominatives et souvent absent, l'exiger écarterait des jeunes bien engagés en service civique.
+    provider_uids:
+      - 'gipmds'
+    call_id:
+      - Identité pivot
+      - FranceConnect
+    parameters:
+      - Identité pivot
+      - FranceConnect
+    keywords:
+      - service civique
+      - volontaire
+      - volontariat
+      - jeune
+      - mission
+      - Agence du service civique
+    faq:
+      - q: Pourquoi l'API ne trouve-t-elle pas la mission d'un jeune qui vient de signer son contrat ?
+        a: |+
+          Les données proviennent des déclarations sociales nominatives, transmises le mois suivant le mois travaillé. **Un contrat signé le mois M n'est connu de l'API qu'à partir du mois M+1**.
+
+          Permettez au jeune de transmettre un justificatif en attendant que sa mission soit déclarée.
+      - q: Pourquoi une mission terminée apparaît-elle encore en cours ?
+        a: |+
+          La date de fin réelle n'est connue qu'une fois la clôture du contrat déclarée par la structure d'accueil, le mois suivant. D'ici là, l'API indique la mission comme en cours, sans date de fin.

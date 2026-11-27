@@ -19,7 +19,7 @@ payload: |-
       "exp": 1704965388,
       "acr": "eidas1",
       "jti": "Wn5igB6_frAVBXQgShzI0znLE3fid2cWZHR9TWtqxZM",
-      "scope": "openid identite_pivot gip_mds_service_civique_statut_actuel gip_mds_service_civique_statut_passe gip_mds_service_civique_organisme_accueil gip_mds_service_civique_dates",
+      "scope": "openid identite_pivot gip_mds_service_civique_organisme_accueil gip_mds_service_civique_dates",
       "gender": "male",
       "family_name": "Service Civique",
       "given_name": "Jean",
