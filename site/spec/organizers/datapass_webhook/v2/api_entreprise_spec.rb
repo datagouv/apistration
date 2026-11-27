@@ -126,6 +126,36 @@ RSpec.describe DatapassWebhook::V2::APIEntreprise, type: :interactor do
     end
   end
 
+  describe 'when DataPass webhooks of one demande arrive out of order' do
+    let(:submitted_webhook) { build(:datapass_webhook_v2, event: 'submit', updated_at: '2026-11-27T14:26:42.300000+01:00', data: build(:datapass_webhook_data_v2, state: 'submitted')) }
+    let(:datapass_webhook_params) do
+      build(:datapass_webhook_v2, event: 'update', model_id: submitted_webhook['model_id'], updated_at: '2026-11-27T14:26:42.100000+01:00', data: submitted_webhook['data'].merge('state' => 'draft'))
+    end
+
+    before { described_class.call(submitted_webhook) }
+
+    it 'keeps the latest state DataPass sent, an older snapshot arriving late being ignored' do
+      expect(subject.authorization_request.reload.status).to eq('submitted')
+    end
+
+    context 'when the late webhook is an approval' do
+      let(:datapass_webhook_params) do
+        build(:datapass_webhook_v2, event: 'approve', model_id: submitted_webhook['model_id'], fired_at: Time.zone.parse('2026-11-27T14:26:42+01:00').to_i, updated_at: '2026-11-27T14:26:42.100000+01:00', data: submitted_webhook['data'].merge('state' => 'validated'))
+      end
+
+      it 'still records when DataPass approved it' do
+        expect(subject.authorization_request.reload.validated_at).to eq(Time.zone.parse('2026-11-27T14:26:42+01:00'))
+        expect(subject.authorization_request.status).to eq('submitted')
+      end
+
+      it 'keeps a later approval date already recorded' do
+        AuthorizationRequest.find_by!(external_id: submitted_webhook['model_id'].to_s).update!(validated_at: Time.zone.parse('2026-12-01T10:00:00+01:00'))
+
+        expect(subject.authorization_request.reload.validated_at).to eq(Time.zone.parse('2026-12-01T10:00:00+01:00'))
+      end
+    end
+  end
+
   describe 'when the demande comes from an editor delegation request' do
     include ActiveJob::TestHelper
 

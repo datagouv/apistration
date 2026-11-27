@@ -2,17 +2,19 @@
 class DatapassWebhook::FindOrCreateAuthorizationRequestModel < ApplicationInteractor
   include DatapassWebhook::PassScopes
 
-  def call # rubocop:disable Metrics/AbcSize
+  def call
+    AuthorizationRequest.transaction { find_and_update_authorization_request }
+  end
+
+  private
+
+  def find_and_update_authorization_request # rubocop:disable Metrics/AbcSize
     context.authorization_request = find_or_initialize_authorization_request
     context.role_changes = []
 
     set_reopening_event_flag
 
-    if should_update_authorization_request?
-      context.authorization_request.assign_attributes(authorization_request_attributes)
-
-      create_or_update_contacts_with_roles
-    end
+    assign_webhook_attributes
 
     flag_updates_as_requested if expecting_updates? && %w[submit].include?(context.event)
 
@@ -21,10 +23,8 @@ class DatapassWebhook::FindOrCreateAuthorizationRequestModel < ApplicationIntera
     fail!('Authorization request not valid', 'error', context.authorization_request.errors.to_hash)
   end
 
-  private
-
   def find_or_initialize_authorization_request
-    AuthorizationRequest.find_by(external_id: datapass_id) ||
+    AuthorizationRequest.lock.find_by(external_id: datapass_id) ||
       editor_delegation_request_authorization_request_without_datapass_id ||
       AuthorizationRequest.new(external_id: datapass_id)
   end
@@ -34,6 +34,7 @@ class DatapassWebhook::FindOrCreateAuthorizationRequestModel < ApplicationIntera
     return if editor_delegation_request_id.blank?
 
     authorization_request = AuthorizationRequest
+      .lock
       .joins(:editor_delegation_request)
       .find_by(external_id: nil, editor_delegation_requests: { id: editor_delegation_request_id })
 
@@ -63,8 +64,38 @@ class DatapassWebhook::FindOrCreateAuthorizationRequestModel < ApplicationIntera
       %w[archive revoke].exclude?(context.event)
   end
 
+  def assign_webhook_attributes
+    if stale_snapshot?
+      context.authorization_request.assign_attributes(missing_event_facts)
+    elsif should_update_authorization_request?
+      context.authorization_request.assign_attributes(authorization_request_attributes)
+
+      create_or_update_contacts_with_roles
+    end
+  end
+
+  def missing_event_facts
+    authorization_request_attributes_for_current_event.select { |attribute, _| context.authorization_request.public_send(attribute).nil? }
+  end
+
   def should_update_authorization_request?
     !context.reopening || (context.reopening && %w[transfer approve validate].include?(context.event))
+  end
+
+  def authorization_request_attributes
+    datapass_attributes.merge('datapass_updated_at' => datapass_updated_at || context.authorization_request.datapass_updated_at)
+  end
+
+  def stale_snapshot?
+    datapass_updated_at.present? &&
+      context.authorization_request.datapass_updated_at.present? &&
+      datapass_updated_at < context.authorization_request.datapass_updated_at
+  end
+
+  def datapass_updated_at
+    return if context.updated_at.blank?
+
+    @datapass_updated_at ||= Time.zone.parse(context.updated_at.to_s)
   end
 
   def create_or_update_contacts_with_roles
@@ -105,7 +136,7 @@ class DatapassWebhook::FindOrCreateAuthorizationRequestModel < ApplicationIntera
     user
   end
 
-  def authorization_request_attributes
+  def datapass_attributes
     context.data['pass'].slice(
       'public_id',
       'intitule',

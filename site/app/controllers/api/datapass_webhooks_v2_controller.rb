@@ -9,6 +9,7 @@ class API::DatapassWebhooksV2Controller < APIController
       :model_type,
       :model_id,
       :fired_at,
+      :updated_at,
       data: {}
     ).to_h.symbolize_keys
   end
