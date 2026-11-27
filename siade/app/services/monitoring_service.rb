@@ -15,6 +15,14 @@ class MonitoringService
 
   PERSONAL_DATA_THRESHOLD = 2
 
+  CONTROLLER_PARAMS_EXTRA_FILTERS = %i[
+    dateNaissance
+    sexe
+    paysNaissance
+    departementNaissance
+    immatriculation
+  ].freeze
+
   RETRIEVER_CONTEXT_CLEAR_KEYS = %i[operation_id provider_name recipient cacheable data_source].freeze
 
   ENCRYPTION_FAILED_PLACEHOLDER = '[personal data not sent: encryption failed]'.freeze
@@ -112,7 +120,7 @@ class MonitoringService
   private
 
   def params_filter
-    @params_filter ||= ActiveSupport::ParameterFilter.new(Rails.application.config.filter_parameters)
+    @params_filter ||= ActiveSupport::ParameterFilter.new(Rails.application.config.filter_parameters + CONTROLLER_PARAMS_EXTRA_FILTERS)
   end
 
   def retriever_summary(context)

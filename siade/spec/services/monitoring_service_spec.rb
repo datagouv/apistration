@@ -253,6 +253,41 @@ RSpec.describe MonitoringService, type: :service do
         subject
       end
 
+      context 'with every civility param of API Particulier v2 and v3' do
+        let(:params) do
+          {
+            'controller' => 'api_particulier/v3_and_more/dummy',
+            'action' => 'show',
+            'recipient' => '13002526500013',
+            'nomUsage' => 'MARTIN',
+            'nomNaissance' => 'DUPONT',
+            'prenoms' => %w[JEAN],
+            'anneeDateNaissance' => '1980',
+            'moisDateNaissance' => '01',
+            'jourDateNaissance' => '01',
+            'dateNaissance' => '1980-01-01',
+            'sexeEtatCivil' => 'M',
+            'sexe' => 'M',
+            'nomCommuneNaissance' => 'PARIS',
+            'codeCogInseeCommuneNaissance' => '75056',
+            'codeCogInseePaysNaissance' => '99100',
+            'codeCogInseeDepartementNaissance' => '75',
+            'immatriculation' => 'AA-123-AA'
+          }
+        end
+
+        it 'sends none of them in clear, but keeps the recipient' do
+          allow(Sentry).to receive(:set_context)
+
+          subject
+
+          expect(Sentry).to have_received(:set_context) do |_title, context|
+            expect(context[:params].except('controller', 'action', 'recipient').values).to all(eq('[FILTERED]'))
+            expect(context[:params]['recipient']).to eq('13002526500013')
+          end
+        end
+      end
+
       it 'tags context with controller and action' do
         expect(instance).to receive(:set_tags).with(
           endpoint: "#{params['controller']}##{params['action']}"
