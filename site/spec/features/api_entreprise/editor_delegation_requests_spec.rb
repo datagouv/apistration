@@ -172,7 +172,7 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
           metadata: { editor_delegation_request_id: editor_delegation_request.id }
         )
       )
-      expect(datapass).to have_received(:submit_demande).with('1001', consentement: { terms_of_service_accepted: true, data_protection_officer_informed: true })
+      expect(datapass).to have_received(:submit_demande).with('1001', consentement: { terms_of_service_accepted: true, data_protection_officer_informed: true }, notifications: false)
       expect(editor_delegation_request.authorization_request.reload.external_id).to eq('1001')
     end
 

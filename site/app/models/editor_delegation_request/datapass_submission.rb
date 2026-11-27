@@ -14,7 +14,7 @@ class EditorDelegationRequest::DatapassSubmission
 
     id = demande_id
     client.attach_documents(id, documents) if documents.any?
-    client.submit_demande(id, consentement: consents)
+    client.submit_demande(id, consentement: consents, notifications: false)
   end
 
   private
