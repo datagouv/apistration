@@ -39,11 +39,11 @@ RSpec.describe CNOUS::ValidateResponse, type: :validate_response do
 
             its(:errors) { is_expected.to include(instance_of(ProviderConflictError)) }
 
-            it 'captures error in monitoring' do
+            it 'captures error in monitoring, with the params encrypted, never in clear' do
               expect(MonitoringService.instance).to receive(:track_with_added_context).with(
                 'error',
                 anything,
-                { ine: 'dummy ine' }
+                { encrypted_params: 'stubbed_encrypted_data' }
               )
 
               call

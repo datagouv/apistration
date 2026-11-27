@@ -34,7 +34,7 @@ class CNOUS::ValidateResponse < ValidateResponse
   end
 
   def conflict!
-    monitoring_service.track_with_added_context('error', 'CNOUS Identity calls returned more than one result', context.params)
+    monitoring_service.track_with_added_context('error', 'CNOUS Identity calls returned more than one result', { encrypted_params: encrypt_params })
     fail_with_error!(::ProviderConflictError.new(context.provider))
   end
 
