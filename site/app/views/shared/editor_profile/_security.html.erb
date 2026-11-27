@@ -40,7 +40,6 @@
   <h2 class="fr-h4 fr-mt-6w">Adresses IP autorisées</h2>
   <% if admin %>
     <%= editor_profile_field(f, :text_area, :allowed_ips, 'IPs autorisées', hint: 'Séparées par des virgules ou retours à la ligne. Adresses publiques uniquement, 10 maximum, préfixe IPv4 minimum : /24', value: editor.allowed_ips.join(', '), rows: 3) %>
-    <%= render 'shared/editor_profile/observed_ips', editor: %>
   <% else %>
     <p class="fr-text--sm">Appels acceptés uniquement depuis ces adresses. Pour les modifier, écrivez à <a href="mailto:support@<%= namespace %>.api.gouv.fr?subject=Modification des adresses IP autorisées">support@<%= namespace %>.api.gouv.fr</a>.</p>
     <% if editor.allowed_ips.any? %>
