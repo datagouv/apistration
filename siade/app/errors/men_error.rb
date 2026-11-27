@@ -11,7 +11,8 @@ class MENError < AbstractSpecificProviderError
 
   def subcode_config
     {
-      scolarite_not_found: '404'
+      scolarite_not_found: '404',
+      eleve_hors_perimetre: '405'
     }
   end
 end

@@ -57,4 +57,52 @@ RSpec.describe MEN::Scolarites::ValidateResponse, type: :validate_response do
       expect(Errors::HTTPStatusForKind.call(error.kind)).to eq(:not_found)
     end
   end
+
+  context 'with a forbidden response for a student out of scope' do
+    let(:response) { instance_double(Net::HTTPForbidden, code: '403', body:) }
+    let(:body) { read_payload_file('men/scolarites/eleve_hors_perimetre.json') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(MENError)) }
+
+    it 'renders a 404 under a code of its own' do
+      error = subject.errors.first
+
+      expect(error.code).to eq('30405')
+      expect(Errors::HTTPStatusForKind.call(error.kind)).to eq(:not_found)
+    end
+  end
+
+  context 'with a forbidden response of another nature' do
+    let(:response) { instance_double(Net::HTTPForbidden, code: '403', body: '{"title":"Forbidden"}') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+  end
+
+  context 'with a forbidden response without a json body' do
+    let(:response) { instance_double(Net::HTTPForbidden, code: '403', body: '<html>Forbidden</html>') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+  end
+
+  context 'with a forbidden response whose json body is not an object' do
+    let(:response) { instance_double(Net::HTTPForbidden, code: '403', body: '[{"title":"Forbidden"}]') }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+  end
+
+  context 'with a forbidden response without body' do
+    let(:response) { instance_double(Net::HTTPForbidden, code: '403', body: nil) }
+
+    it { is_expected.to be_a_failure }
+
+    its(:errors) { is_expected.to include(instance_of(ProviderUnknownError)) }
+  end
 end

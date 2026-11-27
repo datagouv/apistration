@@ -4979,6 +4979,12 @@ endpoints:
         detail: Aucune scolarité n'a pu être trouvée pour cet élève
         meta:
           provider: MEN
+      - code: '30405'
+        title: Élève hors périmètre
+        detail: Le ministère de l'Éducation nationale indique que cet élève est hors
+          de son périmètre, par exemple un élève post-bac
+        meta:
+          provider: MEN
       '502':
       - code: '30000'
         title: Erreur interne du fournisseur de données
@@ -6075,6 +6081,12 @@ endpoints:
         detail: Aucune scolarité n'a pu être trouvée pour cet élève
         meta:
           provider: MEN
+      - code: '30405'
+        title: Élève hors périmètre
+        detail: Le ministère de l'Éducation nationale indique que cet élève est hors
+          de son périmètre, par exemple un élève post-bac
+        meta:
+          provider: MEN
       '502':
       - code: '30000'
         title: Erreur interne du fournisseur de données
@@ -6630,6 +6642,12 @@ endpoints:
       - code: '30404'
         title: Scolarité non trouvée
         detail: Aucune scolarité n'a pu être trouvée pour cet élève
+        meta:
+          provider: MEN
+      - code: '30405'
+        title: Élève hors périmètre
+        detail: Le ministère de l'Éducation nationale indique que cet élève est hors
+          de son périmètre, par exemple un élève post-bac
         meta:
           provider: MEN
       '502':

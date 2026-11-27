@@ -1,0 +1,6 @@
+{
+  "type": "Accès interdit à la ressource",
+  "title": "L'élève est hors périmètre",
+  "detail": "Postbac hors périmètre",
+  "status": "403 FORBIDDEN"
+}
