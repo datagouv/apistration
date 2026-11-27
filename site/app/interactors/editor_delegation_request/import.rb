@@ -1,6 +1,7 @@
 class EditorDelegationRequest::Import < ApplicationInteractor
   SIRET_FORMAT = /\A\d{14}\z/
   LA_POSTE_SIREN = '356000000'.freeze
+  KNOWN_COLUMNS = (%w[siret contact_email] + EditorDelegationRequest::IMPORTED_DATA_ATTRIBUTES).freeze
 
   before do
     context.created = []
@@ -11,6 +12,8 @@ class EditorDelegationRequest::Import < ApplicationInteractor
   end
 
   def call
+    reject_unknown_columns
+
     context.rows.each { |row| import_row(row) }
 
     context.editor_delegation_requests = context.created + context.already_imported
@@ -47,14 +50,24 @@ class EditorDelegationRequest::Import < ApplicationInteractor
   end
 
   def create(siret, row)
-    creation = EditorDelegationRequest::Create.call(editor_delegation_campaign:, datapass_data:, siret:, contact_email: row['contact_email'], data_protection_officer: data_protection_officer(row))
+    creation = EditorDelegationRequest::Create.call(editor_delegation_campaign:, datapass_data:, siret:, contact_email: row['contact_email'], data: imported_data(row))
     return context.failures << [siret, creation.message] if creation.failure?
 
     context.created << creation.editor_delegation_request
   end
 
-  def data_protection_officer(row)
-    row.slice(*EditorDelegationRequest::DATA_PROTECTION_OFFICER_ATTRIBUTES).compact_blank
+  def imported_data(row)
+    row.slice(*EditorDelegationRequest::IMPORTED_DATA_ATTRIBUTES).compact_blank
+  end
+
+  def reject_unknown_columns
+    return if unknown_columns.empty?
+
+    context.fail!(message: "Colonnes inconnues : #{unknown_columns.map { |column| column || '(sans en-tête)' }.join(', ')}")
+  end
+
+  def unknown_columns
+    @unknown_columns ||= context.rows.flat_map { |row| row.compact_blank.keys }.uniq - KNOWN_COLUMNS
   end
 
   def normalize_siret(siret)

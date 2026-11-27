@@ -58,6 +58,36 @@ RSpec.describe 'Editor delegation request journey on API Particulier', app: :api
     expect(datapass).to have_received(:attach_documents).twice
   end
 
+  it 'sends each establishment its own business contact from the editor file, the campaign one otherwise, and keeps the technical contact of the campaign' do
+    editor_delegation_campaign.update!(data: editor_delegation_campaign.data.merge('contact_metier_email' => 'metier@hoptis.com', 'contact_technique_email' => 'technique@hoptis.com'))
+    editor_delegation_request.update!(contact_metier_email: 'directrice@creche-saint-exemple.fr', contact_metier_phone_number: '0612345678')
+    create(:editor_delegation_request, :with_authorization_request, :with_dpo, editor_delegation_campaign:, siret: '21340172200011', contact_email: user.email)
+    allow(datapass).to receive(:create_demande).and_return({ 'id' => '1001' }, { 'id' => '1002' })
+
+    visit "#{editor_delegation_request.invitation_path}/verification"
+
+    expect(page).to have_text('Les contacts')
+    expect(page).to have_text('Propre à chaque établissement, transmis par Hoptis')
+    expect(page).to have_text('technique@hoptis.com')
+
+    check 'terms_of_service_accepted'
+    check 'data_protection_officer_informed'
+    perform_enqueued_jobs { click_on 'Soumettre les 2 demandes' }
+
+    expect(datapass).to have_received(:create_demande).with(
+      hash_including(
+        organization: { siret: '21340172201787' },
+        data: hash_including('contact_metier_email' => 'directrice@creche-saint-exemple.fr', 'contact_metier_phone_number' => '0612345678', 'contact_technique_email' => 'technique@hoptis.com')
+      )
+    )
+    expect(datapass).to have_received(:create_demande).with(
+      hash_including(
+        organization: { siret: '21340172200011' },
+        data: hash_including('contact_metier_email' => 'metier@hoptis.com', 'contact_technique_email' => 'technique@hoptis.com')
+      )
+    )
+  end
+
   it 'answers 404 to the link of an API Entreprise request' do
     entreprise_request = create(:editor_delegation_request, :with_authorization_request, contact_email: user.email)
 

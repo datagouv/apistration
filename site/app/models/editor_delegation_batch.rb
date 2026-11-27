@@ -101,6 +101,17 @@ class EditorDelegationBatch
     @datapass_data ||= editor_delegation_campaign.datapass_data
   end
 
+  def contact(kind)
+    attributes = EditorDelegationRequest::CONTACT_FIELDS.map { |field| "#{kind}_#{field}" }
+    contacts = pending_requests.map { |request| datapass_data.slice(*attributes).merge(request.datapass_contacts.slice(*attributes)) }.uniq
+
+    contacts.first if contacts.one?
+  end
+
+  def establishment_contacts?
+    pending_requests.any? { |request| request.datapass_contacts.any? }
+  end
+
   private
 
   def establishments

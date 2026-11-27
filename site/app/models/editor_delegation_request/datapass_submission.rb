@@ -48,7 +48,7 @@ class EditorDelegationRequest::DatapassSubmission
   end
 
   def data
-    request.editor_delegation_campaign.datapass_data.merge(request.datapass_data_protection_officer)
+    request.editor_delegation_campaign.datapass_data.merge(request.datapass_contacts, request.datapass_data_protection_officer)
   end
 
   def documents

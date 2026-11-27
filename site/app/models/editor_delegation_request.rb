@@ -7,6 +7,10 @@ class EditorDelegationRequest < ApplicationRecord
     delegue_protection_donnees_job_title
   ].freeze
 
+  CONTACT_KINDS = %w[contact_metier contact_technique].freeze
+  CONTACT_FIELDS = %w[family_name given_name email phone_number job_title].freeze
+  CONTACT_ATTRIBUTES = CONTACT_KINDS.product(CONTACT_FIELDS).map { |kind, field| "#{kind}_#{field}" }.freeze
+
   DATA_PROTECTION_OFFICER_FORM_ATTRIBUTES = %w[
     delegue_protection_donnees_email
     delegue_protection_donnees_phone_number
@@ -22,7 +26,11 @@ class EditorDelegationRequest < ApplicationRecord
   DOWNCASED_ATTRIBUTES = %w[
     delegue_protection_donnees_email
     delegue_protection_donnees_phone_number
+    contact_metier_email
+    contact_technique_email
   ].freeze
+
+  IMPORTED_DATA_ATTRIBUTES = (DATA_PROTECTION_OFFICER_ATTRIBUTES + CONTACT_ATTRIBUTES).freeze
 
   belongs_to :editor_delegation_campaign
   belongs_to :authorization_request,
@@ -35,7 +43,7 @@ class EditorDelegationRequest < ApplicationRecord
 
   has_one_attached :cadre_juridique_document
 
-  store_accessor :data, *DATA_PROTECTION_OFFICER_ATTRIBUTES
+  store_accessor :data, *IMPORTED_DATA_ATTRIBUTES
 
   normalizes :contact_email, with: ->(email) { email.strip.downcase.presence }
 
@@ -50,7 +58,7 @@ class EditorDelegationRequest < ApplicationRecord
   validates :terms_of_service_accepted, :data_protection_officer_informed, acceptance: { accept: true, allow_nil: false }, on: :submission
   validates :submitted_at, :submitted_by_user_id, presence: true, on: :submission
 
-  DATA_PROTECTION_OFFICER_ATTRIBUTES.each do |attribute|
+  IMPORTED_DATA_ATTRIBUTES.each do |attribute|
     define_method(:"#{attribute}=") do |value|
       value = value&.strip
       value = value&.downcase if DOWNCASED_ATTRIBUTES.include?(attribute)
@@ -77,6 +85,10 @@ class EditorDelegationRequest < ApplicationRecord
 
   def data_protection_officer_complete?
     URI::MailTo::EMAIL_REGEXP.match?(delegue_protection_donnees_email.to_s)
+  end
+
+  def datapass_contacts
+    data.slice(*CONTACT_ATTRIBUTES).compact_blank
   end
 
   def datapass_data_protection_officer
