@@ -165,12 +165,18 @@ fiche:
                   type: object
                   title: Certification
                   nullable: true
+                  additionalProperties: false
+                  required:
+                  - code
+                  - nom
+                  - rge
+                  - date_attribution
                   properties:
                     code:
                       type: string
                       title: Code associé à la certification
                       example: '4322'
-                    libelle:
+                    nom:
                       title: Libellé de la certification
                       type: string
                       example: Fabrication et pose de menuiserie intérieure en bois
