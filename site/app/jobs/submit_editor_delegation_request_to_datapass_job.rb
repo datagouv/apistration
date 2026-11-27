@@ -1,6 +1,8 @@
 class SubmitEditorDelegationRequestToDatapassJob < ApplicationJob
   UNREACHABLE_DATAPASS_REASON = 'DataPass n’a pas pu recevoir la demande, soumettez-la à nouveau'.freeze
 
+  self.enqueue_after_transaction_commit = Rails.env.development?
+
   after_discard do |job|
     EditorDelegationRequest.find(job.arguments.first).refused_by_datapass!(UNREACHABLE_DATAPASS_REASON)
   end
