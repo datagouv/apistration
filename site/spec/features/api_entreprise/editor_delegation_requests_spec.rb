@@ -169,7 +169,7 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
           organization: { siret: '21340172201787' },
           applicant: hash_including(email: 'achats@saint-exemple.fr'),
           data: hash_including('delegue_protection_donnees_email' => 'dpo@saint-exemple.fr', 'delegue_protection_donnees_phone_number' => '01 23 45 67 89'),
-          metadata: { editor_delegation_request_id: editor_delegation_request.id }
+          metadata: { editor_delegation_request_id: editor_delegation_request.id, bulk_submission: true }
         )
       )
       expect(datapass).to have_received(:submit_demande).with('1001', consentement: { terms_of_service_accepted: true, data_protection_officer_informed: true }, notifications: false)
@@ -191,7 +191,7 @@ RSpec.describe 'Editor delegation request journey', app: :api_entreprise do
             'delegue_protection_donnees_job_title' => 'Délégué à la protection des données',
             'delegue_protection_donnees_phone_number' => '0100000000'
           ),
-          metadata: { editor_delegation_request_id: editor_delegation_request.id, fake_dpo_phone_number: true }
+          metadata: { editor_delegation_request_id: editor_delegation_request.id, bulk_submission: true, fake_dpo_phone_number: true }
         )
       )
     end

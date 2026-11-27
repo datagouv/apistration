@@ -56,7 +56,7 @@ class EditorDelegationRequest::DatapassSubmission
   end
 
   def metadata
-    { editor_delegation_request_id: request.id, fake_dpo_phone_number: (true if request.fake_data_protection_officer_phone_number?) }.compact
+    { editor_delegation_request_id: request.id, bulk_submission: true, fake_dpo_phone_number: (true if request.fake_data_protection_officer_phone_number?) }.compact
   end
 
   def client
