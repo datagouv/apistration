@@ -72,7 +72,7 @@ RSpec.describe ValidateResponse do
       end
 
       context 'when data encryptor works' do
-        it 'adds context to monitoring, with encrypted params' do
+        it 'adds context to monitoring, with encrypted params and provider body, never the body in clear' do
           subject
 
           error = subject.errors.first
@@ -80,11 +80,17 @@ RSpec.describe ValidateResponse do
           expect(error.monitoring_private_context).to eq(
             {
               http_response_code: '500',
-              http_response_body: error_body,
+              http_response_body: 'encrypted_data',
               http_response_headers: { 'header' => 'value' },
               encrypted_params: 'encrypted_data'
             }
           )
+        end
+
+        it 'encrypts the provider body as is, since providers copy the identity into free text' do
+          expect(DataEncryptor).to receive(:new).with(error_body)
+
+          subject
         end
 
         it 'calls encrypt data service with params as json' do
@@ -121,14 +127,17 @@ RSpec.describe ValidateResponse do
 
           subject
 
-          expect(MonitoringService.instance).to have_received(:track).with(:error, 'Failed to encrypt personal data for monitoring (GPGME::Error::UnusablePublicKey)')
+          expect(MonitoringService.instance).to have_received(:track).with(:error, 'Failed to encrypt personal data for monitoring (GPGME::Error::UnusablePublicKey)').at_least(:once)
         end
 
         it 'never puts the identity in clear in the monitoring context' do
           error = subject.errors.first
 
-          expect(error.monitoring_private_context.to_s).not_to include('DUPONT')
-          expect(error.monitoring_private_context[:encrypted_params]).to eq(MonitoringService::ENCRYPTION_FAILED_PLACEHOLDER)
+          expect(error.monitoring_private_context.to_s).not_to include('DUPONT', error_body)
+          expect(error.monitoring_private_context).to include(
+            encrypted_params: MonitoringService::ENCRYPTION_FAILED_PLACEHOLDER,
+            http_response_body: MonitoringService::ENCRYPTION_FAILED_PLACEHOLDER
+          )
         end
       end
     end

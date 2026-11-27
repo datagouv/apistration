@@ -191,7 +191,7 @@ class CNAV::ValidateResponse < ValidateResponse
   def provider_error_context
     {
       http_response_code: context.response.code,
-      http_response_body: context.response.body,
+      http_response_body: MonitoringService.instance.encrypt_for_tracking(context.response.body),
       regime:,
       params_shape: CNAV::IdentityParamsShape.new(context.params).to_h,
       encrypted_params: encrypt_params
