@@ -33,11 +33,9 @@ class EditorDelegationBatch::Signature
   def save
     return false if invalid?
 
-    still_pending_ids = EditorDelegationRequest.transaction do
-      EditorDelegationRequest.where(id: batch.pending_requests.map(&:id), submitted_at: nil).lock.ids
+    EditorDelegationRequest.transaction do
+      submit_included_requests(EditorDelegationRequest.where(id: batch.pending_requests.map(&:id), submitted_at: nil).lock.ids)
     end
-
-    submit_included_requests(still_pending_ids)
   end
 
   def submitted_at
