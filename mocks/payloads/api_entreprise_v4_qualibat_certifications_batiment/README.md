@@ -39,7 +39,7 @@
         "certifications": [
           {
             "code": "4322",
-            "libelle": "Fabrication et pose de menuiserie intérieure en bois",
+            "nom": "Fabrication et pose de menuiserie intérieure en bois",
             "rge": false,
             "date_attribution": "2022-03-03"
           }
