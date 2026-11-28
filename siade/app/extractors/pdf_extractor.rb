@@ -17,6 +17,10 @@ class PDFExtractor
     extract
   rescue PDF::Reader::MalformedPDFError
     raise InvalidFile
+  rescue NoMethodError => e
+    raise InvalidFile if raised_by_pdf_reader?(e)
+
+    raise
   end
 
   protected
@@ -30,6 +34,10 @@ class PDFExtractor
   end
 
   private
+
+  def raised_by_pdf_reader?(error)
+    error.backtrace_locations.first.path.start_with?(Gem.loaded_specs['pdf-reader'].full_gem_path)
+  end
 
   def pdf_reader
     @pdf_reader ||= PDF::Reader.new(StringIO.new(pdf_content))
