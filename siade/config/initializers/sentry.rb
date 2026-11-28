@@ -27,6 +27,7 @@ Sentry.init do |config|
     rescue NoMethodError
     end
 
+    SentryEventPayloadEchoFilter.call(event)
     SentryEventUtf8Normalizer.call(event)
 
     event

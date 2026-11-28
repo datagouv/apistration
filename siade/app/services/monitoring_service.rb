@@ -15,6 +15,18 @@ class MonitoringService
 
   PERSONAL_DATA_THRESHOLD = 2
 
+  CONTROLLER_PARAMS_EXTRA_FILTERS = %i[
+    dateNaissance
+    sexe
+    paysNaissance
+    departementNaissance
+    immatriculation
+  ].freeze
+
+  RETRIEVER_CONTEXT_CLEAR_KEYS = %i[operation_id provider_name recipient cacheable data_source].freeze
+
+  ENCRYPTION_FAILED_PLACEHOLDER = '[personal data not sent: encryption failed]'.freeze
+
   def_delegators :Sentry,
     :capture_message,
     :set_user,
@@ -77,7 +89,24 @@ class MonitoringService
   end
 
   def set_retriever_context(context)
-    set_context('Retriever', context.to_h)
+    set_context('Retriever', retriever_summary(context))
+  end
+
+  def set_retriever_crash_context(context)
+    set_context(
+      'Retriever',
+      retriever_summary(context).merge(encrypted_details: encrypt_for_tracking(retriever_details(context)))
+    )
+  rescue StandardError => e
+    set_retriever_context(context)
+    track(:error, "Failed to build the Retriever monitoring details (#{e.class.name})")
+  end
+
+  def encrypt_for_tracking(data)
+    DataEncryptor.new(data).encrypt.to_s
+  rescue StandardError => e
+    track(:error, "Failed to encrypt personal data for monitoring (#{e.class.name})")
+    ENCRYPTION_FAILED_PLACEHOLDER
   end
 
   def track(level, message, fingerprint: nil)
@@ -91,7 +120,27 @@ class MonitoringService
   private
 
   def params_filter
-    @params_filter ||= ActiveSupport::ParameterFilter.new(Rails.application.config.filter_parameters)
+    @params_filter ||= ActiveSupport::ParameterFilter.new(Rails.application.config.filter_parameters + CONTROLLER_PARAMS_EXTRA_FILTERS)
+  end
+
+  def retriever_summary(context)
+    context.to_h.slice(*RETRIEVER_CONTEXT_CLEAR_KEYS).merge(
+      http_response_code: context.response.try(:code),
+      error_codes: retriever_error_codes(context)
+    ).compact
+  end
+
+  def retriever_error_codes(context)
+    Array(context.errors).map(&:code)
+  rescue StandardError
+    nil
+  end
+
+  def retriever_details(context)
+    {
+      params: context.params,
+      http_response_body: readable_body(context.response.try(:body))
+    }.to_json
   end
 
   def sanitize_personal_data(context)
@@ -99,7 +148,7 @@ class MonitoringService
     return context unless body_key
     return context unless contains_personal_data?(readable_body(context[body_key]))
 
-    context.merge(body_key => encrypt_body(context[body_key]))
+    context.merge(body_key => encrypt_for_tracking(context[body_key]))
   end
 
   def readable_body(body)
@@ -108,13 +157,6 @@ class MonitoringService
 
   def contains_personal_data?(body)
     PERSONAL_DATA_JSON_KEYS.count { |key| body.match?(/"#{key}"\s*:/i) } >= PERSONAL_DATA_THRESHOLD
-  end
-
-  def encrypt_body(body)
-    DataEncryptor.new(body).encrypt.to_s
-  rescue GPGME::Error => e
-    track(:error, "Failed to encrypt personal data in response body: #{e.message}")
-    '[personal data detected but encryption failed]'
   end
 
   def set_extra_context(title, context)

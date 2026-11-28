@@ -54,11 +54,7 @@ class ANTS::ExtraitImmatriculationVehicule::ValidateOneIdentityIsMatching < Vali
     MonitoringService.instance.track_with_added_context(
       'info',
       "[#{context.provider_name}] No matching identity found",
-      { encrypted_params: }
+      { encrypted_params: encrypt_params }
     )
-  end
-
-  def encrypted_params
-    DataEncryptor.new(context.params.to_json).encrypt.to_s
   end
 end

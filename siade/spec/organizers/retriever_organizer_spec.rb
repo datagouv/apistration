@@ -68,7 +68,10 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
 
     let(:provider_name) { 'INSEE' }
 
-    before { allow(monitoring_service).to receive(:set_retriever_context) }
+    before do
+      allow(monitoring_service).to receive(:set_retriever_context)
+      allow(monitoring_service).to receive(:set_retriever_crash_context)
+    end
 
     context 'when there is no error' do
       let(:error_kind) { nil }
@@ -133,7 +136,7 @@ RSpec.describe RetrieverOrganizer, type: :organizer do
         it 'logs the context and raises error' do
           expect { subject }.to raise_error(StandardError)
 
-          expect(monitoring_service).to have_received(:set_retriever_context).with(an_instance_of(Interactor::Context))
+          expect(monitoring_service).to have_received(:set_retriever_crash_context).with(an_instance_of(Interactor::Context))
         end
       end
     end

@@ -26,9 +26,12 @@ class RetrieverOrganizer < ApplicationOrganizer
   def call
     mark_organizer_as_called_to_run_rollback_on_fail!
     super
-  rescue StandardError => e
+  rescue Interactor::Failure
     monitoring_service.set_retriever_context(context)
-    raise e
+    raise
+  rescue StandardError
+    monitoring_service.set_retriever_crash_context(context)
+    raise
   end
 
   def rollback
