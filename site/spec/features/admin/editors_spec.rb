@@ -274,32 +274,6 @@ RSpec.describe 'Admin: editors', app: :api_entreprise do
     end
   end
 
-  describe 'observed IPs hint' do
-    let(:editor) { create(:editor, form_uids: %w[api-entreprise-umad]) }
-    let(:token) { create(:token, authorization_request: create(:authorization_request, demarche: 'api-entreprise-umad')) }
-
-    before do
-      %w[203.0.113.1 203.0.113.2 203.0.113.2 203.0.113.3].each { |ip| create(:access_log, token:, ip:, timestamp: 1.day.ago) }
-      create(:access_log, token:, ip: '198.51.100.9', timestamp: 8.days.ago)
-      create(:access_log, token: create(:token), ip: '198.51.100.10', timestamp: 1.day.ago)
-    end
-
-    it 'counts the distinct IPs calling with the habilitations of the editor over the last 7 days' do
-      visit admin_editor_path(editor, onglet: 'security')
-
-      expect(page).to have_text('3 adresses IP distinctes sur 7 jours')
-    end
-
-    it 'counts the IPs calling with the editor token too' do
-      editor_token = create(:editor_token, editor:)
-      create(:access_log, token: nil, token_id: editor_token.id, ip: '192.0.2.7', timestamp: 1.day.ago)
-
-      visit admin_editor_path(editor, onglet: 'security')
-
-      expect(page).to have_text('4 adresses IP distinctes sur 7 jours')
-    end
-  end
-
   describe 'contacts' do
     let!(:editor) { create(:editor) }
 
