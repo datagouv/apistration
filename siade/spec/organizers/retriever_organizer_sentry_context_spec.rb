@@ -5,6 +5,7 @@ RSpec.describe RetrieverOrganizer, 'sentry context', type: :organizer do
       operation_id: 'api_particulier_v3_dummy',
       recipient: '13002526500013',
       provider_name: 'INSEE',
+      provider_body:,
       outcome:
     )
   end
@@ -36,7 +37,7 @@ RSpec.describe RetrieverOrganizer, 'sentry context', type: :organizer do
     class SentryContextDummyOrganizer < RetrieverOrganizer
       organize SentryContextDummyInteractor
 
-      before { context.provider_body = '{"erreurs":[{"code":"E1","message":"Aucun dossier pour DUPONT, JEAN, 01011980."}]}' }
+      before { context.provider_body ||= '{"erreurs":[{"code":"E1","message":"Aucun dossier pour DUPONT, JEAN, 01011980."}]}' }
 
       delegate :provider_name, to: :context
     end
@@ -53,6 +54,8 @@ RSpec.describe RetrieverOrganizer, 'sentry context', type: :organizer do
       sexeEtatCivil: 'M'
     }
   end
+
+  let(:provider_body) { nil }
 
   let(:sent_contexts) { {} }
 
@@ -89,6 +92,21 @@ RSpec.describe RetrieverOrganizer, 'sentry context', type: :organizer do
 
       expect(DataEncryptor).to have_received(:new).with(include('DUPONT', 'Aucun dossier pour DUPONT'))
       expect(sent_contexts['Retriever']).to include(encrypted_details: 'ENCRYPTED')
+    end
+
+    context 'when the provider body is binary, such as a PDF' do
+      let(:provider_body) { "%PDF-1.4\n\xE2\xE3\xCF\xD3".b }
+
+      it 'still sends the params and the provider body encrypted' do
+        expect { call_organizer }.to raise_error(NoMethodError)
+
+        expect(DataEncryptor).to have_received(:new) do |details|
+          expect(details).to include('DUPONT')
+          expect(Base64.strict_decode64(JSON.parse(details)['http_response_body_base64'])).to eq(provider_body)
+        end
+        expect(sent_contexts['Retriever']).to include(encrypted_details: 'ENCRYPTED')
+        expect(Sentry).not_to have_received(:capture_message).with(/Failed to build the Retriever monitoring details/, anything)
+      end
     end
 
     context 'when the encryption fails' do
