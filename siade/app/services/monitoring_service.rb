@@ -137,10 +137,14 @@ class MonitoringService
   end
 
   def retriever_details(context)
-    {
-      params: context.params,
-      http_response_body: readable_body(context.response.try(:body))
-    }.to_json
+    { params: context.params }.merge(json_encodable_body(context.response.try(:body))).to_json
+  end
+
+  def json_encodable_body(body)
+    utf8_body = body.to_s.dup.force_encoding(Encoding::UTF_8)
+    return { http_response_body: utf8_body } if utf8_body.valid_encoding?
+
+    { http_response_body_base64: Base64.strict_encode64(body.to_s) }
   end
 
   def sanitize_personal_data(context)
