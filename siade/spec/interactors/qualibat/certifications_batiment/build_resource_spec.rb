@@ -73,5 +73,21 @@ RSpec.describe QUALIBAT::CertificationsBatiment::BuildResource do
         build_resource
       end
     end
+
+    context 'when Qualibat sends a PDF restoring more graphics states than it saves' do
+      subject(:build_resource) { described_class.call(url:, params:, content:) }
+
+      let(:content) { Rails.root.join('spec/fixtures/pdfs/qualibat_certifications_batiment/unbalanced_graphics_state.pdf').read }
+
+      before do
+        allow(QUALIBATCertificationsBatimentExtractor).to receive(:new).and_call_original
+      end
+
+      it { is_expected.to be_a_success }
+
+      it 'flags the document as an invalid file' do
+        expect(build_resource.bundled_data.data.to_h[:extractor_error]).to eq('invalid_file')
+      end
+    end
   end
 end

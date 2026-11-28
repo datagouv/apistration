@@ -7,6 +7,12 @@ RSpec.describe PDFExtractor, type: :extractor do
         pdf_reader.pages.first.text
       end
     end
+
+    class BuggyPDFExtractor < PDFExtractor
+      def extract
+        pages.first.text.undefined_extraction_step
+      end
+    end
   end
 
   describe '#perform' do
@@ -23,6 +29,14 @@ RSpec.describe PDFExtractor, type: :extractor do
 
       it 'raises an error' do
         expect { subject }.to raise_error(PDFExtractor::InvalidFile)
+      end
+    end
+
+    context 'when the extraction code itself is broken' do
+      subject { BuggyPDFExtractor.new(Rails.root.join('spec/fixtures/dummy.pdf').read).perform }
+
+      it 'lets the error surface instead of blaming the file' do
+        expect { subject }.to raise_error(NoMethodError, /undefined_extraction_step/)
       end
     end
   end
